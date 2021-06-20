@@ -1,12 +1,8 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import React from 'react'
 
-export default function About() {
-  return (
-    <>
-      <Head>
-        <title>wisteken.com</title>
-      </Head>
-    </>
-  )
+import About from '../components/templates/About'
+
+const AboutPage = () => {
+  return <About />
 }
+export default AboutPage
