@@ -1,19 +1,20 @@
-import React, { HTMLAttributes, Fragment } from 'react'
-
+import React, { Fragment } from 'react'
 import Header from '../organisms/Header'
 import Footer from '../organisms/Footer'
+import DigestList, { DigestListProps } from '../organisms/DigestList'
+import config from '../../configs/config.json'
 
-export type IndexProps = HTMLAttributes<HTMLElement>
+export type IndexProps = DigestListProps
 
-const Index: React.FC<IndexProps> = ({ children, ...props }) => {
+const Index: React.FC<IndexProps> = ({ posts }) => {
   return (
     <Fragment>
       <Header>
-        <title>{'Wisteken.com'}</title>
+        <title>{config.siteName}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
       </Header>
-      {children}
-      <Footer children="©︎ Wisteken.com All Right Reserved." />
+      <DigestList posts={posts} />
+      <Footer>{config.copyRight}</Footer>
     </Fragment>
   )
 }

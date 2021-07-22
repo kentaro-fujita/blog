@@ -1,19 +1,19 @@
-import React, { HTMLAttributes, Fragment } from 'react'
-
+import React, { Fragment } from 'react'
 import Header from '../organisms/Header'
 import Footer from '../organisms/Footer'
+import config from '../../configs/config.json'
+import Title from '../atoms/Title'
+import AboutText from '../organisms/AboutText'
 
-export type AboutProps = HTMLAttributes<HTMLElement>
-
-const About: React.FC<AboutProps> = ({ children, ...props }) => {
+const About: React.FC = () => {
   return (
     <Fragment>
       <Header>
-        <title>{'Wisteken.com'}</title>
+        <title>{`About - ${config.siteName}`}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
       </Header>
-      {children}
-      <Footer children="©︎ Wisteken.com All Right Reserved." />
+      <AboutText />
+      <Footer>{config.copyRight}</Footer>
     </Fragment>
   )
 }

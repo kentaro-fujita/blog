@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, Fragment } from 'react'
 import css from 'styled-jsx/css'
-import Styles from '../../configs/style.json'
+import Image from '../atoms/Image'
 
 const styles = css`
   display: inline-block;
@@ -9,14 +9,14 @@ const styles = css`
   text-decoration: none;
 `
 
-export type HeaderImageProps = HTMLAttributes<HTMLElement>
+export type LogoProps = HTMLAttributes<HTMLElement>
 
-const HeaderImage: React.FC<HeaderImageProps> = ({ children, ...props }) => {
+const Logo: React.FC<LogoProps> = (props) => {
   return (
     <Fragment>
-      <img {...props} src="/public/assets/header.png" alt="logo" />
+      <Image {...props} imgUrl="./assets/logo.png" />
       <style jsx>{styles}</style>
     </Fragment>
   )
 }
-export default HeaderImage
+export default Logo

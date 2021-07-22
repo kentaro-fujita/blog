@@ -1,20 +1,39 @@
 import React, { HTMLAttributes, Fragment } from 'react'
 import css from 'styled-jsx/css'
-import Styles from '../../configs/style.json'
+
+import colors from '../../configs/colors.json'
+import FooterMenu, { FooterMenuProps } from '../molecules/FooterMenu'
 
 const styles = css`
-  color: #fff;
-  text-align: center;
-  padding: 15px 0 15px;
-  background-color: ${Styles.color.main};
+  .footer_menu {
+    color: ${colors.white};
+    text-align: center;
+    background-color: ${colors.main};
+    margin: 0 auto;
+  }
+  .footer_copyright {
+    color: ${colors.white};
+    text-align: center;
+    padding: 5px 0 5px;
+    background-color: ${colors.main};
+  }
 `
 
-export type FooterProps = HTMLAttributes<HTMLElement>
-
-const Footer: React.FC<FooterProps> = ({ children, ...props }) => {
+const Footer: React.FC = ({ children }) => {
+  const items = [
+    { name: 'About', link: '/about' },
+    { name: 'GitHub', link: 'https://github.com/kentaro-fujita/' },
+    { name: 'Links', link: '/' },
+    { name: 'Contact', link: '/' },
+  ]
   return (
     <Fragment>
-      <footer {...props}>{children}</footer>
+      <div className="footer_menu">
+        <FooterMenu items={items} />
+      </div>
+      <div className="footer_copyright">
+        <footer>{children}</footer>
+      </div>
       <style jsx>{styles}</style>
     </Fragment>
   )
