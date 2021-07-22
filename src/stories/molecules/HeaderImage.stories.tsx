@@ -3,10 +3,10 @@ import { Story, Meta } from '@storybook/react'
 
 import HeaderImage, {
   HeaderImageProps,
-} from '../../components/atoms/HeaderImage'
+} from '../../components/molecules/HeaderImage'
 
 export default {
-  title: 'Atoms/HeaderImage',
+  title: 'Molecules/HeaderImage',
   components: HeaderImage,
 } as Meta
 

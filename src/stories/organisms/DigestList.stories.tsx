@@ -1,14 +1,16 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import Index, { IndexProps } from '../../components/templates/Index'
+import DigestList, {
+  DigestListProps,
+} from '../../components/organisms/DigestList'
 
 export default {
-  title: 'Templates/Index',
-  components: Index,
+  title: 'Organisms/DigestList',
+  components: DigestList,
 } as Meta
 
-const Template: Story<IndexProps> = (args) => <Index {...args} />
+const Template: Story<DigestListProps> = (args) => <DigestList {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
