@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { Post } from '../../models'
 import Footer from '../organisms/Footer'
 import Header from '../organisms/Header'
 import PostView, { PostViewProps } from '../organisms/PostView'

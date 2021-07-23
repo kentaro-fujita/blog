@@ -22,8 +22,10 @@ const FooterMenu: React.FC<FooterMenuProps> = ({ items }) => {
   return (
     <Fragment>
       <div className="flex">
-        {items.map((item, _) => (
-          <FooterMenuItem href={item.link}>{item.name}</FooterMenuItem>
+        {items.map((item, index) => (
+          <FooterMenuItem href={item.link} key={index}>
+            {item.name}
+          </FooterMenuItem>
         ))}
       </div>
       <style jsx>{styles}</style>

@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import React, { Fragment, HTMLAttributes } from 'react'
 import css from 'styled-jsx/css'
 import colors from '../../configs/colors.json'
@@ -27,12 +27,11 @@ const FooterMenuItem: React.FC<FooterMenuItemProps> = ({
   children,
   ...props
 }) => {
-  const router = useRouter()
   return (
     <Fragment>
-      <a onClick={() => router.push(href)}>
+      <Link href={href}>
         <div {...props}>{children}</div>
-      </a>
+      </Link>
       <style jsx>{styles}</style>
     </Fragment>
   )

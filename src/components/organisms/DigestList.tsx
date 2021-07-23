@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
 import { Post } from '../../models'
-import Digest, { DigestProps } from './Digest'
+import Digest from './Digest'
 
 const styles = css`
   .digest_list {
@@ -16,14 +16,13 @@ export type DigestListProps = {
 }
 
 const DigestList: React.FC<DigestListProps> = ({ posts }) => {
-  const router = useRouter()
   return (
     <Fragment>
       <div className="digest_list">
-        {posts.map((post) => (
-          <a onClick={() => router.push(`/posts/${post.slug}`)}>
+        {posts.map((post, index) => (
+          <Link href={`/posts/${post.slug}`} key={index}>
             <Digest {...post} />
-          </a>
+          </Link>
         ))}
       </div>
       <style jsx>{styles}</style>

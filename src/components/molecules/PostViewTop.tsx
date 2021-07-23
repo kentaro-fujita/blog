@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
-import { Post } from '../../models'
 import Text from '../atoms/Text'
 import Title from '../atoms/Title'
 

@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import Link from 'next/link'
 import React, { HTMLAttributes, Fragment } from 'react'
 import css from 'styled-jsx/css'
 
@@ -16,14 +16,13 @@ const styles = css`
 
 export type HeaderProps = HTMLAttributes<HTMLElement>
 
-const Header: React.FC<HeaderProps> = ({ children, ...props }) => {
-  const router = useRouter()
+const Header: React.FC<HeaderProps> = (props) => {
   return (
     <Fragment>
       <header {...props}>
-        <a onClick={() => router.push("/")}>
+        <Link href={'/'}>
           <HeaderImage />
-        </a>
+        </Link>
       </header>
       <style jsx>{styles}</style>
     </Fragment>

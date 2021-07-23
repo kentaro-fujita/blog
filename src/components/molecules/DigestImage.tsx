@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
-import Image, { ImageProps } from '../atoms/Image'
+import Image from '../atoms/Image'
 
 const styles = css`
   .digest_image {

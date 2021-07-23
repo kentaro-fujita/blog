@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import Header from '../organisms/Header'
 import Footer from '../organisms/Footer'
 import config from '../../configs/config.json'
-import Title from '../atoms/Title'
 import AboutText from '../organisms/AboutText'
 
 const About: React.FC = () => {

@@ -12,7 +12,7 @@ export type ImageProps = {
 const Image: React.FC<ImageProps> = ({ imgUrl }) => {
   return (
     <Fragment>
-      <img src={imgUrl}></img>
+      <img src={imgUrl} alt="thumbnail"></img>
       <style jsx>{styles}</style>
     </Fragment>
   )

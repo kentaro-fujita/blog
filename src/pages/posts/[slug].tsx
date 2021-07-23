@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
 import { getAllPostSlugs, getPostBySlug } from '../../api'
 import PostTemplate from '../../components/templates/Post'

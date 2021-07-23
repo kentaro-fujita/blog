@@ -1,8 +1,8 @@
-import React, { HTMLAttributes, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
 
 import colors from '../../configs/colors.json'
-import FooterMenu, { FooterMenuProps } from '../molecules/FooterMenu'
+import FooterMenu from '../molecules/FooterMenu'
 
 const styles = css`
   .footer_menu {
