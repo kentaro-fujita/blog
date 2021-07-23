@@ -29,7 +29,7 @@ const FooterMenuItem: React.FC<FooterMenuItemProps> = ({
 }) => {
   return (
     <Fragment>
-      <Link href={href}>
+      <Link href={href} passHref>
         <div {...props}>{children}</div>
       </Link>
       <style jsx>{styles}</style>

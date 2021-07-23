@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import React, { HTMLAttributes, Fragment } from 'react'
 import css from 'styled-jsx/css'
 
@@ -20,9 +19,9 @@ const Header: React.FC<HeaderProps> = (props) => {
   return (
     <Fragment>
       <header {...props}>
-        <Link href={'/'}>
+        <a href={'/'}>
           <HeaderImage />
-        </Link>
+        </a>
       </header>
       <style jsx>{styles}</style>
     </Fragment>
