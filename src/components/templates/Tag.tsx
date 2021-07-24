@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import Head from 'next/head'
 import Footer from '../organisms/Footer'
 import Header from '../organisms/Header'
 import config from '../../configs/config.json'
@@ -11,10 +12,11 @@ export type TagProps = TagViewProps & {
 const Tag: React.FC<TagProps> = ({ tag, tags, posts }) => {
   return (
     <Fragment>
-      <Header>
+      <Head>
         <title>{`${tag} - ${config.siteName}`}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
-      </Header>
+      </Head>
+      <Header />
       <TagView tags={tags} posts={posts} />
       <Footer>{config.copyRight}</Footer>
     </Fragment>
