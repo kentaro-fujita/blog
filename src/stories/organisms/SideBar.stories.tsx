@@ -1,28 +1,17 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import PostTemplate, {
-  PostTemplateProps,
-} from '../../components/templates/Post'
+import SideBar, { SideBarProps } from '../../components/organisms/SideBar'
 
 export default {
-  title: 'Templates/PostTemplate',
-  components: PostTemplate,
+  title: 'Organisms/SideBar',
+  components: SideBar,
 } as Meta
 
-const Template: Story<PostTemplateProps> = (args) => <PostTemplate {...args} />
+const Template: Story<SideBarProps> = (args) => <SideBar {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  post: {
-    title: 'super interesting post title',
-    createdAt: '2021/10/01',
-    tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
-    content: `# head
-body
-- item1
-- item2`,
-  },
   latestPosts: [
     {
       title: 'super interesting post',

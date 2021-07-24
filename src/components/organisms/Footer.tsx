@@ -5,7 +5,9 @@ import colors from '../../configs/colors.json'
 import FooterMenu from '../molecules/FooterMenu'
 
 const styles = css`
-  .footer_menu {
+  .footer_menu_wrapper {
+    display: inline-block;
+    width: 100%;
     color: ${colors.white};
     text-align: center;
     background-color: ${colors.main};
@@ -28,7 +30,7 @@ const Footer: React.FC = ({ children }) => {
   ]
   return (
     <Fragment>
-      <div className="footer_menu">
+      <div className="footer_menu_wrapper">
         <FooterMenu items={items} />
       </div>
       <div className="footer_copyright">

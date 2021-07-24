@@ -3,9 +3,11 @@ import Head from 'next/head'
 import Header from '../organisms/Header'
 import Footer from '../organisms/Footer'
 import config from '../../configs/config.json'
-import AboutText from '../organisms/AboutText'
+import AboutText, { AboutTextProps } from '../organisms/AboutText'
 
-const About: React.FC = () => {
+export type AboutProps = AboutTextProps
+
+const About: React.FC<AboutProps> = (props) => {
   return (
     <Fragment>
       <Head>
@@ -13,7 +15,7 @@ const About: React.FC = () => {
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
       </Head>
       <Header />
-      <AboutText />
+      <AboutText {...props} />
       <Footer>{config.copyRight}</Footer>
     </Fragment>
   )

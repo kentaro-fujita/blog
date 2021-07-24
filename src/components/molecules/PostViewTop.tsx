@@ -26,7 +26,7 @@ const PostViewTop: React.FC<PostViewTopProps> = ({
         <Text className="gray">{updatedAt ? updatedAt : createdAt}</Text>
       </div>
       <div className="post-view_title">
-        <Title type="medium">{title}</Title>
+        <Title type="large">{title}</Title>
       </div>
       <div className="post-view_tags">
         <TagsList tags={tags} />

@@ -39,5 +39,27 @@ Default.args = {
       tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
     },
   ],
-  tags: ['tag1', 'tag2', 'tag3'],
+  latestPosts: [
+    {
+      title: 'super interesting post',
+      createdAt: '2021/10/01',
+    },
+    {
+      title: 'super interesting post',
+      createdAt: '2021/10/01',
+    },
+    {
+      title: 'super interesting post',
+      createdAt: '2021/10/01',
+    },
+    {
+      title: 'super interesting post',
+      createdAt: '2021/10/01',
+    },
+    {
+      title: 'super interesting post',
+      createdAt: '2021/10/01',
+    },
+  ],
+  allTags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
 }

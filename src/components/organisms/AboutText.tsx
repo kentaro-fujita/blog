@@ -1,19 +1,29 @@
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
 import Title from '../atoms/Title'
+import SideBar, { SideBarProps } from './SideBar'
 
 const styles = css`
   .about_text {
     width: 80%;
     margin: 0 auto;
   }
+  .about_text_main {
+    width: 80%;
+    float: left;
+  }
 `
 
-const AboutText: React.FC = () => {
+export type AboutTextProps = SideBarProps
+
+const AboutText: React.FC<AboutTextProps> = ({ latestPosts, allTags }) => {
   return (
     <Fragment>
       <div className="about_text">
-        <Title type="large">About</Title>
+        <div className="about_text_main">
+          <Title type="large">About</Title>
+        </div>
+        <SideBar latestPosts={latestPosts} allTags={allTags} />
       </div>
       <style jsx>{styles}</style>
     </Fragment>

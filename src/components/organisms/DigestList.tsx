@@ -5,8 +5,6 @@ import Digest from './Digest'
 
 const styles = css`
   .digest_list {
-    width: 80%;
-    margin: 0 auto;
   }
 `
 

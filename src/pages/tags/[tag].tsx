@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
 import { getAllPosts, getAllPostTags } from '../../api'
 import Tag, { TagProps } from '../../components/templates/Tag'
+import config from '../../configs/config.json'
 
 const Tags: React.FC<TagProps> = (props) => {
   return <Tag {...props} />
@@ -19,14 +20,17 @@ export const getStaticProps: GetStaticProps<
   TagProps,
   { tag: string }
 > = async ({ params }) => {
-  const posts = await getAllPosts()
-  const tags = await getAllPostTags()
-  const taggedPosts = posts.filter((post) => post.tags.includes(params.tag))
+  const allPosts = await getAllPosts()
+  const allTags = await getAllPostTags()
+  const taggedPosts = allPosts.filter((post) => post.tags.includes(params.tag))
+  const latestPosts = allPosts.slice(0, config.postsPerPages)
+
   return {
     props: {
       tag: params.tag,
-      tags: tags,
+      allTags,
       posts: taggedPosts,
+      latestPosts,
     },
   }
 }
