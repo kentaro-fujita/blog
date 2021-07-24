@@ -23,5 +23,6 @@ Default.args = {
       - item1
       - item2
       `,
+    tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
   },
 }

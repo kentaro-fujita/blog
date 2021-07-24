@@ -2,11 +2,12 @@ import React, { ButtonHTMLAttributes, Fragment } from 'react'
 import css from 'styled-jsx/css'
 import colors from '../../configs/colors.json'
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+export type TagProps = ButtonHTMLAttributes<HTMLButtonElement>
 
 const styles = css`
   button {
-    display: inline-block;
+    margin: 0.3rem 0.3rem;
+    display: block;
     font-size: 14px;
     height: auto;
     padding: 4px 10px;
@@ -14,18 +15,17 @@ const styles = css`
     text-decoration: none;
     cursor: pointer;
     border-radius: 20%;
-    color: ${colors.main};
-    border: 2px solid ${colors.main};
-    background: ${colors.white};
+    color: ${colors.black};
+    border: 2px solid ${colors.light_purple};
+    background: ${colors.light_purple};
   }
   button:hover {
-    transition: all 0.2s ease 0s;
-    color: ${colors.main};
-    background: ${colors.light_purple};
+    border: 2px solid ${colors.light_purple};
+    background: ${colors.white};
   }
 `
 
-const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+const Tag: React.FC<TagProps> = ({ children, ...props }) => {
   return (
     <Fragment>
       <button {...props}>{children}</button>
@@ -33,4 +33,4 @@ const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
     </Fragment>
   )
 }
-export default Button
+export default Tag

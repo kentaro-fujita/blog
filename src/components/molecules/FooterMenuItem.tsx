@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import React, { Fragment, HTMLAttributes } from 'react'
 import css from 'styled-jsx/css'
 import colors from '../../configs/colors.json'
@@ -29,9 +28,9 @@ const FooterMenuItem: React.FC<FooterMenuItemProps> = ({
 }) => {
   return (
     <Fragment>
-      <Link href={href} passHref>
+      <a className="footer_menu_item" href={href}>
         <div {...props}>{children}</div>
-      </Link>
+      </a>
       <style jsx>{styles}</style>
     </Fragment>
   )

@@ -16,5 +16,5 @@ export const Default = Template.bind({})
 Default.args = {
   title: 'super interesting post title',
   description: 'super interesting post description',
-  date: '10/01/2021',
+  createdAt: '2021/10/01',
 }

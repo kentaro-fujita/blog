@@ -15,6 +15,7 @@ export const Default = Template.bind({})
 Default.args = {
   title: 'super interesting post title',
   createdAt: '2021/10/01',
+  tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
 }
 
 export const WithUpdatedAt = Template.bind({})
@@ -22,4 +23,5 @@ WithUpdatedAt.args = {
   title: 'super interesting post title',
   createdAt: '2021/10/01',
   updatedAt: '2021/10/30',
+  tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
 }

@@ -11,7 +11,9 @@ export default {
 } as Meta
 
 const Template: Story<FooterMenuItemProps> = (args) => (
-  <FooterMenuItem {...args}>FooterMenuItem</FooterMenuItem>
+  <FooterMenuItem {...args}>MenuItem</FooterMenuItem>
 )
 
-export const Default = Template.bind({})
+export const Default = Template.bind({
+  href: '/',
+})

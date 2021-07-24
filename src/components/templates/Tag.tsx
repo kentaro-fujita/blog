@@ -1,21 +1,23 @@
 import React, { Fragment } from 'react'
 import Footer from '../organisms/Footer'
 import Header from '../organisms/Header'
-import PostView, { PostViewProps } from '../organisms/PostView'
 import config from '../../configs/config.json'
+import TagView, { TagViewProps } from '../organisms/TagView'
 
-export type PostTemplateProps = PostViewProps
+export type TagProps = TagViewProps & {
+  tag: string
+}
 
-const PostTemplate: React.FC<PostTemplateProps> = (props) => {
+const Tag: React.FC<TagProps> = ({ tag, tags, posts }) => {
   return (
     <Fragment>
       <Header>
-        <title>{`${props.post.title} = ${config.siteName}`}</title>
+        <title>{`${tag} - ${config.siteName}`}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
       </Header>
-      <PostView {...props} />
+      <TagView tags={tags} posts={posts} />
       <Footer>{config.copyRight}</Footer>
     </Fragment>
   )
 }
-export default PostTemplate
+export default Tag
