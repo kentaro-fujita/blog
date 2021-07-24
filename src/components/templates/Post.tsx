@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import Head from 'next/head'
 import Footer from '../organisms/Footer'
 import Header from '../organisms/Header'
 import PostView, { PostViewProps } from '../organisms/PostView'
@@ -9,10 +10,11 @@ export type PostTemplateProps = PostViewProps
 const PostTemplate: React.FC<PostTemplateProps> = (props) => {
   return (
     <Fragment>
-      <Header>
-        <title>{`${props.post.title} = ${config.siteName}`}</title>
+      <Head>
+        <title>{`${props.post.title} - ${config.siteName}`}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
-      </Header>
+      </Head>
+      <Header />
       <PostView {...props} />
       <Footer>{config.copyRight}</Footer>
     </Fragment>
