@@ -36,4 +36,6 @@ Default.args = {
       createdAt: '2021/10/01',
     },
   ],
+  currentPage: 1,
+  countPages: 1,
 }
