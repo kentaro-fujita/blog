@@ -2,26 +2,36 @@ import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
 import DigestList, { DigestListProps } from './DigestList'
 import Pagination, { PaginationProps } from './Pagination'
+import SideBar, { SideBarProps } from './SideBar'
 
 const styles = css`
   .index_view {
     width: 80%;
     margin: 0 auto;
   }
+  .index_view_main {
+    width: 80%;
+    float: left;
+  }
 `
 
-export type IndexViewProps = DigestListProps & PaginationProps
+export type IndexViewProps = DigestListProps & PaginationProps & SideBarProps
 
 const IndexView: React.FC<IndexViewProps> = ({
   posts,
+  latestPosts,
+  allTags,
   countPages,
   currentPage,
 }) => {
   return (
     <Fragment>
       <div className="index_view">
-        <DigestList posts={posts} />
-        <Pagination countPages={countPages} currentPage={currentPage} />
+        <div className="index_view_main">
+          <DigestList posts={posts} />
+          <Pagination countPages={countPages} currentPage={currentPage} />
+        </div>
+        <SideBar latestPosts={latestPosts} allTags={allTags} />
       </div>
       <style jsx>{styles}</style>
     </Fragment>

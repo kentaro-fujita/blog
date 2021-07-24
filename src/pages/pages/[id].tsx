@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
-import { getAllPosts, getAllPostSlugs } from '../../api'
+import { getAllPosts, getAllPostSlugs, getAllPostTags } from '../../api'
 import Index, { IndexProps } from '../../components/templates/Index'
 import config from '../../configs/config.json'
 
@@ -33,9 +33,17 @@ export const getStaticProps: GetStaticProps<
   const allPosts = await getAllPosts()
   const countPages = (allPosts.length - 1) / config.postsPerPages + 1
   const posts = allPosts.slice(startIndex, endIndex)
+  const latestPosts = allPosts.slice(0, config.postsPerPages)
+  const allTags = await getAllPostTags()
 
   return {
-    props: { posts, currentPage: Number(params.id), countPages: countPages },
+    props: {
+      posts,
+      latestPosts,
+      allTags,
+      currentPage: Number(params.id),
+      countPages: countPages,
+    },
   }
 }
 

@@ -1,14 +1,17 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
-import { getAllPostSlugs, getPostBySlug } from '../../api'
-import PostTemplate from '../../components/templates/Post'
-import { Post } from '../../models'
+import {
+  getAllPosts,
+  getAllPostSlugs,
+  getAllPostTags,
+  getPostBySlug,
+} from '../../api'
+import PostTemplate, {
+  PostTemplateProps,
+} from '../../components/templates/Post'
+import config from '../../configs/config.json'
 
-type Props = {
-  post: Post
-}
-
-const PostPage: React.FC<Props> = (props: Props) => {
+const PostPage: React.FC<PostTemplateProps> = (props: PostTemplateProps) => {
   return <PostTemplate {...props} />
 }
 
@@ -21,14 +24,18 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
-  params,
-}) => {
+export const getStaticProps: GetStaticProps<
+  PostTemplateProps,
+  { slug: string }
+> = async ({ params }) => {
   if (!params) throw new Error('Component file name must be params.')
   const post = await getPostBySlug(params.slug)
+  const allPosts = await getAllPosts()
+  const latestPosts = allPosts.slice(0, config.postsPerPages)
+  const allTags = await getAllPostTags()
 
   return {
-    props: { post },
+    props: { post, latestPosts, allTags },
   }
 }
 export default PostPage

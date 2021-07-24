@@ -15,10 +15,8 @@ const Template: Story<PostViewContentProps> = (args) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  content: `
-  # head
-  body
-  - item1
-  - item2
-  `,
+  content: `# head
+body
+- item1
+- item2`,
 }

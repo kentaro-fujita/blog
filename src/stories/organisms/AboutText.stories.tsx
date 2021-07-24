@@ -1,28 +1,17 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import PostTemplate, {
-  PostTemplateProps,
-} from '../../components/templates/Post'
+import AboutText, { AboutTextProps } from '../../components/organisms/AboutText'
 
 export default {
-  title: 'Templates/PostTemplate',
-  components: PostTemplate,
+  title: 'Organisms/AboutText',
+  components: AboutText,
 } as Meta
 
-const Template: Story<PostTemplateProps> = (args) => <PostTemplate {...args} />
+const Template: Story<AboutTextProps> = (args) => <AboutText {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  post: {
-    title: 'super interesting post title',
-    createdAt: '2021/10/01',
-    tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
-    content: `# head
-body
-- item1
-- item2`,
-  },
   latestPosts: [
     {
       title: 'super interesting post',

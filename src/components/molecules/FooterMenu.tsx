@@ -11,17 +11,19 @@ export type FooterMenuProps = {
 }
 
 const styles = css`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 80%;
-  margin: 0 auto;
+  .footer_menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+  }
 `
 
 const FooterMenu: React.FC<FooterMenuProps> = ({ items }) => {
   return (
     <Fragment>
-      <div className="flex">
+      <div className="footer_menu">
         {items.map((item, index) => (
           <FooterMenuItem href={item.link} key={index}>
             {item.name}

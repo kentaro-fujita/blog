@@ -9,7 +9,7 @@ export type TagProps = TagViewProps & {
   tag: string
 }
 
-const Tag: React.FC<TagProps> = ({ tag, tags, posts }) => {
+const Tag: React.FC<TagProps> = ({ tag, allTags, posts, latestPosts }) => {
   return (
     <Fragment>
       <Head>
@@ -17,7 +17,7 @@ const Tag: React.FC<TagProps> = ({ tag, tags, posts }) => {
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
       </Head>
       <Header />
-      <TagView tags={tags} posts={posts} />
+      <TagView allTags={allTags} posts={posts} latestPosts={latestPosts} />
       <Footer>{config.copyRight}</Footer>
     </Fragment>
   )
