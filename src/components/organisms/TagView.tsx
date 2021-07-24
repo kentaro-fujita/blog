@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
 import Title from '../atoms/Title'
-import TagsList, { TagsListProps } from '../molecules/TagsList'
 import DigestList, { DigestListProps } from './DigestList'
 import SideBar, { SideBarProps } from './SideBar'
 
@@ -16,17 +15,14 @@ const styles = css`
   }
 `
 
-export type TagViewProps = DigestListProps &
-  Omit<TagsListProps, 'tags'> &
-  SideBarProps
+export type TagViewProps = DigestListProps & SideBarProps
 
 const TagView: React.FC<TagViewProps> = ({ allTags, posts, latestPosts }) => {
   return (
     <Fragment>
       <div className="tag_view">
         <div className="tag_view_main">
-          <Title type="medium">{'Filter posts by tags'}</Title>
-          <TagsList tags={allTags} />
+          <Title type="large">{'Filter posts by tags'}</Title>
           <hr></hr>
           <DigestList posts={posts} />
         </div>
