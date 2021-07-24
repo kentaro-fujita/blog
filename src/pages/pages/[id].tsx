@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
 import { getAllPosts, getAllPostSlugs } from '../../api'
 import Index, { IndexProps } from '../../components/templates/Index'
-import { Post } from '../../models'
 import config from '../../configs/config.json'
 
 const Page: React.FC<IndexProps> = (props) => {

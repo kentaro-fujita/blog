@@ -1,21 +1,19 @@
 import React, { Fragment } from 'react'
 import Header from '../organisms/Header'
 import Footer from '../organisms/Footer'
-import DigestList, { DigestListProps } from '../organisms/DigestList'
 import config from '../../configs/config.json'
-import Pagination, { PaginationProps } from '../organisms/Pagination'
+import IndexView, { IndexViewProps } from '../organisms/IndexView'
 
-export type IndexProps = DigestListProps & PaginationProps
+export type IndexProps = IndexViewProps
 
-const Index: React.FC<IndexProps> = ({ posts, currentPage, countPages }) => {
+const Index: React.FC<IndexProps> = (props) => {
   return (
     <Fragment>
       <Header>
         <title>{config.siteName}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
       </Header>
-      <DigestList posts={posts} />
-      <Pagination countPages={countPages} currentPage={currentPage} />
+      <IndexView {...props} />
       <Footer>{config.copyRight}</Footer>
     </Fragment>
   )

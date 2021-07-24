@@ -19,6 +19,7 @@ Default.args = {
       description:
         'super interesting post description. super interesting post description',
       createdAt: '2021/10/01',
+      tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
     },
     {
       catchImageUrl: 'https://picsum.photos/300/200',
@@ -27,6 +28,7 @@ Default.args = {
         'super interesting post description. super interesting post description',
       createdAt: '2021/10/01',
       updatedAt: '2021/10/30',
+      tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
     },
     {
       catchImageUrl: 'https://picsum.photos/300/200',
@@ -34,8 +36,10 @@ Default.args = {
       description:
         'super interesting post description. super interesting post description',
       createdAt: '2021/10/01',
+      tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
     },
   ],
+  tags: ['tag1', 'tag2', 'tag3'],
   currentPage: 1,
   countPages: 1,
 }

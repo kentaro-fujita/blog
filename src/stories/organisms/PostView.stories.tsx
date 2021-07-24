@@ -15,6 +15,7 @@ Default.args = {
   post: {
     title: 'super interesting post title',
     createdAt: '2021/10/01',
+    tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
     content: `
       # head
       body

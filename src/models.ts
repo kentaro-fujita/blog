@@ -6,5 +6,5 @@ export type Post = {
   createdAt: string
   updatedAt?: string
   catchImageUrl: string
-  tags?: string[]
+  tags: string[]
 }

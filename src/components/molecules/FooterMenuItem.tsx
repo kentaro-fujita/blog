@@ -28,7 +28,7 @@ const FooterMenuItem: React.FC<FooterMenuItemProps> = ({
 }) => {
   return (
     <Fragment>
-      <a href={href}>
+      <a className="footer_menu_item" href={href}>
         <div {...props}>{children}</div>
       </a>
       <style jsx>{styles}</style>

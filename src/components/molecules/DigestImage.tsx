@@ -9,14 +9,15 @@ const styles = css`
 
 export type DigestImageProps = {
   catchImageUrl: string
+  href: string
 }
 
-const DigestImage: React.FC<DigestImageProps> = ({ catchImageUrl }) => {
+const DigestImage: React.FC<DigestImageProps> = ({ catchImageUrl, href }) => {
   return (
     <Fragment>
-      <div className="digest_image">
+      <a className="digest_image" href={href}>
         <Image imgUrl={catchImageUrl}></Image>
-      </div>
+      </a>
       <style jsx>{styles}</style>
     </Fragment>
   )

@@ -19,9 +19,7 @@ const DigestList: React.FC<DigestListProps> = ({ posts }) => {
     <Fragment>
       <div className="digest_list">
         {posts.map((post, index) => (
-          <a href={`/posts/${post.slug}`} key={index}>
-            <Digest {...post} />
-          </a>
+          <Digest key={index} href={`/posts/${post.slug}`} {...post} />
         ))}
       </div>
       <style jsx>{styles}</style>

@@ -1,16 +1,14 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import DigestList, {
-  DigestListProps,
-} from '../../components/organisms/DigestList'
+import IndexView, { IndexViewProps } from '../../components/organisms/IndexView'
 
 export default {
-  title: 'Organisms/DigestList',
-  components: DigestList,
+  title: 'Organisms/IndexView',
+  components: IndexView,
 } as Meta
 
-const Template: Story<DigestListProps> = (args) => <DigestList {...args} />
+const Template: Story<IndexViewProps> = (args) => <IndexView {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -41,4 +39,6 @@ Default.args = {
       tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
     },
   ],
+  currentPage: 1,
+  countPages: 1,
 }

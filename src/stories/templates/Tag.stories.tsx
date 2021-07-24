@@ -1,19 +1,18 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import DigestList, {
-  DigestListProps,
-} from '../../components/organisms/DigestList'
+import Tag, { TagProps } from '../../components/templates/Tag'
 
 export default {
-  title: 'Organisms/DigestList',
-  components: DigestList,
+  title: 'Templates/Tag',
+  components: Tag,
 } as Meta
 
-const Template: Story<DigestListProps> = (args) => <DigestList {...args} />
+const Template: Story<TagProps> = (args) => <Tag {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
+  tag: 'tag',
   posts: [
     {
       catchImageUrl: './assets/digest_image.png',

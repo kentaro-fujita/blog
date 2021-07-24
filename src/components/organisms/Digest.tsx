@@ -4,6 +4,7 @@ import css from 'styled-jsx/css'
 import colors from '../../configs/colors.json'
 import DigestBody, { DigestBodyProps } from '../molecules/DigestBody'
 import DigestImage, { DigestImageProps } from '../molecules/DigestImage'
+import TagsList, { TagsListProps } from '../molecules/TagsList'
 
 const styles = css`
   .flex {
@@ -12,10 +13,7 @@ const styles = css`
     flex-direction: row;
   }
   .flex:hover {
-    /* transition: all 0.2s ease 0s; */
     color: ${colors.main};
-    background: ${colors.light_purple};
-    /* border: 2px solid ${colors.main}; */
   }
   .digest_left {
     background: ${colors.white};
@@ -29,17 +27,29 @@ const styles = css`
   }
 `
 
-export type DigestProps = DigestImageProps & DigestBodyProps
+export type DigestProps = DigestImageProps &
+  DigestBodyProps &
+  TagsListProps & {
+    slug: string
+  }
 
-const Digest: React.FC<DigestProps> = ({ catchImageUrl, ...props }) => {
+const Digest: React.FC<DigestProps> = ({
+  catchImageUrl,
+  href,
+  tags,
+  ...props
+}) => {
   return (
     <Fragment>
       <div className="flex">
         <div className="digest_left">
-          <DigestImage catchImageUrl={catchImageUrl} />
+          <DigestImage catchImageUrl={catchImageUrl} href={href} />
         </div>
         <div className="digest_right">
-          <DigestBody {...props} />
+          <a className="digest_body" href={href}>
+            <DigestBody {...props} />
+          </a>
+          <TagsList tags={tags} />
         </div>
       </div>
       <style jsx>{styles}</style>
