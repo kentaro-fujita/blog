@@ -7,7 +7,6 @@ import PaginationButton from '../molecules/PaginationButton'
 const styles = css`
   .pagination {
     display: flex;
-    width: 80%;
     justify-content: center;
     margin: 0 auto;
     align-items: center;

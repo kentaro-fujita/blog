@@ -4,7 +4,10 @@ import DigestList, { DigestListProps } from './DigestList'
 import Pagination, { PaginationProps } from './Pagination'
 
 const styles = css`
-  /* no style */
+  .index_view {
+    width: 80%;
+    margin: 0 auto;
+  }
 `
 
 export type IndexViewProps = DigestListProps & PaginationProps
