@@ -1,28 +1,24 @@
-import React, { HTMLAttributes, Fragment } from 'react'
+import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
 
 import HeaderImage from '../molecules/HeaderImage'
 
 const styles = css`
-  header {
-    margin: 0;
+  .header_link {
     display: inline-block;
+    cursor: pointer;
     width: 100%;
     text-align: center;
-    cursor: pointer;
+    margin: 0 auto;
   }
 `
 
-export type HeaderProps = HTMLAttributes<HTMLElement>
-
-const Header: React.FC<HeaderProps> = (props) => {
+const Header: React.FC = () => {
   return (
     <Fragment>
-      <header {...props}>
-        <a href={'/'}>
-          <HeaderImage />
-        </a>
-      </header>
+      <a href={'/'} className="header_link">
+        <HeaderImage />
+      </a>
       <style jsx>{styles}</style>
     </Fragment>
   )

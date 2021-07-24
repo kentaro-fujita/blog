@@ -16,10 +16,10 @@ const styles = css`
     color: ${colors.main};
   }
   .digest_left {
+    width: 36%;
+    height: auto;
     background: ${colors.white};
-    margin: auto 0 auto 0;
-    width: 300px;
-    height: 200px;
+    margin: auto 0;
   }
   .digest_right {
     fixed: right;
