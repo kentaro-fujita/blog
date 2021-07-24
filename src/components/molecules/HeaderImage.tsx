@@ -4,8 +4,8 @@ import Image from '../atoms/Image'
 
 const styles = css`
   .header_image {
-    width: 256px;
-    height: 30px;
+    width: 400px;
+    height: auto;
     margin: 0 auto;
   }
 `
