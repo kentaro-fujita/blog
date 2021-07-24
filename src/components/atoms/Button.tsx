@@ -10,10 +10,11 @@ const styles = css`
     font-size: 14px;
     height: auto;
     border: 0;
-    padding: 8px;
+    padding: 4px 10px;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
+    border-radius: 20%;
     color: ${colors.main};
     border: 2px solid ${colors.main};
     background: ${colors.white};

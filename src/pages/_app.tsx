@@ -1,8 +1,9 @@
+import React from 'react'
 import type { AppProps } from 'next/app'
 import '../styles/global.css'
 import 'modern-css-reset/dist/reset.min.css'
 
-const BlogApp = ({ Component, pageProps }: AppProps) => {
+const BlogApp: React.FC<AppProps> = ({ Component, pageProps }: AppProps) => {
   return <Component {...pageProps} />
 }
 

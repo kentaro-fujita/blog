@@ -8,7 +8,7 @@ type Props = {
   post: Post
 }
 
-const PostPage = (props: Props) => {
+const PostPage: React.FC<Props> = (props: Props) => {
   return <PostTemplate {...props} />
 }
 
@@ -26,6 +26,7 @@ export const getStaticProps: GetStaticProps<Props, { slug: string }> = async ({
 }) => {
   if (!params) throw new Error('Component file name must be params.')
   const post = await getPostBySlug(params.slug)
+
   return {
     props: { post },
   }

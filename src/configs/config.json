@@ -1,5 +1,6 @@
 {
   "siteName": "Wisteken.com",
   "copyRight": "©︎ Wisteken.com All Right Reserved.",
-  "excerptLength": 50
+  "excerptLength": 50,
+  "postsPerPages": 8
 }
