@@ -9,7 +9,7 @@ const About: React.FC = () => {
   return (
     <Fragment>
       <Head>
-        <title>{`${config.siteName}`}</title>
+        <title>{`About - ${config.siteName}`}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
       </Head>
       <Header />
