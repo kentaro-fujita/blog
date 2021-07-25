@@ -8,9 +8,6 @@ const styles = css`
     cursor: pointer;
     text-align: center;
   }
-  .digest_image {
-    margin: auto 0;
-  }
 `
 
 export type DigestImageProps = {
@@ -22,9 +19,7 @@ const DigestImage: React.FC<DigestImageProps> = ({ catchImageUrl, href }) => {
   return (
     <Fragment>
       <a className="digest_link" href={href}>
-        <div className="digest_image">
-          <Image imgUrl={catchImageUrl} />
-        </div>
+        <Image imgUrl={catchImageUrl} />
       </a>
       <style jsx>{styles}</style>
     </Fragment>
