@@ -13,6 +13,16 @@ const styles = css`
     width: 80%;
     float: left;
   }
+  @media screen and (max-width: 640px) {
+    .index_view {
+      width: 100%;
+      margin: 0 auto;
+    }
+    .index_view_main {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
 `
 
 export type IndexViewProps = DigestListProps & PaginationProps & SideBarProps

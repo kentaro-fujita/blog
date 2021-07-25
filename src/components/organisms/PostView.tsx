@@ -12,7 +12,18 @@ const styles = css`
   }
   .post_view_main {
     width: 80%;
+    padding: 1rem;
     float: left;
+  }
+  @media screen and (max-width: 640px) {
+    .post_view {
+      width: 100%;
+      margin: 0 auto;
+    }
+    .post_view_main {
+      width: 100%;
+      padding: 1rem;
+    }
   }
 `
 
