@@ -12,14 +12,20 @@ const styles = css`
     display: flex;
     flex-direction: row;
   }
-  .flex:hover {
+  .digest:hover {
     color: ${colors.main};
   }
   .digest_left {
     width: 36%;
     height: auto;
     background: ${colors.white};
+    overflow: hidden;
     margin: auto 0;
+    transition: transform all 0.2s;
+  }
+  .digest:hover .digest_image {
+    transform: scale(1.2, 1.2);
+    transition: transform all 0.2s;
   }
   .digest_right {
     fixed: right;
@@ -58,7 +64,9 @@ const Digest: React.FC<DigestProps> = ({
     <Fragment>
       <div className="digest">
         <div className="digest_left">
-          <DigestImage catchImageUrl={catchImageUrl} href={href} />
+          <div className="digest_image">
+            <DigestImage catchImageUrl={catchImageUrl} href={href} />
+          </div>
         </div>
         <div className="digest_right">
           <a className="digest_body" href={href}>
