@@ -10,8 +10,19 @@ const styles = css`
     margin: 0 auto;
   }
   .tag_view_main {
+    padding: 1rem;
     width: 80%;
     float: left;
+  }
+  @media screen and (max-width: 640px) {
+    .tag_view {
+      width: 100%;
+      margin: 0 auto;
+    }
+    .tag_view_main {
+      width: 100%;
+      padding: 1rem;
+    }
   }
 `
 

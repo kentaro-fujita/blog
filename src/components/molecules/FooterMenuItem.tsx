@@ -7,7 +7,7 @@ export type FooterMenuItemProps = HTMLAttributes<HTMLDivElement> & {
 }
 
 const styles = css`
-  div {
+  .footer_menu_item {
     width: 20vw;
     color: ${colors.white};
     padding: 5px;
@@ -15,9 +15,19 @@ const styles = css`
     text-align: center;
     background: ${colors.main};
   }
-  div:hover {
+  .footer_menu_item:hover {
     transition: all 0.2s ease 0s;
     background: ${colors.sub};
+  }
+  @media screen and (max-width: 640px) {
+    .footer_menu_item {
+      width: 25vw;
+      color: ${colors.white};
+      padding: 5px;
+      cursor: pointer;
+      text-align: center;
+      background: ${colors.main};
+    }
   }
 `
 

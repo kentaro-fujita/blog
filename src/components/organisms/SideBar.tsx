@@ -8,6 +8,11 @@ const styles = css`
     width: 20%;
     float: right;
   }
+  @media screen and (max-width: 640px) {
+    .sidebar {
+      display: none;
+    }
+  }
 `
 
 export type SideBarProps = SideBarPostProps & SideBarTagsProps

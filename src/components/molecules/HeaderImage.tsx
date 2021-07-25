@@ -8,6 +8,13 @@ const styles = css`
     height: auto;
     margin: 0 auto;
   }
+  @media screen and (max-width: 640px) {
+    .header_image {
+      width: 80%;
+      height: auto;
+      margin: 0 auto;
+    }
+  }
 `
 
 const HeaderImage: React.FC = () => {

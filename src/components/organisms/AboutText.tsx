@@ -12,6 +12,16 @@ const styles = css`
     width: 80%;
     float: left;
   }
+  @media screen and (max-width: 640px) {
+    .about_text {
+      width: 100%;
+      margin: 0 auto;
+    }
+    .about_text_main {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
 `
 
 export type AboutTextProps = SideBarProps

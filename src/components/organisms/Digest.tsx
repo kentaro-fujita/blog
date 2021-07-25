@@ -7,7 +7,7 @@ import DigestImage, { DigestImageProps } from '../molecules/DigestImage'
 import TagsList, { TagsListProps } from '../molecules/TagsList'
 
 const styles = css`
-  .flex {
+  .digest {
     cursor: pointer;
     display: flex;
     flex-direction: row;
@@ -25,6 +25,21 @@ const styles = css`
     fixed: right;
     margin: 10px 10px 10px;
   }
+  @media screen and (max-width: 640px) {
+    .digest {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      border: 1px solid ${colors.light_gray};
+      border-radius: 5%;
+    }
+    .digest_left {
+      width: 45%;
+      height: auto;
+      background: ${colors.white};
+      margin: auto 0;
+    }
+  }
 `
 
 export type DigestProps = DigestImageProps &
@@ -41,7 +56,7 @@ const Digest: React.FC<DigestProps> = ({
 }) => {
   return (
     <Fragment>
-      <div className="flex">
+      <div className="digest">
         <div className="digest_left">
           <DigestImage catchImageUrl={catchImageUrl} href={href} />
         </div>

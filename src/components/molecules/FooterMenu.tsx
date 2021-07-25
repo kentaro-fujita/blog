@@ -18,6 +18,15 @@ const styles = css`
     width: 80%;
     margin: 0 auto;
   }
+  @media screen and (max-width: 640px) {
+    .footer_menu {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
 `
 
 const FooterMenu: React.FC<FooterMenuProps> = ({ items }) => {
