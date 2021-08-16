@@ -1,10 +1,10 @@
-import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { GA_TRACKING_ID } from '../libs/gtag'
 
-class Document extends NextDocument {
+class MyDocument extends Document {
   render(): JSX.Element {
     return (
-      <Html lang="ja">
+      <Html lang="en">
         <Head>
           {/* Google Analytics */}
           {GA_TRACKING_ID && (
@@ -36,4 +36,4 @@ class Document extends NextDocument {
   }
 }
 
-export default Document
+export default MyDocument
