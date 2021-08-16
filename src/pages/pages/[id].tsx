@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
-import { getAllPosts, getAllPostSlugs, getAllPostTags } from '../../api'
+import { getAllPosts, getAllPostSlugs, getAllPostTags } from '../../libs/api'
 import Index, { IndexProps } from '../../components/templates/Index'
 import config from '../../configs/config.json'
 

@@ -5,7 +5,7 @@ import {
   getAllPostSlugs,
   getAllPostTags,
   getPostBySlug,
-} from '../../api'
+} from '../../libs/api'
 import PostTemplate, {
   PostTemplateProps,
 } from '../../components/templates/Post'

@@ -3,7 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 import remark from 'remark'
 import strip from 'strip-markdown'
-import config from './configs/config.json'
+import config from '../configs/config.json'
 import { Post } from './models'
 
 const postsDir = path.join(process.cwd(), 'posts')

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
-import { Post } from '../../models'
+import { Post } from '../../libs/models'
 import PostViewContent from '../molecules/PostViewContent'
 import PostViewTop from '../molecules/PostViewTop'
 import SideBar, { SideBarProps } from './SideBar'
