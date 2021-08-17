@@ -18,7 +18,7 @@ const Tag: React.FC<TagProps> = ({ tag, allTags, posts, latestPosts }) => {
       </Head>
       <Header />
       <TagView allTags={allTags} posts={posts} latestPosts={latestPosts} />
-      <Footer>{config.copyRight}</Footer>
+      <Footer />
     </Fragment>
   )
 }

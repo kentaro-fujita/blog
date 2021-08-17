@@ -16,7 +16,7 @@ const Index: React.FC<IndexProps> = (props) => {
       </Head>
       <Header />
       <IndexView {...props} />
-      <Footer>{config.copyRight}</Footer>
+      <Footer />
     </Fragment>
   )
 }

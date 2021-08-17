@@ -16,7 +16,7 @@ const About: React.FC<AboutProps> = (props) => {
       </Head>
       <Header />
       <AboutText {...props} />
-      <Footer>{config.copyRight}</Footer>
+      <Footer />
     </Fragment>
   )
 }
