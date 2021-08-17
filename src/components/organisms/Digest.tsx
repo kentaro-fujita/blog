@@ -37,10 +37,12 @@ const styles = css`
       display: flex;
       flex-direction: row;
       border: 1px solid ${colors.light_gray};
-      border-radius: 5%;
+      padding: 5px 0 5px;
+      margin: 10px 10px 10px;
+      border-radius: 2em;
     }
     .digest_left {
-      width: 45%;
+      width: 100%;
       height: auto;
       background: ${colors.white};
       margin: auto 0;
