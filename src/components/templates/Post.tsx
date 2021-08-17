@@ -16,7 +16,7 @@ const PostTemplate: React.FC<PostTemplateProps> = (props) => {
       </Head>
       <Header />
       <PostView {...props} />
-      <Footer>{config.copyRight}</Footer>
+      <Footer />
     </Fragment>
   )
 }
