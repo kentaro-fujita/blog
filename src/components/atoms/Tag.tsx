@@ -14,7 +14,7 @@ const styles = css`
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    border-radius: 20%;
+    border-radius: 1.5em;
     color: ${colors.black};
     border: 2px solid ${colors.light_purple};
     background: ${colors.light_purple};

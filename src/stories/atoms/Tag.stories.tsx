@@ -8,6 +8,6 @@ export default {
   components: Tag,
 } as Meta
 
-const Template: Story<TagProps> = (args) => <Tag {...args}>Button</Tag>
+const Template: Story<TagProps> = (args) => <Tag {...args}>Tag</Tag>
 
 export const Default = Template.bind({})
