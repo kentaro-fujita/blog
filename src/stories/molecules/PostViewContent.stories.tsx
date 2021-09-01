@@ -18,5 +18,10 @@ Default.args = {
   content: `# head
 body
 - item1
-- item2`,
+- item2
+
+~~~js
+  console.log('It works!');
+~~~
+`,
 }
