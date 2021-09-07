@@ -17,7 +17,12 @@ const Tag: React.FC<TagProps> = ({ tag, allTags, posts, latestPosts }) => {
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
       </Head>
       <Header />
-      <TagView allTags={allTags} posts={posts} latestPosts={latestPosts} />
+      <TagView
+        tag={tag}
+        allTags={allTags}
+        posts={posts}
+        latestPosts={latestPosts}
+      />
       <Footer />
     </Fragment>
   )

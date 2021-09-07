@@ -12,6 +12,7 @@ const Template: Story<TagViewProps> = (args) => <TagView {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
+  tag: 'tag_name',
   posts: [
     {
       catchImageUrl: './assets/digest_image.png',
