@@ -26,14 +26,22 @@ const styles = css`
   }
 `
 
-export type TagViewProps = DigestListProps & SideBarProps
+export type TagViewProps = DigestListProps &
+  SideBarProps & {
+    tag: string
+  }
 
-const TagView: React.FC<TagViewProps> = ({ allTags, posts, latestPosts }) => {
+const TagView: React.FC<TagViewProps> = ({
+  tag,
+  allTags,
+  posts,
+  latestPosts,
+}) => {
   return (
     <Fragment>
       <div className="tag_view">
         <div className="tag_view_main">
-          <Title type="large">{'Filter posts by tags'}</Title>
+          <Title type="large">{`Filter posts by tag: ${tag}`}</Title>
           <hr></hr>
           <DigestList posts={posts} />
         </div>
