@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
+import Link from 'next/link'
 import css from 'styled-jsx/css'
-import { Post } from '../../libs/models'
-import Digest from './Digest'
+import Digest, { DigestProps } from './Digest'
 
 const styles = css`
   .digest_list {
@@ -9,7 +9,9 @@ const styles = css`
 `
 
 export type DigestListProps = {
-  posts: Post[]
+  posts: (DigestProps & {
+    slug: string
+  })[]
 }
 
 const DigestList: React.FC<DigestListProps> = ({ posts }) => {
@@ -17,7 +19,11 @@ const DigestList: React.FC<DigestListProps> = ({ posts }) => {
     <Fragment>
       <div className="digest_list">
         {posts.map((post, index) => (
-          <Digest key={index} href={`/posts/${post.slug}`} {...post} />
+          <Link key={index} href={`/posts/${post.slug}`} passHref>
+            <a href={`/posts/${post.slug}`}>
+              <Digest {...post} />
+            </a>
+          </Link>
         ))}
       </div>
       <style jsx>{styles}</style>
