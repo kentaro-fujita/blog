@@ -1,0 +1,61 @@
+query TopPage($skip: Int, $limit: Int) {
+  postCollection(
+    skip: $skip
+    limit: $limit
+    order: [sys_firstPublishedAt_DESC]
+  ) {
+    items {
+      sys {
+        createdAt: firstPublishedAt
+        updatedAt: publishedAt
+      }
+      title
+      slug
+      description
+      tags
+      catchImage {
+        url
+      }
+    }
+  }
+}
+
+query PostPage($skip: Int, $limit: Int, $slug: String!) {
+  postCollection(skip: $skip, limit: $limit, where: { slug: $slug }) {
+    items {
+      sys {
+        firstPublishedAt
+        publishedAt
+      }
+      title
+      description
+      content
+      tags
+      catchImage {
+        url
+      }
+    }
+  }
+}
+
+query TagPage($skip: Int, $limit: Int, $tags: [String]!) {
+  postCollection(
+    skip: $skip
+    limit: $limit
+    where: { tags_contains_some: $tags }
+  ) {
+    items {
+      sys {
+        firstPublishedAt
+        publishedAt
+      }
+      title
+      description
+      content
+      tags
+      catchImage {
+        url
+      }
+    }
+  }
+}
