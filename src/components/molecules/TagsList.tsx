@@ -1,7 +1,7 @@
-import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
+import Link from 'next/link'
 import css from 'styled-jsx/css'
-import Tag, { TagProps } from '../atoms/Tag'
+import Tag from '../atoms/Tag'
 
 const styles = css`
   .tags_list {
@@ -12,20 +12,18 @@ const styles = css`
 `
 
 export type TagsListProps = {
-  tagsProps?: TagProps
-  tags: string[]
+  tags?: string[]
 }
 
-const TagsList: React.FC<TagsListProps> = ({ tags, ...props }) => {
-  const router = useRouter()
+const TagsList: React.FC<TagsListProps> = ({ tags }) => {
   return (
     <Fragment>
       <div className="tags_list">
         {tags.map((tag, index) => (
           <div className="tag" key={index}>
-            <Tag onClick={() => router.push(`/tags/${tag}`)} {...props}>
-              {tag}
-            </Tag>
+            <Link href={`/tags/${tag}`} passHref>
+              <Tag>{tag}</Tag>
+            </Link>
           </div>
         ))}
       </div>

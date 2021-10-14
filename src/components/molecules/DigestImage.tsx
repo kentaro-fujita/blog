@@ -3,24 +3,17 @@ import css from 'styled-jsx/css'
 import Image from '../atoms/Image'
 
 const styles = css`
-  .digest_link {
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;
-  }
+  /* no style */
 `
 
 export type DigestImageProps = {
-  catchImageUrl: string
-  href: string
+  catchImageUrl?: string
 }
 
-const DigestImage: React.FC<DigestImageProps> = ({ catchImageUrl, href }) => {
+const DigestImage: React.FC<DigestImageProps> = ({ catchImageUrl }) => {
   return (
     <Fragment>
-      <a className="digest_link" href={href}>
-        <Image imgUrl={catchImageUrl} />
-      </a>
+      <Image imgUrl={catchImageUrl ?? './assets/digest_image.png'} />
       <style jsx>{styles}</style>
     </Fragment>
   )

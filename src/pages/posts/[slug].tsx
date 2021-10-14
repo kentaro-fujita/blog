@@ -5,7 +5,7 @@ import {
   getAllPostSlugs,
   getAllPostTags,
   getPostBySlug,
-} from '../../libs/api'
+} from '../../libs/apollo'
 import PostTemplate, {
   PostTemplateProps,
 } from '../../components/templates/Post'

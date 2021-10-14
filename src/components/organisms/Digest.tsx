@@ -50,30 +50,21 @@ const styles = css`
   }
 `
 
-export type DigestProps = DigestImageProps &
-  DigestBodyProps &
-  TagsListProps & {
-    slug: string
-  }
+export type DigestProps = DigestImageProps & DigestBodyProps & TagsListProps
 
-const Digest: React.FC<DigestProps> = ({
-  catchImageUrl,
-  href,
-  tags,
-  ...props
-}) => {
+const Digest: React.FC<DigestProps> = ({ catchImageUrl, tags, ...props }) => {
   return (
     <Fragment>
       <div className="digest">
         <div className="digest_left">
           <div className="digest_image">
-            <DigestImage catchImageUrl={catchImageUrl} href={href} />
+            <DigestImage catchImageUrl={catchImageUrl} />
           </div>
         </div>
         <div className="digest_right">
-          <a className="digest_body" href={href}>
+          <div className="digest_body">
             <DigestBody {...props} />
-          </a>
+          </div>
           <TagsList tags={tags} />
         </div>
       </div>

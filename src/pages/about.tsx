@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 import React from 'react'
-import { getAllPosts, getAllPostTags } from '../libs/api'
+import { getAllPosts, getAllPostTags } from '../libs/apollo'
 import About, { AboutProps } from '../components/templates/About'
 import config from '../configs/config.json'
 

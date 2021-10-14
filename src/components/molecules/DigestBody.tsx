@@ -16,21 +16,19 @@ const styles = css`
 export type DigestBodyProps = {
   title: string
   description: string
-  createdAt: string
-  updatedAt?: string
+  createdAt: Date
 }
 
 const DigestBody: React.FC<DigestBodyProps> = ({
   title,
   description,
   createdAt,
-  updatedAt,
 }) => {
   return (
     <Fragment>
       <div className="flex">
         <div className="digest_date">
-          <Text className="gray">{updatedAt ? updatedAt : createdAt}</Text>
+          <Text className="gray">{createdAt}</Text>
         </div>
         <div className="digest_title">
           <Title type="small">{title}</Title>
