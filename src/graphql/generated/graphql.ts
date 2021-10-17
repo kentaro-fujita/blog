@@ -642,12 +642,17 @@ export type PostPageQuery = {
               __typename?: 'Post'
               title?: string | null | undefined
               content?: string | null | undefined
+              description?: string | null | undefined
               tags?: Array<string | null | undefined> | null | undefined
               sys: {
                 __typename?: 'Sys'
                 firstPublishedAt?: any | null | undefined
                 publishedAt?: any | null | undefined
               }
+              catchImage?:
+                | { __typename?: 'Asset'; url?: string | null | undefined }
+                | null
+                | undefined
             }
           | null
           | undefined
@@ -904,7 +909,11 @@ export const PostPage = gql`
         }
         title
         content
+        description
         tags
+        catchImage {
+          url
+        }
       }
     }
     latestPosts: postCollection(

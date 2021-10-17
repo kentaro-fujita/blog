@@ -13,6 +13,15 @@ const Index: React.FC<IndexProps> = (props) => {
       <Head>
         <title>{config.siteName}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
+        <meta name="description" content={config.siteName} />
+        <meta property="og:title" content={`Top page - ${config.siteName}`} />
+        <meta property="og:site_name" content={config.siteName} />
+        <meta
+          property="og:description"
+          content={`top page of ${config.siteName}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={'/assets/digest_image.png'} />
       </Head>
       <Header />
       <IndexView {...props} />

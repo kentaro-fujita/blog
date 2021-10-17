@@ -27,10 +27,12 @@ const PostPage = ({
   const props: PostTemplateProps = {
     post: {
       title: post.title,
-      tags: post.tags,
+      description: post.description,
       content: post.content,
+      tags: post.tags,
       createdAt: post.sys.firstPublishedAt,
       updatedAt: post.sys.publishedAt,
+      catchImageUrl: post.catchImage.url,
     },
     latestPosts: latestPosts.map((post) => {
       return {
