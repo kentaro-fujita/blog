@@ -6,7 +6,9 @@ import Title from '../atoms/Title'
 import TagsList, { TagsListProps } from './TagsList'
 
 const styles = css`
-  /* no style */
+  .post-view_date {
+    float: right;
+  }
 `
 
 export type PostViewTopProps = TagsListProps & {
@@ -28,13 +30,11 @@ const PostViewTop: React.FC<PostViewTopProps> = ({
       </div>
       <div className="post-view_date">
         <Text className="gray">
-          {`Last modified date:
-            ${
-              updatedAt
-                ? formatDate(new Date(updatedAt))
-                : formatDate(new Date(createdAt))
-            }
-          `}
+          {`Published date: ${formatDate(new Date(createdAt))}`}
+        </Text>
+        <Text className="gray">
+          {updatedAt &&
+            `Last modified date: ${formatDate(new Date(updatedAt))}`}
         </Text>
       </div>
       <div className="post-view_tags">
