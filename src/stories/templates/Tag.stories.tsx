@@ -1,18 +1,18 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import Tag, { TagProps } from '../../components/templates/Tag'
+import TagsTemplate, { TagsTemplateProps } from '../../components/templates/Tag'
 
 export default {
   title: 'Templates/Tag',
-  components: Tag,
+  components: TagsTemplate,
 } as Meta
 
-const Template: Story<TagProps> = (args) => <Tag {...args} />
+const Template: Story<TagsTemplateProps> = (args) => <TagsTemplate {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  tag: 'tag_name',
+  selectedTags: [...Array(5).keys()].map((n) => `tag${n + 1}`),
   posts: [
     {
       catchImageUrl: './assets/digest_image.png',

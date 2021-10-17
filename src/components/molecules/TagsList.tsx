@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
-import Tag, { TagProps } from '../atoms/Tag'
+import Tag from '../atoms/Tag'
 
 const styles = css`
   .tags_list {
@@ -12,22 +12,26 @@ const styles = css`
 `
 
 export type TagsListProps = {
-  tagsProps?: TagProps
-  tags: string[]
+  tags?: string[]
 }
 
-const TagsList: React.FC<TagsListProps> = ({ tags, ...props }) => {
+const TagsList: React.FC<TagsListProps> = ({ tags }) => {
   const router = useRouter()
+
   return (
     <Fragment>
       <div className="tags_list">
-        {tags.map((tag, index) => (
-          <div className="tag" key={index}>
-            <Tag onClick={() => router.push(`/tags/${tag}`)} {...props}>
+        {tags &&
+          tags.map((tag, index) => (
+            <Tag
+              key={index}
+              onClick={() => {
+                router.push(`/tags/${tag}`)
+              }}
+            >
               {tag}
             </Tag>
-          </div>
-        ))}
+          ))}
       </div>
       <style jsx>{styles}</style>
     </Fragment>

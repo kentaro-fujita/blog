@@ -12,7 +12,7 @@ const Template: Story<TagViewProps> = (args) => <TagView {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  tag: 'tag_name',
+  selectedTags: [...Array(5).keys()].map((n) => `tag${n + 1}`),
   posts: [
     {
       catchImageUrl: './assets/digest_image.png',

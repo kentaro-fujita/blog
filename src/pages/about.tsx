@@ -1,26 +1,49 @@
 import { GetStaticProps } from 'next'
 import React from 'react'
-import { getAllPosts, getAllPostTags } from '../libs/api'
 import About, { AboutProps } from '../components/templates/About'
+import createApolloClient from '../libs/apollo'
 import config from '../configs/config.json'
+import {
+  AboutPage as GAboutPage,
+  AboutPageQuery,
+  AboutPageQueryVariables,
+  Post,
+} from '../graphql/generated/graphql'
 
-const AboutPage: React.FC<AboutProps> = (props) => {
+export type AboutPageProps = {
+  latestPosts: Post[]
+  allTags: Post[]
+}
+
+const AboutPage = ({ latestPosts, allTags }: AboutPageProps): JSX.Element => {
+  const props: AboutProps = {
+    latestPosts: latestPosts.map((post) => {
+      return {
+        title: post.title,
+        slug: post.slug,
+        createdAt: post.sys.firstPublishedAt,
+      }
+    }),
+    tags: [].concat(...allTags.map(({ tags }) => tags)),
+  }
+
   return <About {...props} />
 }
 
-export const getStaticProps: GetStaticProps<AboutProps> = async () => {
-  const allPosts = await getAllPosts()
-  const countPages = (allPosts.length - 1) / config.postsPerPages + 1
-  const posts = allPosts.slice(0, config.postsPerPages)
-  const allTags = await getAllPostTags()
+export const getStaticProps: GetStaticProps = async () => {
+  const client = createApolloClient()
+
+  const { data } = await client.query<AboutPageQuery, AboutPageQueryVariables>({
+    query: GAboutPage,
+    variables: {
+      limit: config.postsPerPage,
+    },
+  })
 
   return {
     props: {
-      posts,
-      latestPosts: posts,
-      allTags,
-      currentPage: 1,
-      countPages: countPages,
+      latestPosts: data.latestPosts.items,
+      allTags: data.allTags.items,
     },
   }
 }

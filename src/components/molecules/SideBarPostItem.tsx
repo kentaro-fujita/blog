@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
+import formatDate from '../../libs/date'
 import Text from '../atoms/Text'
 
 const styles = css`
@@ -26,7 +27,7 @@ const SideBarPostItem: React.FC<SideBarPostItemProps> = ({
           <Text className="black">{title}</Text>
         </div>
         <div className="sidebar_post_date">
-          <Text className="gray">{createdAt}</Text>
+          <Text className="gray">{formatDate(new Date(createdAt))}</Text>
         </div>
       </a>
       <style jsx>{styles}</style>
