@@ -3,6 +3,7 @@ import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
 import Tag from '../atoms/Tag'
 import Title from '../atoms/Title'
+import TagsList from '../molecules/TagsList'
 import DigestList, { DigestListProps } from './DigestList'
 import SideBar, { SideBarProps } from './SideBar'
 
@@ -39,23 +40,12 @@ const TagView: React.FC<TagViewProps> = ({
   posts,
   latestPosts,
 }) => {
-  const router = useRouter()
-
   return (
     <Fragment>
       <div className="tag_view">
         <div className="tag_view_main">
           <Title type="large">Filter posts by</Title>
-          {selectedTags.map((tag, index) => (
-            <Tag
-              key={index}
-              onClick={() => {
-                router.push(`/tags/${tag}`)
-              }}
-            >
-              {tag}
-            </Tag>
-          ))}
+          <TagsList tags={selectedTags} />
           <hr></hr>
           <DigestList posts={posts} />
         </div>
