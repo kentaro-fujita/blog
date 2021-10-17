@@ -6,8 +6,7 @@ query TopPage($skip: Int, $limit: Int) {
   ) {
     items {
       sys {
-        createdAt: firstPublishedAt
-        updatedAt: publishedAt
+        firstPublishedAt
       }
       title
       slug
@@ -28,12 +27,8 @@ query PostPage($skip: Int, $limit: Int, $slug: String!) {
         publishedAt
       }
       title
-      description
       content
       tags
-      catchImage {
-        url
-      }
     }
   }
 }
@@ -50,12 +45,45 @@ query TagPage($skip: Int, $limit: Int, $tags: [String]!) {
         publishedAt
       }
       title
+      slug
       description
       content
       tags
       catchImage {
         url
       }
+    }
+  }
+}
+
+query latestPosts($skip: Int, $limit: Int) {
+  postCollection(
+    skip: $skip
+    limit: $limit
+    order: [sys_firstPublishedAt_DESC]
+  ) {
+    items {
+      title
+      slug
+      sys {
+        firstPublishedAt
+      }
+    }
+  }
+}
+
+query allSlugs {
+  postCollection {
+    items {
+      slug
+    }
+  }
+}
+
+query allTags {
+  postCollection {
+    items {
+      tags
     }
   }
 }

@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
-import { Post } from '../../libs/models'
-import PostViewContent from '../molecules/PostViewContent'
-import PostViewTop from '../molecules/PostViewTop'
+import PostViewContent, {
+  PostViewContentProps,
+} from '../molecules/PostViewContent'
+import PostViewTop, { PostViewTopProps } from '../molecules/PostViewTop'
 import SideBar, { SideBarProps } from './SideBar'
 
 const styles = css`
@@ -28,10 +29,10 @@ const styles = css`
 `
 
 export type PostViewProps = SideBarProps & {
-  post: Post
+  post: PostViewTopProps & PostViewContentProps
 }
 
-const PostView: React.FC<PostViewProps> = ({ post, latestPosts, allTags }) => {
+const PostView: React.FC<PostViewProps> = ({ post, latestPosts, tags }) => {
   return (
     <Fragment>
       <div className="post_view">
@@ -40,7 +41,7 @@ const PostView: React.FC<PostViewProps> = ({ post, latestPosts, allTags }) => {
           <hr></hr>
           <PostViewContent content={post.content} />
         </div>
-        <SideBar latestPosts={latestPosts} allTags={allTags} />
+        <SideBar latestPosts={latestPosts} tags={tags} />
       </div>
       <style jsx>{styles}</style>
     </Fragment>

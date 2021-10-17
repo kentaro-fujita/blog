@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
 import Text from '../atoms/Text'
 import Title from '../atoms/Title'
+import formatDate from '../../libs/date'
 
 const styles = css`
   div: {
@@ -16,7 +17,7 @@ const styles = css`
 export type DigestBodyProps = {
   title: string
   description: string
-  createdAt: Date
+  createdAt: string
 }
 
 const DigestBody: React.FC<DigestBodyProps> = ({
@@ -28,7 +29,7 @@ const DigestBody: React.FC<DigestBodyProps> = ({
     <Fragment>
       <div className="flex">
         <div className="digest_date">
-          <Text className="gray">{createdAt}</Text>
+          <Text className="gray">{`${formatDate(new Date(createdAt))}`}</Text>
         </div>
         <div className="digest_title">
           <Title type="small">{title}</Title>

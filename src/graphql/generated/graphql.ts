@@ -567,8 +567,7 @@ export type TopPageQuery = {
               tags?: Array<string | null | undefined> | null | undefined
               sys: {
                 __typename?: 'Sys'
-                createdAt?: any | null | undefined
-                updatedAt?: any | null | undefined
+                firstPublishedAt?: any | null | undefined
               }
               catchImage?:
                 | { __typename?: 'Asset'; url?: string | null | undefined }
@@ -598,7 +597,6 @@ export type PostPageQuery = {
           | {
               __typename?: 'Post'
               title?: string | null | undefined
-              description?: string | null | undefined
               content?: string | null | undefined
               tags?: Array<string | null | undefined> | null | undefined
               sys: {
@@ -606,10 +604,6 @@ export type PostPageQuery = {
                 firstPublishedAt?: any | null | undefined
                 publishedAt?: any | null | undefined
               }
-              catchImage?:
-                | { __typename?: 'Asset'; url?: string | null | undefined }
-                | null
-                | undefined
             }
           | null
           | undefined
@@ -634,6 +628,7 @@ export type TagPageQuery = {
           | {
               __typename?: 'Post'
               title?: string | null | undefined
+              slug?: string | null | undefined
               description?: string | null | undefined
               content?: string | null | undefined
               tags?: Array<string | null | undefined> | null | undefined
@@ -655,6 +650,71 @@ export type TagPageQuery = {
     | undefined
 }
 
+export type LatestPostsQueryVariables = Exact<{
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+}>
+
+export type LatestPostsQuery = {
+  __typename?: 'Query'
+  postCollection?:
+    | {
+        __typename?: 'PostCollection'
+        items: Array<
+          | {
+              __typename?: 'Post'
+              title?: string | null | undefined
+              slug?: string | null | undefined
+              sys: {
+                __typename?: 'Sys'
+                firstPublishedAt?: any | null | undefined
+              }
+            }
+          | null
+          | undefined
+        >
+      }
+    | null
+    | undefined
+}
+
+export type AllSlugsQueryVariables = Exact<{ [key: string]: never }>
+
+export type AllSlugsQuery = {
+  __typename?: 'Query'
+  postCollection?:
+    | {
+        __typename?: 'PostCollection'
+        items: Array<
+          | { __typename?: 'Post'; slug?: string | null | undefined }
+          | null
+          | undefined
+        >
+      }
+    | null
+    | undefined
+}
+
+export type AllTagsQueryVariables = Exact<{ [key: string]: never }>
+
+export type AllTagsQuery = {
+  __typename?: 'Query'
+  postCollection?:
+    | {
+        __typename?: 'PostCollection'
+        items: Array<
+          | {
+              __typename?: 'Post'
+              tags?: Array<string | null | undefined> | null | undefined
+            }
+          | null
+          | undefined
+        >
+      }
+    | null
+    | undefined
+}
+
 export const TopPage = gql`
   query TopPage($skip: Int, $limit: Int) {
     postCollection(
@@ -664,8 +724,7 @@ export const TopPage = gql`
     ) {
       items {
         sys {
-          createdAt: firstPublishedAt
-          updatedAt: publishedAt
+          firstPublishedAt
         }
         title
         slug
@@ -687,12 +746,8 @@ export const PostPage = gql`
           publishedAt
         }
         title
-        description
         content
         tags
-        catchImage {
-          url
-        }
       }
     }
   }
@@ -710,12 +765,48 @@ export const TagPage = gql`
           publishedAt
         }
         title
+        slug
         description
         content
         tags
         catchImage {
           url
         }
+      }
+    }
+  }
+`
+export const LatestPosts = gql`
+  query latestPosts($skip: Int, $limit: Int) {
+    postCollection(
+      skip: $skip
+      limit: $limit
+      order: [sys_firstPublishedAt_DESC]
+    ) {
+      items {
+        title
+        slug
+        sys {
+          firstPublishedAt
+        }
+      }
+    }
+  }
+`
+export const AllSlugs = gql`
+  query allSlugs {
+    postCollection {
+      items {
+        slug
+      }
+    }
+  }
+`
+export const AllTags = gql`
+  query allTags {
+    postCollection {
+      items {
+        tags
       }
     }
   }

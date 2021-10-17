@@ -17,12 +17,12 @@ const styles = css`
 
 export type SideBarProps = SideBarPostProps & SideBarTagsProps
 
-const SideBar: React.FC<SideBarProps> = ({ latestPosts, allTags }) => {
+const SideBar: React.FC<SideBarProps> = ({ latestPosts, tags }) => {
   return (
     <Fragment>
       <div className="sidebar">
         <SideBarPost latestPosts={latestPosts} />
-        <SideBarTags allTags={allTags} />
+        <SideBarTags tags={tags} />
       </div>
       <style jsx>{styles}</style>
     </Fragment>

@@ -12,11 +12,9 @@ const styles = css`
   }
 `
 
-export type SideBarTagsProps = Omit<TagsListProps, 'tags'> & {
-  allTags: string[]
-}
+export type SideBarTagsProps = TagsListProps
 
-const SideBarTags: React.FC<SideBarTagsProps> = ({ allTags, ...props }) => {
+const SideBarTags: React.FC<SideBarTagsProps> = ({ tags }) => {
   return (
     <Fragment>
       <div className="sidebar_tags">
@@ -24,7 +22,7 @@ const SideBarTags: React.FC<SideBarTagsProps> = ({ allTags, ...props }) => {
           <Text>{'Tags'}</Text>
         </div>
         <hr></hr>
-        <TagsList tags={allTags} {...props} />
+        <TagsList tags={tags} />
       </div>
       <style jsx>{styles}</style>
     </Fragment>

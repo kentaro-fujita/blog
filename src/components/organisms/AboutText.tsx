@@ -31,7 +31,7 @@ const styles = css`
 
 export type AboutTextProps = SideBarProps
 
-const AboutText: React.FC<AboutTextProps> = ({ latestPosts, allTags }) => {
+const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
   return (
     <Fragment>
       <div className="about_text">
@@ -118,7 +118,7 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, allTags }) => {
             <li>日本学生支援機構, 特に優れた業績による返還全額免除, 2021.</li>
           </ul>
         </div>
-        <SideBar latestPosts={latestPosts} allTags={allTags} />
+        <SideBar latestPosts={latestPosts} tags={tags} />
       </div>
       <style jsx>{styles}</style>
     </Fragment>
