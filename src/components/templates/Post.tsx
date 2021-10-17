@@ -13,6 +13,24 @@ const PostTemplate: React.FC<PostTemplateProps> = (props) => {
       <Head>
         <title>{`${props.post.title} - ${config.siteName}`}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
+        <meta name="description" content={config.siteName} />
+        <meta
+          property="og:title"
+          content={`${props.post.title} - ${config.siteName}`}
+        />
+        <meta property="og:site_name" content={config.siteName} />
+        <meta
+          property="og:description"
+          content={`${props.post.description}  - ${config.siteName}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content={
+            props.post.catchImageUrl ??
+            `${process.env.NEXT_PUBLIC_BASE_URL}/assets/digest_image.png`
+          }
+        />
       </Head>
       <Header />
       <PostView {...props} />

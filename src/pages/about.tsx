@@ -4,30 +4,27 @@ import About, { AboutProps } from '../components/templates/About'
 import createApolloClient from '../libs/apollo'
 import config from '../configs/config.json'
 import {
-  AllTags,
-  AllTagsQuery,
-  AllTagsQueryVariables,
-  LatestPosts,
-  LatestPostsQuery,
-  LatestPostsQueryVariables,
+  AboutPage as GAboutPage,
+  AboutPageQuery,
+  AboutPageQueryVariables,
   Post,
 } from '../graphql/generated/graphql'
 
 export type AboutPageProps = {
   latestPosts: Post[]
-  tags: string[]
+  allTags: Post[]
 }
 
-const AboutPage = ({ latestPosts, tags }: AboutPageProps): JSX.Element => {
+const AboutPage = ({ latestPosts, allTags }: AboutPageProps): JSX.Element => {
   const props: AboutProps = {
     latestPosts: latestPosts.map((post) => {
       return {
         title: post.title,
         slug: post.slug,
-        createdAt: post.sys.publishedAt,
+        createdAt: post.sys.firstPublishedAt,
       }
     }),
-    tags: tags,
+    tags: [].concat(...allTags.map(({ tags }) => tags)),
   }
 
   return <About {...props} />
@@ -36,28 +33,17 @@ const AboutPage = ({ latestPosts, tags }: AboutPageProps): JSX.Element => {
 export const getStaticProps: GetStaticProps = async () => {
   const client = createApolloClient()
 
-  const LatestPostsQueryResult = await client.query<
-    LatestPostsQuery,
-    LatestPostsQueryVariables
-  >({
-    query: LatestPosts,
+  const { data } = await client.query<AboutPageQuery, AboutPageQueryVariables>({
+    query: GAboutPage,
     variables: {
-      limit: config.latestPostPerPage,
-      skip: 0,
+      limit: config.postsPerPage,
     },
-  })
-
-  const AllTagsQueryResult = await client.query<
-    AllTagsQuery,
-    AllTagsQueryVariables
-  >({
-    query: AllTags,
   })
 
   return {
     props: {
-      latestPosts: LatestPostsQueryResult.data.postCollection.items,
-      tags: [...AllTagsQueryResult.data.postCollection.items],
+      latestPosts: data.latestPosts.items,
+      allTags: data.allTags.items,
     },
   }
 }

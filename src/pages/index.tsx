@@ -3,11 +3,6 @@ import { GetStaticProps } from 'next'
 import Index, { IndexProps } from '../components/templates/Index'
 import config from '../configs/config.json'
 import {
-  AllTags,
-  AllTagsQuery,
-  LatestPosts,
-  LatestPostsQuery,
-  LatestPostsQueryVariables,
   Post,
   TopPage,
   TopPageQuery,
@@ -18,10 +13,14 @@ import createApolloClient from '../libs/apollo'
 export type TopPageProps = {
   posts: Post[]
   latestPosts: Post[]
-  tags: Post[]
+  allTags: Post[]
 }
 
-const IndexPage = ({ posts, latestPosts, tags }: TopPageProps): JSX.Element => {
+const IndexPage = ({
+  posts,
+  latestPosts,
+  allTags,
+}: TopPageProps): JSX.Element => {
   const props: IndexProps = {
     posts: posts.map((post) => {
       return {
@@ -39,7 +38,7 @@ const IndexPage = ({ posts, latestPosts, tags }: TopPageProps): JSX.Element => {
         createdAt: post.sys.firstPublishedAt,
       }
     }),
-    tags: [].concat(...tags.map(({ tags }) => tags)),
+    tags: [].concat(...allTags.map(({ tags }) => tags)),
     countPages: 1,
     currentPage: 1,
   }
@@ -50,10 +49,7 @@ const IndexPage = ({ posts, latestPosts, tags }: TopPageProps): JSX.Element => {
 export const getStaticProps: GetStaticProps = async () => {
   const client = createApolloClient()
 
-  const TopPageQueryResult = await client.query<
-    TopPageQuery,
-    TopPageQueryVariables
-  >({
+  const { data } = await client.query<TopPageQuery, TopPageQueryVariables>({
     query: TopPage,
     variables: {
       limit: config.postsPerPage,
@@ -61,26 +57,11 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   })
 
-  const LatestPostsQueryResult = await client.query<
-    LatestPostsQuery,
-    LatestPostsQueryVariables
-  >({
-    query: LatestPosts,
-    variables: {
-      limit: config.latestPostPerPage,
-      skip: 0,
-    },
-  })
-
-  const AllTagsQueryResult = await client.query<AllTagsQuery>({
-    query: AllTags,
-  })
-
   return {
     props: {
-      posts: TopPageQueryResult.data.postCollection.items,
-      latestPosts: LatestPostsQueryResult.data.postCollection.items,
-      tags: AllTagsQueryResult.data.postCollection.items,
+      posts: data.posts.items,
+      latestPosts: data.latestPosts.items,
+      allTags: data.allTags.items,
     },
   }
 }

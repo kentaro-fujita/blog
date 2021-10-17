@@ -14,7 +14,7 @@ export type LogoProps = HTMLAttributes<HTMLElement>
 const Logo: React.FC<LogoProps> = (props) => {
   return (
     <Fragment>
-      <Image {...props} imgUrl="./assets/logo.png" />
+      <Image {...props} imgUrl="/assets/logo.png" />
       <style jsx>{styles}</style>
     </Fragment>
   )

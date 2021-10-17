@@ -14,6 +14,6 @@ const Template: Story<DigestImageProps> = (args) => <DigestImage {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  catchImageUrl: './assets/digest_image.png',
+  catchImageUrl: '/assets/digest_image.png',
   href: '/',
 }

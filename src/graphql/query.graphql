@@ -1,5 +1,5 @@
 query TopPage($skip: Int, $limit: Int) {
-  postCollection(
+  posts: postCollection(
     skip: $skip
     limit: $limit
     order: [sys_firstPublishedAt_DESC]
@@ -17,10 +17,33 @@ query TopPage($skip: Int, $limit: Int) {
       }
     }
   }
+  latestPosts: postCollection(
+    skip: 0
+    limit: $limit
+    order: [sys_firstPublishedAt_DESC]
+  ) {
+    items {
+      title
+      slug
+      sys {
+        firstPublishedAt
+      }
+    }
+  }
+  allTags: postCollection {
+    items {
+      tags
+    }
+  }
+  allSlugs: postCollection {
+    items {
+      slug
+    }
+  }
 }
 
 query PostPage($skip: Int, $limit: Int, $slug: String!) {
-  postCollection(skip: $skip, limit: $limit, where: { slug: $slug }) {
+  posts: postCollection(skip: $skip, limit: $limit, where: { slug: $slug }) {
     items {
       sys {
         firstPublishedAt
@@ -28,13 +51,40 @@ query PostPage($skip: Int, $limit: Int, $slug: String!) {
       }
       title
       content
+      description
       tags
+      catchImage {
+        url
+      }
+    }
+  }
+  latestPosts: postCollection(
+    skip: 0
+    limit: $limit
+    order: [sys_firstPublishedAt_DESC]
+  ) {
+    items {
+      title
+      slug
+      sys {
+        firstPublishedAt
+      }
+    }
+  }
+  allTags: postCollection {
+    items {
+      tags
+    }
+  }
+  allSlugs: postCollection {
+    items {
+      slug
     }
   }
 }
 
 query TagPage($skip: Int, $limit: Int, $tags: [String]!) {
-  postCollection(
+  posts: postCollection(
     skip: $skip
     limit: $limit
     where: { tags_contains_some: $tags }
@@ -54,11 +104,8 @@ query TagPage($skip: Int, $limit: Int, $tags: [String]!) {
       }
     }
   }
-}
-
-query latestPosts($skip: Int, $limit: Int) {
-  postCollection(
-    skip: $skip
+  latestPosts: postCollection(
+    skip: 0
     limit: $limit
     order: [sys_firstPublishedAt_DESC]
   ) {
@@ -70,20 +117,46 @@ query latestPosts($skip: Int, $limit: Int) {
       }
     }
   }
-}
-
-query allSlugs {
-  postCollection {
+  allTags: postCollection {
     items {
-      slug
+      tags
     }
   }
 }
 
-query allTags {
-  postCollection {
+query AboutPage($limit: Int) {
+  latestPosts: postCollection(
+    skip: 0
+    limit: $limit
+    order: [sys_firstPublishedAt_DESC]
+  ) {
+    items {
+      title
+      slug
+      sys {
+        firstPublishedAt
+      }
+    }
+  }
+  allTags: postCollection {
     items {
       tags
+    }
+  }
+}
+
+query getAllTags {
+  allTags: postCollection {
+    items {
+      tags
+    }
+  }
+}
+
+query getAllSlugs {
+  allSlugs: postCollection {
+    items {
+      slug
     }
   }
 }

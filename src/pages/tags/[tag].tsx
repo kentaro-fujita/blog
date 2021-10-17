@@ -1,38 +1,85 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
-import { getAllPosts, getAllPostTags } from '../../libs/apollo'
-import Tag, { TagProps } from '../../components/templates/Tag'
-import config from '../../configs/config.json'
+import createApolloClient from '../../libs/apollo'
+import {
+  GetAllTags,
+  GetAllTagsQuery,
+  Post,
+  TagPage as GTagPage,
+  TagPageQuery,
+  TagPageQueryVariables,
+} from '../../graphql/generated/graphql'
+import TagsTemplate, { TagsTemplateProps } from '../../components/templates/Tag'
 
-const Tags: React.FC<TagProps> = (props) => {
-  return <Tag {...props} />
+export type TagsPageProps = {
+  selectedTags: string[]
+  posts: Post[]
+  latestPosts: Post[]
+  allTags: Post[]
+}
+
+const TagsPage = ({
+  selectedTags,
+  posts,
+  latestPosts,
+  allTags,
+}: TagsPageProps): JSX.Element => {
+  const props: TagsTemplateProps = {
+    selectedTags: selectedTags,
+    posts: posts.map((post) => {
+      return {
+        title: post.title,
+        slug: post.slug,
+        description: post.description,
+        tags: post.tags,
+        createdAt: post.sys.firstPublishedAt,
+      }
+    }),
+    latestPosts: latestPosts.map((post) => {
+      return {
+        title: post.title,
+        slug: post.slug,
+        createdAt: post.sys.firstPublishedAt,
+      }
+    }),
+    tags: [].concat(...allTags.map(({ tags }) => tags)),
+  }
+  return <TagsTemplate {...props} />
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const tags = await getAllPostTags()
+  const client = createApolloClient()
+  const { data } = await client.query<GetAllTagsQuery>({
+    query: GetAllTags,
+  })
+
   return {
     fallback: false,
-    paths: tags.map((tag) => ({ params: { tag } })),
+    paths: []
+      .concat(...data.allTags.items.map(({ tags }) => tags))
+      .map((tag) => ({ params: { tag } })),
   }
 }
 
-export const getStaticProps: GetStaticProps<
-  TagProps,
-  { tag: string }
-> = async ({ params }) => {
-  const allPosts = await getAllPosts()
-  const allTags = await getAllPostTags()
-  const taggedPosts = allPosts.filter((post) => post.tags.includes(params.tag))
-  const latestPosts = allPosts.slice(0, config.postsPerPages)
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const client = createApolloClient()
+
+  const tags = Array.isArray(params.tag) ? params.tag : [params.tag]
+  const { data } = await client.query<TagPageQuery, TagPageQueryVariables>({
+    query: GTagPage,
+    variables: {
+      tags: tags,
+    },
+  })
 
   return {
     props: {
-      tag: params.tag,
-      allTags,
-      posts: taggedPosts,
-      latestPosts,
+      selectedTags: tags,
+      posts: data.posts.items,
+      latestPosts: data.latestPosts.items,
+      allTags: data.allTags.items,
     },
   }
 }
 
-export default Tags
+export default TagsPage

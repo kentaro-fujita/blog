@@ -33,7 +33,7 @@ const styles = css`
 const Footer: React.FC = () => {
   const items = [
     { name: 'About', link: '/about' },
-    { name: 'GitHub', link: 'https://github.com/kentaro-fujita/' },
+    { name: 'GitHub', link: 'https://github.com/wisteken/' },
     { name: 'Links', link: '/' },
     { name: 'Contact', link: '/' },
   ]
