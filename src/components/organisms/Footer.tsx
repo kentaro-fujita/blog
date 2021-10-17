@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
 
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import config from '../../configs/config.json'
 import colors from '../../configs/colors.json'
 import FooterMenu from '../molecules/FooterMenu'
@@ -50,11 +48,7 @@ const Footer: React.FC = () => {
       <div className="footer_privacy_policy">
         <span>This site uses </span>
         <a href="https://policies.google.com/privacy">
-          <FontAwesomeIcon
-            icon={faExternalLinkAlt}
-            size="sm"
-            color={`${colors.white}`}
-          />
+          <i className="fas fa-external-link-alt" />
           Google Analytics
         </a>
       </div>
