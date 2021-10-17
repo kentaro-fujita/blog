@@ -21,7 +21,10 @@ const Index: React.FC<IndexProps> = (props) => {
           content={`top page of ${config.siteName}`}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content={'/assets/digest_image.png'} />
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_BASE_URL}/assets/digest_image.png`}
+        />
       </Head>
       <Header />
       <IndexView {...props} />
