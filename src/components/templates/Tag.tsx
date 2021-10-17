@@ -5,26 +5,29 @@ import Header from '../organisms/Header'
 import config from '../../configs/config.json'
 import TagView, { TagViewProps } from '../organisms/TagView'
 
-export type TagProps = TagViewProps & {
-  tag: string
-}
+export type TagsTemplateProps = TagViewProps
 
-const Tag: React.FC<TagProps> = ({ tag, allTags, posts, latestPosts }) => {
+const TagsTemplate: React.FC<TagsTemplateProps> = ({
+  selectedTags,
+  tags,
+  posts,
+  latestPosts,
+}) => {
   return (
     <Fragment>
       <Head>
-        <title>{`${tag} - ${config.siteName}`}</title>
+        <title>{`${selectedTags.join(',')} - ${config.siteName}`}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
       </Head>
       <Header />
       <TagView
-        tag={tag}
-        allTags={allTags}
+        selectedTags={selectedTags}
         posts={posts}
         latestPosts={latestPosts}
+        tags={tags}
       />
       <Footer />
     </Fragment>
   )
 }
-export default Tag
+export default TagsTemplate

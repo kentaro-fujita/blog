@@ -30,7 +30,7 @@ export type IndexViewProps = DigestListProps & PaginationProps & SideBarProps
 const IndexView: React.FC<IndexViewProps> = ({
   posts,
   latestPosts,
-  allTags,
+  tags,
   countPages,
   currentPage,
 }) => {
@@ -41,7 +41,7 @@ const IndexView: React.FC<IndexViewProps> = ({
           <DigestList posts={posts} />
           <Pagination countPages={countPages} currentPage={currentPage} />
         </div>
-        <SideBar latestPosts={latestPosts} allTags={allTags} />
+        <SideBar latestPosts={latestPosts} tags={tags} />
       </div>
       <style jsx>{styles}</style>
     </Fragment>

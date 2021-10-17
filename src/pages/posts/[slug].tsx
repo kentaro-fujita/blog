@@ -3,16 +3,9 @@ import React from 'react'
 import PostTemplate, {
   PostTemplateProps,
 } from '../../components/templates/Post'
-import config from '../../configs/config.json'
 import {
-  AllSlugs,
-  AllSlugsQuery,
-  AllTags,
-  AllTagsQuery,
-  AllTagsQueryVariables,
-  LatestPosts,
-  LatestPostsQuery,
-  LatestPostsQueryVariables,
+  GetAllSlugs,
+  GetAllSlugsQuery,
   Post,
   PostPage as GPostPage,
   PostPageQuery,
@@ -23,10 +16,14 @@ import createApolloClient from '../../libs/apollo'
 export type PostPageProps = {
   post: Post
   latestPosts: Post[]
-  tags: string[]
+  allTags: Post[]
 }
 
-const PostPage = ({ post }: PostPageProps): JSX.Element => {
+const PostPage = ({
+  post,
+  latestPosts,
+  allTags,
+}: PostPageProps): JSX.Element => {
   const props: PostTemplateProps = {
     post: {
       title: post.title,
@@ -35,31 +32,34 @@ const PostPage = ({ post }: PostPageProps): JSX.Element => {
       createdAt: post.sys.firstPublishedAt,
       updatedAt: post.sys.publishedAt,
     },
-    latestPosts: [],
-    tags: [],
+    latestPosts: latestPosts.map((post) => {
+      return {
+        title: post.title,
+        slug: post.slug,
+        createdAt: post.sys.firstPublishedAt,
+      }
+    }),
+    tags: [].concat(...allTags.map(({ tags }) => tags)),
   }
   return <PostTemplate {...props} />
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const client = createApolloClient()
-  const { data } = await client.query<AllSlugsQuery>({
-    query: AllSlugs,
+  const { data } = await client.query<GetAllSlugsQuery>({
+    query: GetAllSlugs,
   })
 
   return {
     fallback: true,
-    paths: data.postCollection.items.map(({ slug }) => ({ params: { slug } })),
+    paths: data.allSlugs.items.map(({ slug }) => ({ params: { slug } })),
   }
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const client = createApolloClient()
   const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug
-  const PostPageQueryResult = await client.query<
-    PostPageQuery,
-    PostPageQueryVariables
-  >({
+  const { data } = await client.query<PostPageQuery, PostPageQueryVariables>({
     query: GPostPage,
     variables: {
       limit: 1,
@@ -68,29 +68,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     },
   })
 
-  const LatestPostsQueryResult = await client.query<
-    LatestPostsQuery,
-    LatestPostsQueryVariables
-  >({
-    query: LatestPosts,
-    variables: {
-      limit: config.latestPostPerPage,
-      skip: 0,
-    },
-  })
-
-  const AllTagsQueryResult = await client.query<
-    AllTagsQuery,
-    AllTagsQueryVariables
-  >({
-    query: AllTags,
-  })
-
   return {
     props: {
-      post: PostPageQueryResult.data.postCollection.items[0],
-      latestPosts: LatestPostsQueryResult.data.postCollection.items,
-      tags: [...AllTagsQueryResult.data.postCollection.items],
+      post: data.posts.items[0],
+      latestPosts: data.latestPosts.items,
+      allTags: data.allTags.items,
     },
   }
 }

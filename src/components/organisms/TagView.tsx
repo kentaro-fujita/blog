@@ -1,5 +1,7 @@
+import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
+import Tag from '../atoms/Tag'
 import Title from '../atoms/Title'
 import DigestList, { DigestListProps } from './DigestList'
 import SideBar, { SideBarProps } from './SideBar'
@@ -28,24 +30,36 @@ const styles = css`
 
 export type TagViewProps = DigestListProps &
   SideBarProps & {
-    tag: string
+    selectedTags: string[]
   }
 
 const TagView: React.FC<TagViewProps> = ({
-  tag,
-  allTags,
+  selectedTags,
+  tags,
   posts,
   latestPosts,
 }) => {
+  const router = useRouter()
+
   return (
     <Fragment>
       <div className="tag_view">
         <div className="tag_view_main">
-          <Title type="large">{`Filter posts by tag: ${tag}`}</Title>
+          <Title type="large">Filter posts by</Title>
+          {selectedTags.map((tag, index) => (
+            <Tag
+              key={index}
+              onClick={() => {
+                router.push(`/tags/${tag}`)
+              }}
+            >
+              {tag}
+            </Tag>
+          ))}
           <hr></hr>
           <DigestList posts={posts} />
         </div>
-        <SideBar latestPosts={latestPosts} allTags={allTags} />
+        <SideBar latestPosts={latestPosts} tags={tags} />
       </div>
       <style jsx>{styles}</style>
     </Fragment>
