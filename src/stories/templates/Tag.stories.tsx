@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react'
 import TagsTemplate, { TagsTemplateProps } from '../../components/templates/Tag'
 
 export default {
-  title: 'Templates/Tag',
+  title: 'Templates/Tags',
   components: TagsTemplate,
 } as Meta
 
