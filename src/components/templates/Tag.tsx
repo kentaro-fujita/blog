@@ -18,6 +18,15 @@ const TagsTemplate: React.FC<TagsTemplateProps> = ({
       <Head>
         <title>{`${selectedTags.join(',')} - ${config.siteName}`}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
+        <meta name="description" content={config.siteName} />
+        <meta property="og:title" content={`Tags page - ${config.siteName}`} />
+        <meta property="og:site_name" content={config.siteName} />
+        <meta
+          property="og:description"
+          content={`Tags page of ${config.siteName}`}
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content={'/assets/digest_image.png'} />
       </Head>
       <Header />
       <TagView

@@ -13,8 +13,10 @@ const styles = css`
 
 export type PostViewTopProps = TagsListProps & {
   title: string
+  description: string
   createdAt: string
   updatedAt?: string
+  catchImageUrl?: string
 }
 
 const PostViewTop: React.FC<PostViewTopProps> = ({
