@@ -1,7 +1,5 @@
-import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
-import Tag from '../atoms/Tag'
 import Title from '../atoms/Title'
 import TagsList from '../molecules/TagsList'
 import DigestList, { DigestListProps } from './DigestList'

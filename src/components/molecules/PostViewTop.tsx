@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
+import formatDate from '../../libs/date'
 import Text from '../atoms/Text'
 import Title from '../atoms/Title'
 import TagsList, { TagsListProps } from './TagsList'
@@ -22,11 +23,19 @@ const PostViewTop: React.FC<PostViewTopProps> = ({
 }) => {
   return (
     <Fragment>
-      <div className="post-view_date">
-        <Text className="gray">{updatedAt ? updatedAt : createdAt}</Text>
-      </div>
       <div className="post-view_title">
         <Title type="large">{title}</Title>
+      </div>
+      <div className="post-view_date">
+        <Text className="gray">
+          {`Last modified date:
+            ${
+              updatedAt
+                ? formatDate(new Date(updatedAt))
+                : formatDate(new Date(createdAt))
+            }
+          `}
+        </Text>
       </div>
       <div className="post-view_tags">
         <TagsList tags={tags} />

@@ -54,7 +54,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   })
 
   return {
-    fallback: true,
+    fallback: false,
     paths: []
       .concat(...data.allTags.items.map(({ tags }) => tags))
       .map((tag) => ({ params: { tag } })),
@@ -63,6 +63,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const client = createApolloClient()
+
   const tags = Array.isArray(params.tag) ? params.tag : [params.tag]
   const { data } = await client.query<TagPageQuery, TagPageQueryVariables>({
     query: GTagPage,

@@ -59,9 +59,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const countPages = (data.allSlugs.items.length - 1) / config.postsPerPage + 1
 
   return {
-    fallback: true,
+    fallback: false,
     paths: [...Array(countPages).keys()].map((num) => ({
-      params: { num: `${num}` },
+      params: { num: `${num + 1}` },
     })),
   }
 }
@@ -73,7 +73,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data } = await client.query<TopPageQuery, TopPageQueryVariables>({
     query: TopPage,
     variables: {
-      skip: parseInt(num) * config.postsPerPage,
+      skip: (parseInt(num) - 1) * config.postsPerPage,
       limit: config.postsPerPage,
     },
   })
@@ -82,7 +82,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       posts: data.posts.items,
-      latestPosts: data.latestPosts,
+      latestPosts: data.latestPosts.items,
       allTags: data.allTags.items,
       countPages: countPages,
       currentPage: parseInt(num),
