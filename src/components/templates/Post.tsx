@@ -26,7 +26,10 @@ const PostTemplate: React.FC<PostTemplateProps> = (props) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content={props.post.catchImageUrl ?? '/assets/digest_image.png'}
+          content={
+            props.post.catchImageUrl ??
+            `${process.env.NEXT_PUBLIC_BASE_URL}/assets/digest_image.png`
+          }
         />
       </Head>
       <Header />
