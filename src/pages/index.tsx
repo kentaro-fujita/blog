@@ -1,5 +1,5 @@
 import React from 'react'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import Index, { IndexProps } from '../components/templates/Index'
 import config from '../configs/config.json'
 import {
@@ -46,7 +46,7 @@ const IndexPage = ({
   return <Index {...props} />
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const client = createApolloClient()
 
   const { data } = await client.query<TopPageQuery, TopPageQueryVariables>({

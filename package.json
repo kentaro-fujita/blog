@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint --dir src",
     "apollo:download": "./src/scripts/download-schema.sh",
     "apollo:codegen": "graphql-codegen --config codegen.yaml",
     "storybook": "start-storybook -p 6006 -s ./public",

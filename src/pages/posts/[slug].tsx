@@ -1,11 +1,9 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
+import { GetServerSideProps } from 'next'
 import PostTemplate, {
   PostTemplateProps,
 } from '../../components/templates/Post'
 import {
-  GetAllSlugs,
-  GetAllSlugsQuery,
   Post,
   PostPage as GPostPage,
   PostPageQuery,
@@ -46,19 +44,7 @@ const PostPage = ({
   return <PostTemplate {...props} />
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const client = createApolloClient()
-  const { data } = await client.query<GetAllSlugsQuery>({
-    query: GetAllSlugs,
-  })
-
-  return {
-    fallback: false,
-    paths: data.allSlugs.items.map(({ slug }) => ({ params: { slug } })),
-  }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const client = createApolloClient()
   const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug
   const { data } = await client.query<PostPageQuery, PostPageQueryVariables>({

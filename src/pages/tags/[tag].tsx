@@ -1,9 +1,7 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
+import { GetServerSideProps } from 'next'
 import createApolloClient from '../../libs/apollo'
 import {
-  GetAllTags,
-  GetAllTagsQuery,
   Post,
   TagPage as GTagPage,
   TagPageQuery,
@@ -47,21 +45,7 @@ const TagsPage = ({
   return <TagsTemplate {...props} />
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const client = createApolloClient()
-  const { data } = await client.query<GetAllTagsQuery>({
-    query: GetAllTags,
-  })
-
-  return {
-    fallback: false,
-    paths: []
-      .concat(...data.allTags.items.map(({ tags }) => tags))
-      .map((tag) => ({ params: { tag } })),
-  }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const client = createApolloClient()
 
   const tags = Array.isArray(params.tag) ? params.tag : [params.tag]

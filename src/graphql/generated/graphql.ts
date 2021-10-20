@@ -817,43 +817,6 @@ export type AboutPageQuery = {
     | undefined
 }
 
-export type GetAllTagsQueryVariables = Exact<{ [key: string]: never }>
-
-export type GetAllTagsQuery = {
-  __typename?: 'Query'
-  allTags?:
-    | {
-        __typename?: 'PostCollection'
-        items: Array<
-          | {
-              __typename?: 'Post'
-              tags?: Array<string | null | undefined> | null | undefined
-            }
-          | null
-          | undefined
-        >
-      }
-    | null
-    | undefined
-}
-
-export type GetAllSlugsQueryVariables = Exact<{ [key: string]: never }>
-
-export type GetAllSlugsQuery = {
-  __typename?: 'Query'
-  allSlugs?:
-    | {
-        __typename?: 'PostCollection'
-        items: Array<
-          | { __typename?: 'Post'; slug?: string | null | undefined }
-          | null
-          | undefined
-        >
-      }
-    | null
-    | undefined
-}
-
 export const TopPage = gql`
   query TopPage($skip: Int, $limit: Int) {
     posts: postCollection(
@@ -1001,24 +964,6 @@ export const AboutPage = gql`
     allTags: postCollection {
       items {
         tags
-      }
-    }
-  }
-`
-export const GetAllTags = gql`
-  query getAllTags {
-    allTags: postCollection {
-      items {
-        tags
-      }
-    }
-  }
-`
-export const GetAllSlugs = gql`
-  query getAllSlugs {
-    allSlugs: postCollection {
-      items {
-        slug
       }
     }
   }

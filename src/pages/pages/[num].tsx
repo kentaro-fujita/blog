@@ -1,10 +1,8 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
 import React from 'react'
+import { GetServerSideProps } from 'next'
 import Index, { IndexProps } from '../../components/templates/Index'
 import config from '../../configs/config.json'
 import {
-  GetAllSlugs,
-  GetAllSlugsQuery,
   Post,
   TopPage,
   TopPageQuery,
@@ -51,22 +49,7 @@ const Page = ({
   return <Index {...props} />
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const client = createApolloClient()
-  const { data } = await client.query<GetAllSlugsQuery>({
-    query: GetAllSlugs,
-  })
-  const countPages = (data.allSlugs.items.length - 1) / config.postsPerPage + 1
-
-  return {
-    fallback: false,
-    paths: [...Array(countPages).keys()].map((num) => ({
-      params: { num: `${num + 1}` },
-    })),
-  }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const client = createApolloClient()
   const num = Array.isArray(params.num) ? params.num[0] : params.num
 
