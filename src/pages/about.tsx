@@ -1,5 +1,5 @@
-import { GetStaticProps } from 'next'
 import React from 'react'
+import { GetServerSideProps } from 'next'
 import About, { AboutProps } from '../components/templates/About'
 import createApolloClient from '../libs/apollo'
 import config from '../configs/config.json'
@@ -30,7 +30,7 @@ const AboutPage = ({ latestPosts, allTags }: AboutPageProps): JSX.Element => {
   return <About {...props} />
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const client = createApolloClient()
 
   const { data } = await client.query<AboutPageQuery, AboutPageQueryVariables>({

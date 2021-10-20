@@ -1,6 +1,7 @@
 import {
   ApolloClient,
   InMemoryCache,
+  // eslint-disable-next-line import/named
   NormalizedCacheObject,
 } from '@apollo/client'
 

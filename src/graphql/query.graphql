@@ -144,19 +144,3 @@ query AboutPage($limit: Int) {
     }
   }
 }
-
-query getAllTags {
-  allTags: postCollection {
-    items {
-      tags
-    }
-  }
-}
-
-query getAllSlugs {
-  allSlugs: postCollection {
-    items {
-      slug
-    }
-  }
-}
