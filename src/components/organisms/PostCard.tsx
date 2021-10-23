@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Icon from '../atoms/Icon'
 import formatDate from '../../libs/date'
-import Tag from '../atoms/Tag'
+import TagsList from '../molecules/TagsList'
 
 export type PostCardProps = {
   title: string
@@ -53,14 +53,7 @@ const PostCard: React.FC<PostCardProps> = ({
               {description}
             </p>
           </div>
-          <div className="flex flex-wrap items-center mx-4 text-gray-500 dark:text-gray-300">
-            <Icon className="fas fa-tags" />
-            {tags.map((tag, idx) => (
-              <Tag key={idx} className="m-1">
-                {tag}
-              </Tag>
-            ))}
-          </div>
+          <TagsList tags={tags} />
         </div>
       </div>
     </Fragment>

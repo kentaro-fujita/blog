@@ -1,15 +1,13 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 import { useTheme } from 'next-themes'
 import Button from '../atoms/Button'
 import Icon from '../atoms/Icon'
 
 const DarkModeButton: React.FC = () => {
-  const router = useRouter()
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
-  useEffect(() => setMounted(true), [router.isReady])
+  useEffect(() => setMounted(true), [])
 
   const clickHandler = () => {
     console.log(theme)

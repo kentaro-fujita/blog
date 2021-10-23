@@ -8,7 +8,7 @@ const Tag: React.FC<TagProps> = ({ className, children, ...props }) => {
     <Fragment>
       <Link href={`/tags/${children}`}>
         <button
-          className={`px-1 py-1 h-7 text-sm rounded-full text-white bg-purple-500 hover:bg-purple-700 ${className}`}
+          className={`px-1 py-1 m-1 h-7 text-sm rounded-full text-white bg-purple-500 hover:bg-purple-700 ${className}`}
           {...props}
         >
           {children}

@@ -31,6 +31,7 @@ const TagsPage = ({
         description: post.description,
         tags: post.tags,
         createdAt: post.sys.firstPublishedAt,
+        catchImageUrl: post.catchImage.url,
       }
     }),
     latestPosts: latestPosts.map((post) => {

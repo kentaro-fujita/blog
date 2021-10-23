@@ -1,39 +1,18 @@
-import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
-import css from 'styled-jsx/css'
+import Icon from '../atoms/Icon'
 import Tag from '../atoms/Tag'
-
-const styles = css`
-  .tags_list {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-`
 
 export type TagsListProps = {
   tags?: string[]
 }
 
 const TagsList: React.FC<TagsListProps> = ({ tags }) => {
-  const router = useRouter()
-
   return (
     <Fragment>
-      <div className="tags_list">
-        {tags &&
-          tags.map((tag, index) => (
-            <Tag
-              key={index}
-              onClick={() => {
-                router.push(`/tags/${tag}`)
-              }}
-            >
-              {tag}
-            </Tag>
-          ))}
+      <div className="flex flex-wrap items-center mx-4 pb-2 text-gray-500 dark:text-gray-300">
+        <Icon className="fas fa-tags" />
+        {tags && tags.map((tag, idx) => <Tag key={idx}>{tag}</Tag>)}
       </div>
-      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

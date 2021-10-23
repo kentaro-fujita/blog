@@ -1,13 +1,5 @@
 import React, { Fragment } from 'react'
-import css from 'styled-jsx/css'
 import formatDate from '../../libs/date'
-import Text from '../atoms/Text'
-
-const styles = css`
-  .sidebar_post_date {
-    text-align: right;
-  }
-`
 
 export type SideBarPostItemProps = {
   title: string
@@ -24,13 +16,12 @@ const SideBarPostItem: React.FC<SideBarPostItemProps> = ({
     <Fragment>
       <a href={`/posts/${slug}`}>
         <div className="sidebar_post_title">
-          <Text className="black">{title}</Text>
+          <p className="black">{title}</p>
         </div>
         <div className="sidebar_post_date">
-          <Text className="gray">{formatDate(new Date(createdAt))}</Text>
+          <p className="gray">{formatDate(new Date(createdAt))}</p>
         </div>
       </a>
-      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }
