@@ -24,7 +24,7 @@ const SideBar: React.FC<SideBarProps> = ({ latestPosts, tags }) => {
         <SideBarPost latestPosts={latestPosts} />
         <SideBarTags tags={tags} />
       </div>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

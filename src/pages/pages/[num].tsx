@@ -33,18 +33,19 @@ const Page = ({
         description: post.description,
         tags: post.tags,
         createdAt: post.sys.firstPublishedAt,
+        catchImageUrl: post.catchImage.url,
       }
     }),
-    latestPosts: latestPosts.map((post) => {
-      return {
-        title: post.title,
-        slug: post.slug,
-        createdAt: post.sys.firstPublishedAt,
-      }
-    }),
-    tags: [].concat(...allTags.map(({ tags }) => tags)),
-    currentPage: currentPage,
-    countPages: countPages,
+    // latestPosts: latestPosts.map((post) => {
+    //   return {
+    //     title: post.title,
+    //     slug: post.slug,
+    //     createdAt: post.sys.firstPublishedAt,
+    //   }
+    // }),
+    // tags: [].concat(...allTags.map(({ tags }) => tags)),
+    // currentPage: currentPage,
+    // countPages: countPages,
   }
   return <Index {...props} />
 }

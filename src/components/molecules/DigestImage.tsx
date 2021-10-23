@@ -13,7 +13,7 @@ export type DigestImageProps = {
 const DigestImage: React.FC<DigestImageProps> = ({ catchImageUrl }) => {
   return (
     <Fragment>
-      <Image src={catchImageUrl ?? '/assets/digest_image.png'} />
+      <Image layout="fill" src={catchImageUrl ?? '/assets/digest_image.png'} />
       <style jsx>{styles}</style>
     </Fragment>
   )

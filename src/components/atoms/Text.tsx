@@ -17,7 +17,7 @@ const Text: React.FC<TextProps> = ({ className, children }) => {
   return (
     <Fragment>
       <p className={className}>{children}</p>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

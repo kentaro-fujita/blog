@@ -26,7 +26,7 @@ const DigestList: React.FC<DigestListProps> = ({ posts }) => {
           </Link>
         ))}
       </div>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

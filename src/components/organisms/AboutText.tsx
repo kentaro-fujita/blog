@@ -1,33 +1,5 @@
 import React, { Fragment } from 'react'
-import css from 'styled-jsx/css'
-import Title from '../atoms/Title'
-import colors from '../../configs/colors.json'
 import SideBar, { SideBarProps } from './SideBar'
-
-const styles = css`
-  .about_text {
-    width: 80%;
-    margin: 0 auto;
-  }
-  .about_text_main {
-    width: 80%;
-    float: left;
-    padding: 1rem;
-  }
-  .link {
-    color: ${colors.main};
-  }
-  @media screen and (max-width: 640px) {
-    .about_text {
-      width: 100%;
-      margin: 0 auto;
-    }
-    .about_text_main {
-      width: 100%;
-      padding: 1rem;
-    }
-  }
-`
 
 export type AboutTextProps = SideBarProps
 
@@ -36,17 +8,17 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
     <Fragment>
       <div className="about_text">
         <div className="about_text_main">
-          <Title type="large">About</Title>
+          <h1>About</h1>
           <hr></hr>
-          <Title type="medium">Kentaro Fujita</Title>
+          <h2>Kentaro Fujita</h2>
           <p>
             I received masters degree from the Graduate School of Science and
             Technology, Nara Institute of Science and Technology (NAIST), Japan.
             My research interest includes blockchain security and machine
             learning.
           </p>
-          <Title type="medium">Publications</Title>
-          <Title type="small">Refereed Journal</Title>
+          <h2>Publications</h2>
+          <h3>Refereed Journal</h3>
           <ol>
             <li>
               Kentaro Fujita, Yuanyu Zhang, Masahiro Sasabe and Shoji Kasahara,
@@ -58,7 +30,7 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
               </a>
             </li>
           </ol>
-          <Title type="small">International Conferences</Title>
+          <h3>International Conferences</h3>
           <ol>
             <li>
               Kentaro Fujita, Yuanyu Zhang, Masahiro Sasabe, Shoji Kasahara.
@@ -87,7 +59,7 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
               </a>
             </li>
           </ol>
-          <Title type="small">Domestic Conference</Title>
+          <h2>Domestic Conference</h2>
           <ol>
             <li>
               藤田 健太郎, 張 元玉, 笹部 昌弘, 笠原 正治, &lsquo;&lsquo;Block
@@ -97,7 +69,7 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
               2020.3.5.
             </li>
           </ol>
-          <Title type="medium">Awards</Title>
+          <h2>Awards</h2>
           <ul>
             <li>
               &lsquo;&lsquo;Chained Box - A Smart IoT Box Using a
@@ -113,14 +85,13 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
               Japan, 2020
             </li>
           </ul>
-          <Title type="medium">Others</Title>
+          <h2>Others</h2>
           <ul>
             <li>日本学生支援機構, 特に優れた業績による返還全額免除, 2021.</li>
           </ul>
         </div>
-        <SideBar latestPosts={latestPosts} tags={tags} />
+        {/* <SideBar latestPosts={latestPosts} tags={tags} /> */}
       </div>
-      <style jsx>{styles}</style>
     </Fragment>
   )
 }

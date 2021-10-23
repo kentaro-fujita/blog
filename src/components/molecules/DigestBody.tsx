@@ -38,7 +38,7 @@ const DigestBody: React.FC<DigestBodyProps> = ({
           <Text className="black">{description}</Text>
         </div>
       </div>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

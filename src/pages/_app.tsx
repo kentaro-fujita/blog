@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react'
-import type { AppProps } from 'next/app'
 import '../styles/global.css'
 import 'modern-css-reset/dist/reset.min.css'
+import React, { useEffect } from 'react'
+import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { ApolloProvider } from '@apollo/client'
+import { ThemeProvider } from 'next-themes'
 import * as gtag from '../libs/gtag'
 import createApolloClient from '../libs/apollo'
+import Layout from '../components/templates/Layout'
 
 const BlogApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   // Google Analytics
@@ -25,7 +27,11 @@ const BlogApp = ({ Component, pageProps }: AppProps): JSX.Element => {
 
   return (
     <ApolloProvider client={client}>
-      <Component {...pageProps} />
+      <ThemeProvider attribute="class">
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
     </ApolloProvider>
   )
 }

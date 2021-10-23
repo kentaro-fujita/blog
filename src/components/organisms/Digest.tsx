@@ -58,7 +58,7 @@ const Digest: React.FC<DigestProps> = ({ catchImageUrl, tags, ...props }) => {
       <div className="digest">
         <div className="digest_left">
           <div className="digest_image">
-            <DigestImage catchImageUrl={catchImageUrl} />
+            {/* <DigestImage catchImageUrl={catchImageUrl} /> */}
           </div>
         </div>
         <div className="digest_right">
@@ -68,7 +68,7 @@ const Digest: React.FC<DigestProps> = ({ catchImageUrl, tags, ...props }) => {
           <TagsList tags={tags} />
         </div>
       </div>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

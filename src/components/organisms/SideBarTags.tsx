@@ -24,7 +24,7 @@ const SideBarTags: React.FC<SideBarTagsProps> = ({ tags }) => {
         <hr></hr>
         <TagsList tags={tags} />
       </div>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

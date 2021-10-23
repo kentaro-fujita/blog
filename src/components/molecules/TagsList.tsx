@@ -33,7 +33,7 @@ const TagsList: React.FC<TagsListProps> = ({ tags }) => {
             </Tag>
           ))}
       </div>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

@@ -49,7 +49,7 @@ const TagView: React.FC<TagViewProps> = ({
         </div>
         <SideBar latestPosts={latestPosts} tags={tags} />
       </div>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

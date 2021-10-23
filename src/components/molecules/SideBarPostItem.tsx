@@ -30,7 +30,7 @@ const SideBarPostItem: React.FC<SideBarPostItemProps> = ({
           <Text className="gray">{formatDate(new Date(createdAt))}</Text>
         </div>
       </a>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

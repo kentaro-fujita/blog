@@ -42,7 +42,7 @@ const PostViewTop: React.FC<PostViewTopProps> = ({
       <div className="post-view_tags">
         <TagsList tags={tags} />
       </div>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

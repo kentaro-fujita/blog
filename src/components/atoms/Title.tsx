@@ -17,7 +17,7 @@ const Title: React.FC<TitleProps> = ({ type, children }) => {
       {type === 'large' && <h1>{children}</h1>}
       {type === 'medium' && <h2>{children}</h2>}
       {type === 'small' && <h3>{children}</h3>}
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

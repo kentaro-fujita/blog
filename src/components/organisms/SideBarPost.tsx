@@ -32,7 +32,7 @@ const SideBarPost: React.FC<SideBarPostProps> = ({ latestPosts }) => {
           </div>
         ))}
       </div>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

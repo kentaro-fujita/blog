@@ -15,7 +15,7 @@ const PostViewContent: React.FC<PostViewContentProps> = ({ content }) => {
   return (
     <Fragment>
       <ReactMarkdown components={{ code: CodeBlock }}>{content}</ReactMarkdown>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

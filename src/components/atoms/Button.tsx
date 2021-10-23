@@ -1,22 +1,15 @@
 import React, { ButtonHTMLAttributes, Fragment } from 'react'
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  filled?: boolean
-}
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
-const Button: React.FC<ButtonProps> = ({
-  filled,
-  children,
-  className,
-  ...props
-}) => {
+const Button: React.FC<ButtonProps> = ({ children, className, ...props }) => {
   return (
     <Fragment>
       <button
         className={
-          filled
-            ? `py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-purple-500 hover:bg-purple-700 ${className}`
-            : `py-2 px-4 font-semibold rounded-lg shadow-md text-purple-700 bg-transparent border border-purple-700 transition-colors duration-700 transform hover:bg-purple-700 hover:text-white focus:border-4 focus:border-indigo-300 ${className}`
+          className
+            ? className
+            : 'py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-purple-500 hover:bg-purple-700'
         }
         {...props}
       >

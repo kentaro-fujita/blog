@@ -1,59 +1,56 @@
+import Link from 'next/link'
 import React, { Fragment } from 'react'
-import css from 'styled-jsx/css'
-
+import Logo from '../atoms/Logo'
 import config from '../../configs/config.json'
-import colors from '../../configs/colors.json'
-import FooterMenu from '../molecules/FooterMenu'
+import Icon from '../atoms/Icon'
 
-const styles = css`
-  .footer_menu_wrapper {
-    display: inline-block;
-    width: 100%;
-    color: ${colors.white};
-    text-align: center;
-    background-color: ${colors.main};
-    margin: 0 auto;
-  }
-  .footer_copy_right {
-    color: ${colors.white};
-    text-align: center;
-    padding: 5px 0 5px;
-    background-color: ${colors.main};
-  }
-  .footer_privacy_policy {
-    color: ${colors.white};
-    text-align: center;
-    background-color: ${colors.main};
-  }
-  .footer_privacy_policy a:hover {
-    text-decoration: underline;
-  }
-`
-
-const Footer: React.FC = () => {
-  const items = [
-    { name: 'About', link: '/about' },
-    { name: 'GitHub', link: 'https://github.com/wisteken/' },
-    { name: 'Links', link: '/' },
-    { name: 'Contact', link: '/' },
-  ]
+const Foot: React.FC = () => {
   return (
     <Fragment>
-      <div className="footer_menu_wrapper">
-        <FooterMenu items={items} />
-      </div>
-      <div className="footer_copy_right">
-        <span>{config.copyRight}</span>
-      </div>
-      <div className="footer_privacy_policy">
-        <span>This site uses </span>
-        <a href="https://policies.google.com/privacy">
-          <i className="fas fa-external-link-alt" />
-          Google Analytics
-        </a>
-      </div>
-      <style jsx>{styles}</style>
+      <footer className="bg-gray-100 dark:bg-gray-800">
+        <div className="container flex flex-col items-center px-4 py-6 mx-auto space-y-6 lg:space-y-0 lg:flex-row lg:justify-between">
+          <div className="w-48 text-gray-700 dark:text-gray-200">
+            <div className="flex justify-between">
+              <Link href="/">
+                <a className="text-gray-800 dark:text-gray-200">
+                  <div className="flex items-center">
+                    <Logo className="h-7 w-7 flex-shrink-0" />
+                    <p className="text-xl ml-2">
+                      <strong>wisteken</strong>.com
+                    </p>
+                  </div>
+                </a>
+              </Link>
+            </div>
+          </div>
+          <p className="text-sm text-center text-gray-500 dark:text-gray-300">
+            {config.copyRight}
+          </p>
+          <div className="flex items-center">
+            <Link href="https://policies.google.com/privacy">
+              <a className="text-gray-500 dark:text-gray-300">Privacy</a>
+            </Link>
+          </div>
+          <div className="flex items-center">
+            <Link href="/">
+              <a className="text-gray-500 dark:text-gray-300">
+                <Icon className="fas fa-home" />
+              </a>
+            </Link>
+            <Link href="https://twitter.com/wisteken">
+              <a className="pl-6 text-gray-500 dark:text-gray-300">
+                <Icon className="fab fa-twitter fa-lg" />
+              </a>
+            </Link>
+            <Link href="https://github.com/wisteken">
+              <a className="pl-6 text-gray-500 dark:text-gray-300">
+                <Icon className="fab fa-github fa-lg" />
+              </a>
+            </Link>
+          </div>
+        </div>
+      </footer>
     </Fragment>
   )
 }
-export default Footer
+export default Foot
