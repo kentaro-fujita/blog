@@ -27,7 +27,7 @@ const PostCard: React.FC<PostCardProps> = ({
 }) => {
   return (
     <Fragment>
-      <div className="px-4 py-8 max-w-xs">
+      <div className="px-4 py-8 w-full md:max-w-md">
         <div className="bg-gray-100 dark:bg-gray-700 shadow-2xl rounded-lg mb-6 tracking-wide">
           <div className="md:flex-shrink-0 cursor-pointer">
             <Link href={`/posts/${slug}`}>
