@@ -86,7 +86,7 @@ const Pagination: React.FC<PaginationProps> = ({ countPages, currentPage }) => {
           </Button>
         )}
       </div>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

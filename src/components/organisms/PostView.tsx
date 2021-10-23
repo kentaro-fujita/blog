@@ -41,9 +41,9 @@ const PostView: React.FC<PostViewProps> = ({ post, latestPosts, tags }) => {
           <hr></hr>
           <PostViewContent content={post.content} />
         </div>
-        <SideBar latestPosts={latestPosts} tags={tags} />
+        {/* <SideBar latestPosts={latestPosts} tags={tags} /> */}
       </div>
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }

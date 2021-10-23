@@ -8,9 +8,6 @@ export default {
   components: Footer,
 } as Meta
 
-const Template: Story = () => (
-  <Footer>©︎ Wisteken.com All Right Reserved.</Footer>
-)
+const Template: Story = () => <Footer />
 
 export const Default = Template.bind({})
-Default.args = {}

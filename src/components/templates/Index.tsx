@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react'
 import Head from 'next/head'
-import Header from '../organisms/Header'
-import Footer from '../organisms/Footer'
 import config from '../../configs/config.json'
 import IndexView, { IndexViewProps } from '../organisms/IndexView'
 
@@ -26,9 +24,7 @@ const Index: React.FC<IndexProps> = (props) => {
           content={`${process.env.NEXT_PUBLIC_BASE_URL}/assets/digest_image.png`}
         />
       </Head>
-      <Header />
       <IndexView {...props} />
-      <Footer />
     </Fragment>
   )
 }

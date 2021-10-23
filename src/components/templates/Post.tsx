@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react'
 import Head from 'next/head'
-import Footer from '../organisms/Footer'
-import Header from '../organisms/Header'
 import PostView, { PostViewProps } from '../organisms/PostView'
 import config from '../../configs/config.json'
 
@@ -32,9 +30,7 @@ const PostTemplate: React.FC<PostTemplateProps> = (props) => {
           }
         />
       </Head>
-      <Header />
       <PostView {...props} />
-      <Footer />
     </Fragment>
   )
 }
