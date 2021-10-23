@@ -1,6 +1,5 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-
 import Button, { ButtonProps } from '../../components/atoms/Button'
 
 export default {
@@ -10,4 +9,12 @@ export default {
 
 const Template: Story<ButtonProps> = (args) => <Button {...args}>Button</Button>
 
-export const Default = Template.bind({})
+export const Filled = Template.bind({})
+Filled.args = {
+  filled: true,
+}
+
+export const Outline = Template.bind({})
+Outline.args = {
+  filled: false,
+}

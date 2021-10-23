@@ -1,35 +1,27 @@
 import React, { ButtonHTMLAttributes, Fragment } from 'react'
-import css from 'styled-jsx/css'
-import colors from '../../configs/colors.json'
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  filled?: boolean
+}
 
-const styles = css`
-  button {
-    display: inline-block;
-    font-size: 14px;
-    height: auto;
-    padding: 4px 10px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 20%;
-    color: ${colors.main};
-    border: 2px solid ${colors.main};
-    background: ${colors.white};
-  }
-  button:hover {
-    transition: all 0.2s ease 0s;
-    color: ${colors.main};
-    background: ${colors.light_purple};
-  }
-`
-
-const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+const Button: React.FC<ButtonProps> = ({
+  filled,
+  children,
+  className,
+  ...props
+}) => {
   return (
     <Fragment>
-      <button {...props}>{children}</button>
-      <style jsx>{styles}</style>
+      <button
+        className={
+          filled
+            ? `py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-purple-500 hover:bg-purple-700 ${className}`
+            : `py-2 px-4 font-semibold rounded-lg shadow-md text-purple-700 bg-transparent border border-purple-700 transition-colors duration-700 transform hover:bg-purple-700 hover:text-white focus:border-4 focus:border-indigo-300 ${className}`
+        }
+        {...props}
+      >
+        {children}
+      </button>
     </Fragment>
   )
 }

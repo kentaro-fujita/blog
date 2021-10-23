@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import css from 'styled-jsx/css'
-import Image from '../atoms/Image'
+import Image from 'next/image'
 
 const styles = css`
   .header_image {
@@ -21,7 +21,7 @@ const HeaderImage: React.FC = () => {
   return (
     <Fragment>
       <div className="header_image">
-        <Image imgUrl={'/assets/header.png'} />
+        <Image src={'/assets/header.png'} />
       </div>
       <style jsx>{styles}</style>
     </Fragment>

@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, Fragment } from 'react'
 import css from 'styled-jsx/css'
-import Image from '../atoms/Image'
+import Image from 'next/image'
 
 const styles = css`
   display: inline-block;
@@ -11,10 +11,10 @@ const styles = css`
 
 export type LogoProps = HTMLAttributes<HTMLElement>
 
-const Logo: React.FC<LogoProps> = (props) => {
+const Logo: React.FC<LogoProps> = () => {
   return (
     <Fragment>
-      <Image {...props} imgUrl="/assets/logo.png" />
+      <Image src={'/assets/logo.png'} />
       <style jsx>{styles}</style>
     </Fragment>
   )
