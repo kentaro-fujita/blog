@@ -11,7 +11,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <Fragment>
       <NavBar />
       <main className="flex-1 lg:mt-20">
-        <section className="container px-4 py-10 mx-auto">{children}</section>
+        <section className="container px-4 py-10 lg:w-9/12 mx-auto">
+          {children}
+        </section>
       </main>
       <Foot />
     </Fragment>
