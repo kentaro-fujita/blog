@@ -24,7 +24,7 @@ const PostViewTop: React.FC<PostViewTopProps> = ({
       <Title type="h1" className="text-center mb-4">
         {title}
       </Title>
-      <div className="flex items-center flex-col text-gray-500 dark:text-gray-300">
+      <div className="flex items-end flex-col text-gray-500 dark:text-gray-300">
         <div className="flex items-center mx-6">
           <Icon className="fas fa-clock" />
           <Text className="ml-2">

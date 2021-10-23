@@ -32,7 +32,7 @@ const PostCard: React.FC<PostCardProps> = ({
           <div className="md:flex-shrink-0 cursor-pointer">
             <Link href={`/posts/${slug}`}>
               <Image
-                className="transform hover:scale-125 duration-200"
+                className="transform hover:scale-125 duration-200 rounded-t-lg"
                 width={640}
                 height={360}
                 src={catchImageUrl}
