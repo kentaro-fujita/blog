@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react'
 import Head from 'next/head'
-import Header from '../organisms/Header'
-import Footer from '../organisms/Footer'
 import config from '../../configs/config.json'
 import AboutText, { AboutTextProps } from '../organisms/AboutText'
 
@@ -29,9 +27,7 @@ const About: React.FC<AboutProps> = (props) => {
           content={`${process.env.NEXT_PUBLIC_BASE_URL}/assets/digest_image.png`}
         />
       </Head>
-      <Header />
       <AboutText {...props} />
-      <Footer />
     </Fragment>
   )
 }

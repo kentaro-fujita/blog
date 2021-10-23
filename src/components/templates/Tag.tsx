@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react'
 import Head from 'next/head'
-import Footer from '../organisms/Footer'
-import Header from '../organisms/Header'
 import config from '../../configs/config.json'
 import TagView, { TagViewProps } from '../organisms/TagView'
 
@@ -31,14 +29,12 @@ const TagsTemplate: React.FC<TagsTemplateProps> = ({
           content={`${process.env.NEXT_PUBLIC_BASE_URL}/assets/digest_image.png`}
         />
       </Head>
-      <Header />
       <TagView
         selectedTags={selectedTags}
         posts={posts}
         latestPosts={latestPosts}
         tags={tags}
       />
-      <Footer />
     </Fragment>
   )
 }

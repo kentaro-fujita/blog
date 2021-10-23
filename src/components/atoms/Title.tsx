@@ -1,23 +1,23 @@
 import React, { Fragment, HTMLAttributes } from 'react'
-import css from 'styled-jsx/css'
-import colors from '../../configs/colors.json'
 
-const styles = css`
-  .title {
-    color: ${colors.black};
-  }
-`
 export type TitleProps = HTMLAttributes<HTMLElement> & {
-  type: 'large' | 'medium' | 'small'
+  type: string
 }
 
-const Title: React.FC<TitleProps> = ({ type, children }) => {
+const Title: React.FC<TitleProps> = ({ type, className, children }) => {
   return (
     <Fragment>
-      {type === 'large' && <h1>{children}</h1>}
-      {type === 'medium' && <h2>{children}</h2>}
-      {type === 'small' && <h3>{children}</h3>}
-      <style jsx>{styles}</style>
+      <div className="text-gray-700 dark:text-gray-100 font-semibold">
+        {type === 'h1' && (
+          <h1 className={`text-4xl  ${className}`}>{children}</h1>
+        )}
+        {type === 'h2' && (
+          <h2 className={`text-2xl ${className}`}>{children}</h2>
+        )}
+        {type === 'h3' && (
+          <h3 className={`text-xl ${className}`}>{children}</h3>
+        )}
+      </div>
     </Fragment>
   )
 }

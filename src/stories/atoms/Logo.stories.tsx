@@ -1,12 +1,13 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import Logo, { LogoProps } from '../../components/molecules/Logo'
+
+import Logo from '../../components/atoms/Logo'
 
 export default {
-  title: 'Molecules/Logo',
+  title: 'Atoms/Logo',
   components: Logo,
 } as Meta
 
-const Template: Story<LogoProps> = (args) => <Logo {...args} />
+const Template: Story = () => <Logo />
 
 export const Default = Template.bind({})

@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import React from 'react'
 import { GA_TRACKING_ID } from '../libs/gtag'
 
 class MyDocument extends Document {
@@ -27,7 +28,7 @@ class MyDocument extends Document {
             </>
           )}
         </Head>
-        <body>
+        <body className="flex flex-col min-h-screen font-roboto dark:bg-gray-900">
           <Main />
           <NextScript />
         </body>

@@ -29,18 +29,19 @@ const IndexPage = ({
         description: post.description,
         tags: post.tags,
         createdAt: post.sys.firstPublishedAt,
+        catchImageUrl: post.catchImage.url,
       }
     }),
-    latestPosts: latestPosts.map((post) => {
-      return {
-        title: post.title,
-        slug: post.slug,
-        createdAt: post.sys.firstPublishedAt,
-      }
-    }),
-    tags: [].concat(...allTags.map(({ tags }) => tags)),
-    countPages: 1,
-    currentPage: 1,
+    // latestPosts: latestPosts.map((post) => {
+    //   return {
+    //     title: post.title,
+    //     slug: post.slug,
+    //     createdAt: post.sys.firstPublishedAt,
+    //   }
+    // }),
+    // tags: [].concat(...allTags.map(({ tags }) => tags)),
+    // countPages: 1,
+    // currentPage: 1,
   }
 
   return <Index {...props} />

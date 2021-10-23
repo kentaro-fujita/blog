@@ -51,7 +51,7 @@ const PaginationButton: React.FC<PaginationButtonProps> = ({
           {num}
         </a>
       )}
-      <style jsx>{styles}</style>
+      {/* <style jsx>{styles}</style> */}
     </Fragment>
   )
 }
