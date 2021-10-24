@@ -31,12 +31,14 @@ const PostViewTop: React.FC<PostViewTopProps> = ({
             {`Published: ${formatDate(new Date(createdAt))}`}
           </Text>
         </div>
-        <div className="flex items-center mx-6">
-          <Icon className="fas fa-clock" />
-          <Text className="ml-2">
-            {updatedAt && `Last modified: ${formatDate(new Date(updatedAt))}`}
-          </Text>
-        </div>
+        {updatedAt && (
+          <div className="flex items-center mx-6">
+            <Icon className="fas fa-clock" />
+            <Text className="ml-2">
+              {`Last modified: ${formatDate(new Date(updatedAt))}`}
+            </Text>
+          </div>
+        )}
       </div>
       <TagsList tags={tags} />
     </Fragment>

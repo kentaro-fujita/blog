@@ -26,7 +26,7 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
       <Title type="h3" className="mb-2 mt-2">
         Refereed Journal
       </Title>
-      <ol>
+      <ol className="text-gray-500 dark:text-gray-300 list-decimal ml-4">
         <li>
           <Text>
             Kentaro Fujita, Yuanyu Zhang, Masahiro Sasabe and Shoji Kasahara,
@@ -40,7 +40,7 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
         </li>
       </ol>
       <Title type="h3">International Conferences</Title>
-      <ol>
+      <ol className="text-gray-500 dark:text-gray-300 list-decimal ml-4">
         <li>
           <Text>
             Kentaro Fujita, Yuanyu Zhang, Masahiro Sasabe, Shoji Kasahara.
@@ -69,7 +69,7 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
       <Title type="h2" className="mb-2 mt-2">
         Domestic Conference
       </Title>
-      <ol>
+      <ol className="text-gray-500 dark:text-gray-300 list-decimal ml-4">
         <li>
           <Text>
             藤田 健太郎, 張 元玉, 笹部 昌弘, 笠原 正治, &lsquo;&lsquo;Block
@@ -83,7 +83,7 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
       <Title type="h2" className="mb-2 mt-2">
         Awards
       </Title>
-      <ul>
+      <ul className="text-gray-500 dark:text-gray-300 list-decimal ml-4">
         <li>
           <Text>
             &lsquo;&lsquo;Chained Box - A Smart IoT Box Using a
@@ -107,7 +107,7 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
       <Title type="h2" className="mb-2 mt-2">
         Others
       </Title>
-      <ul>
+      <ul className="text-gray-500 dark:text-gray-300 list-decimal ml-4">
         <li>
           <Text>日本学生支援機構, 特に優れた業績による返還全額免除, 2021.</Text>
         </li>
