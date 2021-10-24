@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { HeadingComponent } from 'react-markdown/src/ast-to-react'
+import rehypeKatex from 'rehype-katex'
+import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+import 'katex/dist/katex.min.css'
 import Title from '../atoms/Title'
 import CodeBlock from './CodeBlock'
 
@@ -9,7 +12,7 @@ export type PostViewContentProps = {
 }
 
 const PostViewContent: React.FC<PostViewContentProps> = ({ content }) => {
-  const H1: HeadingComponent = ({ children }) => {
+  const H1: React.FC = ({ children }) => {
     return (
       <Fragment>
         <Title type="h1" className="text-center mb-4">
@@ -19,7 +22,7 @@ const PostViewContent: React.FC<PostViewContentProps> = ({ content }) => {
     )
   }
 
-  const H2: HeadingComponent = ({ children }) => {
+  const H2: React.FC = ({ children }) => {
     return (
       <Fragment>
         <Title type="h2" className="mb-2 mt-2">
@@ -29,7 +32,7 @@ const PostViewContent: React.FC<PostViewContentProps> = ({ content }) => {
     )
   }
 
-  const H3: HeadingComponent = ({ children }) => {
+  const H3: React.FC = ({ children }) => {
     return (
       <Fragment>
         <Title type="h3" className="mb-2 mt-2">
@@ -41,8 +44,12 @@ const PostViewContent: React.FC<PostViewContentProps> = ({ content }) => {
 
   return (
     <Fragment>
-      <div className="text-gray-500 dark:text-gray-300">
-        <ReactMarkdown components={{ code: CodeBlock, h1: H1, h2: H2, h3: H3 }}>
+      <div className="markdown text-gray-500 dark:text-gray-300">
+        <ReactMarkdown
+          components={{ code: CodeBlock, h1: H1, h2: H2, h3: H3 }}
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeKatex]}
+        >
           {content}
         </ReactMarkdown>
       </div>
