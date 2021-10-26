@@ -580,39 +580,6 @@ export type TopPageQuery = {
       }
     | null
     | undefined
-  latestPosts?:
-    | {
-        __typename?: 'PostCollection'
-        items: Array<
-          | {
-              __typename?: 'Post'
-              title?: string | null | undefined
-              slug?: string | null | undefined
-              sys: {
-                __typename?: 'Sys'
-                firstPublishedAt?: any | null | undefined
-              }
-            }
-          | null
-          | undefined
-        >
-      }
-    | null
-    | undefined
-  allTags?:
-    | {
-        __typename?: 'PostCollection'
-        items: Array<
-          | {
-              __typename?: 'Post'
-              tags?: Array<string | null | undefined> | null | undefined
-            }
-          | null
-          | undefined
-        >
-      }
-    | null
-    | undefined
   allSlugs?:
     | {
         __typename?: 'PostCollection'
@@ -660,59 +627,16 @@ export type PostPageQuery = {
       }
     | null
     | undefined
-  latestPosts?:
-    | {
-        __typename?: 'PostCollection'
-        items: Array<
-          | {
-              __typename?: 'Post'
-              title?: string | null | undefined
-              slug?: string | null | undefined
-              sys: {
-                __typename?: 'Sys'
-                firstPublishedAt?: any | null | undefined
-              }
-            }
-          | null
-          | undefined
-        >
-      }
-    | null
-    | undefined
-  allTags?:
-    | {
-        __typename?: 'PostCollection'
-        items: Array<
-          | {
-              __typename?: 'Post'
-              tags?: Array<string | null | undefined> | null | undefined
-            }
-          | null
-          | undefined
-        >
-      }
-    | null
-    | undefined
-  allSlugs?:
-    | {
-        __typename?: 'PostCollection'
-        items: Array<
-          | { __typename?: 'Post'; slug?: string | null | undefined }
-          | null
-          | undefined
-        >
-      }
-    | null
-    | undefined
 }
 
-export type TagPageQueryVariables = Exact<{
+export type SearchPageQueryVariables = Exact<{
   skip?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
-  tags: Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>
+  word?: Maybe<Scalars['String']>
+  tags?: Maybe<Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>>
 }>
 
-export type TagPageQuery = {
+export type SearchPageQuery = {
   __typename?: 'Query'
   posts?:
     | {
@@ -734,66 +658,6 @@ export type TagPageQuery = {
                 | { __typename?: 'Asset'; url?: string | null | undefined }
                 | null
                 | undefined
-            }
-          | null
-          | undefined
-        >
-      }
-    | null
-    | undefined
-  latestPosts?:
-    | {
-        __typename?: 'PostCollection'
-        items: Array<
-          | {
-              __typename?: 'Post'
-              title?: string | null | undefined
-              slug?: string | null | undefined
-              sys: {
-                __typename?: 'Sys'
-                firstPublishedAt?: any | null | undefined
-              }
-            }
-          | null
-          | undefined
-        >
-      }
-    | null
-    | undefined
-  allTags?:
-    | {
-        __typename?: 'PostCollection'
-        items: Array<
-          | {
-              __typename?: 'Post'
-              tags?: Array<string | null | undefined> | null | undefined
-            }
-          | null
-          | undefined
-        >
-      }
-    | null
-    | undefined
-}
-
-export type AboutPageQueryVariables = Exact<{
-  limit?: Maybe<Scalars['Int']>
-}>
-
-export type AboutPageQuery = {
-  __typename?: 'Query'
-  latestPosts?:
-    | {
-        __typename?: 'PostCollection'
-        items: Array<
-          | {
-              __typename?: 'Post'
-              title?: string | null | undefined
-              slug?: string | null | undefined
-              sys: {
-                __typename?: 'Sys'
-                firstPublishedAt?: any | null | undefined
-              }
             }
           | null
           | undefined
@@ -837,24 +701,6 @@ export const TopPage = gql`
         }
       }
     }
-    latestPosts: postCollection(
-      skip: 0
-      limit: $limit
-      order: [sys_firstPublishedAt_DESC]
-    ) {
-      items {
-        title
-        slug
-        sys {
-          firstPublishedAt
-        }
-      }
-    }
-    allTags: postCollection {
-      items {
-        tags
-      }
-    }
     allSlugs: postCollection {
       items {
         slug
@@ -879,37 +725,20 @@ export const PostPage = gql`
         }
       }
     }
-    latestPosts: postCollection(
-      skip: 0
-      limit: $limit
-      order: [sys_firstPublishedAt_DESC]
-    ) {
-      items {
-        title
-        slug
-        sys {
-          firstPublishedAt
-        }
-      }
-    }
-    allTags: postCollection {
-      items {
-        tags
-      }
-    }
-    allSlugs: postCollection {
-      items {
-        slug
-      }
-    }
   }
 `
-export const TagPage = gql`
-  query TagPage($skip: Int, $limit: Int, $tags: [String]!) {
+export const SearchPage = gql`
+  query SearchPage($skip: Int, $limit: Int, $word: String, $tags: [String]) {
     posts: postCollection(
       skip: $skip
       limit: $limit
-      where: { tags_contains_some: $tags }
+      where: {
+        OR: [
+          { tags_contains_some: $tags }
+          { title_contains: $word }
+          { slug_contains: $word }
+        ]
+      }
     ) {
       items {
         sys {
@@ -923,41 +752,6 @@ export const TagPage = gql`
         tags
         catchImage {
           url
-        }
-      }
-    }
-    latestPosts: postCollection(
-      skip: 0
-      limit: $limit
-      order: [sys_firstPublishedAt_DESC]
-    ) {
-      items {
-        title
-        slug
-        sys {
-          firstPublishedAt
-        }
-      }
-    }
-    allTags: postCollection {
-      items {
-        tags
-      }
-    }
-  }
-`
-export const AboutPage = gql`
-  query AboutPage($limit: Int) {
-    latestPosts: postCollection(
-      skip: 0
-      limit: $limit
-      order: [sys_firstPublishedAt_DESC]
-    ) {
-      items {
-        title
-        slug
-        sys {
-          firstPublishedAt
         }
       }
     }

@@ -17,7 +17,7 @@ const PostViewTop: React.FC<PostViewTopProps> = ({
   title,
   createdAt,
   updatedAt,
-  tags,
+  allTags,
 }) => {
   return (
     <Fragment>
@@ -40,7 +40,7 @@ const PostViewTop: React.FC<PostViewTopProps> = ({
           </div>
         )}
       </div>
-      <TagsList tags={tags} />
+      <TagsList allTags={allTags} />
     </Fragment>
   )
 }

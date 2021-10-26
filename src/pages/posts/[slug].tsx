@@ -13,40 +13,26 @@ import createApolloClient from '../../libs/apollo'
 
 export type PostPageProps = {
   post: Post
-  latestPosts: Post[]
-  allTags: Post[]
 }
 
-const PostPage = ({
-  post,
-  latestPosts,
-  allTags,
-}: PostPageProps): JSX.Element => {
+const PostPage = ({ post }: PostPageProps): JSX.Element => {
   const props: PostTemplateProps = {
     post: {
       title: post.title,
       description: post.description,
       content: post.content,
-      tags: post.tags,
+      allTags: post.tags,
       createdAt: post.sys.firstPublishedAt,
       updatedAt: post.sys.publishedAt,
       catchImageUrl: post.catchImage.url,
     },
-    latestPosts: latestPosts.map((post) => {
-      return {
-        title: post.title,
-        slug: post.slug,
-        createdAt: post.sys.firstPublishedAt,
-      }
-    }),
-    tags: [].concat(...allTags.map(({ tags }) => tags)),
   }
   return <PostTemplate {...props} />
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const client = createApolloClient()
-  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug
+  const slug = Array.isArray(query.slug) ? query.slug[0] : query.slug
   const { data } = await client.query<PostPageQuery, PostPageQueryVariables>({
     query: GPostPage,
     variables: {
@@ -59,8 +45,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return {
     props: {
       post: data.posts.items[0],
-      latestPosts: data.latestPosts.items,
-      allTags: data.allTags.items,
     },
   }
 }

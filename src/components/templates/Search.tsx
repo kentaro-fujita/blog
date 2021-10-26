@@ -1,20 +1,25 @@
 import React, { Fragment } from 'react'
 import Head from 'next/head'
 import config from '../../configs/config.json'
-import TagView, { TagViewProps } from '../organisms/TagView'
+import SearchView, { SearchViewProps } from '../organisms/SearchView'
+import SearchInput from '../molecules/SearchInput'
 
-export type TagsTemplateProps = TagViewProps
+export type SearchTemplateProps = SearchViewProps & {
+  keyword?: string
+}
 
-const TagsTemplate: React.FC<TagsTemplateProps> = ({
+const SearchTemplate: React.FC<SearchTemplateProps> = ({
+  keyword,
   selectedTags,
-  tags,
+  allTags,
   posts,
-  latestPosts,
 }) => {
   return (
     <Fragment>
       <Head>
-        <title>{`${selectedTags.join(',')} - ${config.siteName}`}</title>
+        <title>{`${keyword} ${selectedTags.join(',')} - ${
+          config.siteName
+        }`}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />
         <meta name="description" content={config.siteName} />
         <meta property="og:title" content={`Tags page - ${config.siteName}`} />
@@ -29,13 +34,9 @@ const TagsTemplate: React.FC<TagsTemplateProps> = ({
           content={`${process.env.NEXT_PUBLIC_BASE_URL}/assets/digest_image.png`}
         />
       </Head>
-      <TagView
-        selectedTags={selectedTags}
-        posts={posts}
-        latestPosts={latestPosts}
-        tags={tags}
-      />
+      <SearchInput value={keyword} />
+      <SearchView selectedTags={selectedTags} posts={posts} allTags={allTags} />
     </Fragment>
   )
 }
-export default TagsTemplate
+export default SearchTemplate

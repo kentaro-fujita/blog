@@ -12,15 +12,15 @@ import createApolloClient from '../libs/apollo'
 
 export type TopPageProps = {
   posts: Post[]
-  latestPosts: Post[]
-  allTags: Post[]
+  // latestPosts: Post[]
+  // allTags: Post[]
 }
 
 const IndexPage = ({
   posts,
-  latestPosts,
-  allTags,
-}: TopPageProps): JSX.Element => {
+}: // latestPosts,
+// allTags,
+TopPageProps): JSX.Element => {
   const props: IndexProps = {
     posts: posts.map((post) => {
       return {
@@ -61,8 +61,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       posts: data.posts.items,
-      latestPosts: data.latestPosts.items,
-      allTags: data.allTags.items,
+      // latestPosts: data.latestPosts.items,
+      // allTags: data.allTags.items,
     },
   }
 }

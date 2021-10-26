@@ -1,14 +1,16 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import TagsTemplate, { TagsTemplateProps } from '../../components/templates/Tag'
+import SearchView, {
+  SearchViewProps,
+} from '../../components/organisms/SearchView'
 
 export default {
-  title: 'Templates/Tags',
-  components: TagsTemplate,
+  title: 'Organisms/SearchView',
+  components: SearchView,
 } as Meta
 
-const Template: Story<TagsTemplateProps> = (args) => <TagsTemplate {...args} />
+const Template: Story<SearchViewProps> = (args) => <SearchView {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

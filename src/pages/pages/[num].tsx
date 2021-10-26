@@ -12,19 +12,11 @@ import createApolloClient from '../../libs/apollo'
 
 export type PageProps = {
   posts: Post[]
-  latestPosts: Post[]
-  allTags: Post[]
   currentPage: number
   countPages: number
 }
 
-const Page = ({
-  posts,
-  latestPosts,
-  allTags,
-  currentPage,
-  countPages,
-}: PageProps): JSX.Element => {
+const Page = ({ posts }: PageProps): JSX.Element => {
   const props: IndexProps = {
     posts: posts.map((post) => {
       return {
@@ -36,23 +28,13 @@ const Page = ({
         catchImageUrl: post.catchImage.url,
       }
     }),
-    // latestPosts: latestPosts.map((post) => {
-    //   return {
-    //     title: post.title,
-    //     slug: post.slug,
-    //     createdAt: post.sys.firstPublishedAt,
-    //   }
-    // }),
-    // tags: [].concat(...allTags.map(({ tags }) => tags)),
-    // currentPage: currentPage,
-    // countPages: countPages,
   }
   return <Index {...props} />
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const client = createApolloClient()
-  const num = Array.isArray(params.num) ? params.num[0] : params.num
+  const num = Array.isArray(query.num) ? query.num[0] : query.num
 
   const { data } = await client.query<TopPageQuery, TopPageQueryVariables>({
     query: TopPage,
@@ -66,8 +48,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return {
     props: {
       posts: data.posts.items,
-      latestPosts: data.latestPosts.items,
-      allTags: data.allTags.items,
       countPages: countPages,
       currentPage: parseInt(num),
     },

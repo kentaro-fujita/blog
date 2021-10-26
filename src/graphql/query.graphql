@@ -17,24 +17,6 @@ query TopPage($skip: Int, $limit: Int) {
       }
     }
   }
-  latestPosts: postCollection(
-    skip: 0
-    limit: $limit
-    order: [sys_firstPublishedAt_DESC]
-  ) {
-    items {
-      title
-      slug
-      sys {
-        firstPublishedAt
-      }
-    }
-  }
-  allTags: postCollection {
-    items {
-      tags
-    }
-  }
   allSlugs: postCollection {
     items {
       slug
@@ -58,36 +40,19 @@ query PostPage($skip: Int, $limit: Int, $slug: String!) {
       }
     }
   }
-  latestPosts: postCollection(
-    skip: 0
-    limit: $limit
-    order: [sys_firstPublishedAt_DESC]
-  ) {
-    items {
-      title
-      slug
-      sys {
-        firstPublishedAt
-      }
-    }
-  }
-  allTags: postCollection {
-    items {
-      tags
-    }
-  }
-  allSlugs: postCollection {
-    items {
-      slug
-    }
-  }
 }
 
-query TagPage($skip: Int, $limit: Int, $tags: [String]!) {
+query SearchPage($skip: Int, $limit: Int, $word: String, $tags: [String]) {
   posts: postCollection(
     skip: $skip
     limit: $limit
-    where: { tags_contains_some: $tags }
+    where: {
+      OR: [
+        { tags_contains_some: $tags }
+        { title_contains: $word }
+        { slug_contains: $word }
+      ]
+    }
   ) {
     items {
       sys {
@@ -101,40 +66,6 @@ query TagPage($skip: Int, $limit: Int, $tags: [String]!) {
       tags
       catchImage {
         url
-      }
-    }
-  }
-  latestPosts: postCollection(
-    skip: 0
-    limit: $limit
-    order: [sys_firstPublishedAt_DESC]
-  ) {
-    items {
-      title
-      slug
-      sys {
-        firstPublishedAt
-      }
-    }
-  }
-  allTags: postCollection {
-    items {
-      tags
-    }
-  }
-}
-
-query AboutPage($limit: Int) {
-  latestPosts: postCollection(
-    skip: 0
-    limit: $limit
-    order: [sys_firstPublishedAt_DESC]
-  ) {
-    items {
-      title
-      slug
-      sys {
-        firstPublishedAt
       }
     }
   }

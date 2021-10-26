@@ -59,7 +59,7 @@ const PostCard: React.FC<PostCardProps> = ({
             </Title>
             <Text className="px-2 mr-1">{description}</Text>
           </div>
-          <TagsList tags={tags} />
+          <TagsList allTags={tags} />
         </div>
       </div>
     </Fragment>

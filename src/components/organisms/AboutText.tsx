@@ -2,11 +2,8 @@ import React, { Fragment } from 'react'
 import Title from '../atoms/Title'
 import Text from '../atoms/Text'
 import TextLink from '../atoms/TextLink'
-import SideBar, { SideBarProps } from './SideBar'
 
-export type AboutTextProps = SideBarProps
-
-const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
+const AboutText: React.FC = () => {
   return (
     <Fragment>
       <Title type="h1" className="text-center mb-4">
@@ -87,7 +84,7 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
         <li>
           <Text>
             &lsquo;&lsquo;Chained Box - A Smart IoT Box Using a
-            Blockchain&rsquo;&rsquo; ,JPHACKS 2020, ファイナリスト賞,
+            Blockchain&rsquo;&rsquo;, JPHACKS 2020, ファイナリスト賞,
             富士ゼロックス賞，2020.
           </Text>
         </li>
@@ -112,7 +109,6 @@ const AboutText: React.FC<AboutTextProps> = ({ latestPosts, tags }) => {
           <Text>日本学生支援機構, 特に優れた業績による返還全額免除, 2021.</Text>
         </li>
       </ul>
-      {/* <SideBar latestPosts={latestPosts} tags={tags} /> */}
     </Fragment>
   )
 }
