@@ -1,11 +1,9 @@
 import React, { Fragment } from 'react'
 import Head from 'next/head'
 import config from '../../configs/config.json'
-import AboutText, { AboutTextProps } from '../organisms/AboutText'
+import AboutText from '../organisms/AboutText'
 
-export type AboutProps = AboutTextProps
-
-const About: React.FC<AboutProps> = (props) => {
+const About: React.FC = () => {
   return (
     <Fragment>
       <Head>
@@ -27,7 +25,7 @@ const About: React.FC<AboutProps> = (props) => {
           content={`${process.env.NEXT_PUBLIC_BASE_URL}/assets/digest_image.png`}
         />
       </Head>
-      <AboutText {...props} />
+      <AboutText />
     </Fragment>
   )
 }

@@ -1,51 +1,8 @@
 import React from 'react'
-import { GetServerSideProps } from 'next'
-import About, { AboutProps } from '../components/templates/About'
-import createApolloClient from '../libs/apollo'
-import config from '../configs/config.json'
-import {
-  AboutPage as GAboutPage,
-  AboutPageQuery,
-  AboutPageQueryVariables,
-  Post,
-} from '../graphql/generated/graphql'
+import About from '../components/templates/About'
 
-export type AboutPageProps = {
-  latestPosts: Post[]
-  allTags: Post[]
-}
-
-const AboutPage = ({ latestPosts, allTags }: AboutPageProps): JSX.Element => {
-  const props: AboutProps = {
-    latestPosts: latestPosts.map((post) => {
-      return {
-        title: post.title,
-        slug: post.slug,
-        createdAt: post.sys.firstPublishedAt,
-      }
-    }),
-    tags: [].concat(...allTags.map(({ tags }) => tags)),
-  }
-
-  return <About {...props} />
-}
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  const client = createApolloClient()
-
-  const { data } = await client.query<AboutPageQuery, AboutPageQueryVariables>({
-    query: GAboutPage,
-    variables: {
-      limit: config.postsPerPage,
-    },
-  })
-
-  return {
-    props: {
-      latestPosts: data.latestPosts.items,
-      allTags: data.allTags.items,
-    },
-  }
+const AboutPage = (): JSX.Element => {
+  return <About />
 }
 
 export default AboutPage

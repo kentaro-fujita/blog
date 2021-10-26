@@ -1,26 +1,49 @@
-import React, { Fragment } from 'react'
+import { useRouter } from 'next/router'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import Icon from '../atoms/Icon'
-import Input from '../atoms/Input'
+import Input, { InputProps } from '../atoms/Input'
 
-export type SearchInputProps = {
-  onSubmit?: () => null
-}
+export type SearchInputProps = InputProps
 
-const SearchInput: React.FC<SearchInputProps> = ({ onSubmit }) => {
+const SearchInput: React.FC<SearchInputProps> = ({ value, ...props }) => {
+  const router = useRouter()
+  const { tags } = router.query
+  const [inputWord, setInputWord] = useState<string>('')
+
+  useEffect(() => {
+    if (value && typeof value === 'string') {
+      setInputWord(value)
+    }
+  }, [value])
+
+  const changeEventHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputWord(e.target.value)
+  }
+
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    router.push({
+      pathname: '/search',
+      query: { tags: tags, keyword: inputWord },
+    })
+  }
+
   return (
     <Fragment>
       <div className="bg-transparent border rounded-md dark:border-gray-700 lg:w-96 focus-within:border-purple-700 focus-within:ring focus-within:ring-purple-700 dark:focus-within:border-purple-700 focus-within:ring-opacity-40">
         <form
-          onSubmit={onSubmit}
+          onSubmit={submitHandler}
           className="flex flex-wrap flex-row justify-between md:flex-row"
         >
           <Input
             type="search"
             name="search"
             placeholder="Search"
-            required={true}
+            value={inputWord}
+            onChange={changeEventHandler}
             className="flex-1 w-full h-12 px-4 text-sm text-gray-700 bg-white dark:bg-gray-900 dark:text-gray-300 focus:outline-none focus:placeholder-transparent focus:ring-0"
+            {...props}
           />
           <Button
             type="submit"
