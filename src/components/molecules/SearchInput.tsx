@@ -6,7 +6,11 @@ import Input, { InputProps } from '../atoms/Input'
 
 export type SearchInputProps = InputProps
 
-const SearchInput: React.FC<SearchInputProps> = ({ value, ...props }) => {
+const SearchInput: React.FC<SearchInputProps> = ({
+  className,
+  value,
+  ...props
+}) => {
   const router = useRouter()
   const { tags } = router.query
   const [inputWord, setInputWord] = useState<string>('')
@@ -31,7 +35,9 @@ const SearchInput: React.FC<SearchInputProps> = ({ value, ...props }) => {
 
   return (
     <Fragment>
-      <div className="bg-transparent border rounded-md dark:border-gray-700 lg:w-96 focus-within:border-purple-700 focus-within:ring focus-within:ring-purple-700 dark:focus-within:border-purple-700 focus-within:ring-opacity-40">
+      <div
+        className={`bg-transparent border rounded-md dark:border-gray-700 focus-within:border-purple-700 focus-within:ring focus-within:ring-purple-700 dark:focus-within:border-purple-700 focus-within:ring-opacity-40 ${className}`}
+      >
         <form
           onSubmit={submitHandler}
           className="flex flex-wrap flex-row justify-between md:flex-row"
@@ -42,7 +48,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ value, ...props }) => {
             placeholder="Search"
             value={inputWord}
             onChange={changeEventHandler}
-            className="flex-1 w-full h-12 px-4 text-sm text-gray-700 bg-white dark:bg-gray-900 dark:text-gray-300 focus:outline-none focus:placeholder-transparent focus:ring-0"
+            className="flex-1 w-full h-12 px-4 text-base text-gray-700 border-gray-700 dark:border-gray-100 bg-white dark:bg-gray-900 dark:text-gray-300 focus:outline-none focus:placeholder-transparent focus:ring-0"
             {...props}
           />
           <Button

@@ -52,7 +52,7 @@ const NavBar: React.FC = () => {
                 <NavItem href="/pages/1">Posts</NavItem>
               </div>
               <div className="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:space-x-4">
-                <SearchInput />
+                <SearchInput className="lg:w-96" />
               </div>
             </Fragment>
           )}
@@ -65,7 +65,7 @@ const NavBar: React.FC = () => {
             </div>
             <div className="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:space-x-4">
               <DarkModeButton />
-              <SearchInput />
+              <SearchInput className="lg:w-96" />
             </div>
           </div>
         </div>
