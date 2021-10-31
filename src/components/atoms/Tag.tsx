@@ -26,6 +26,12 @@ const Tag: React.FC<TagProps> = ({
         },
       })
     } else {
+      if (
+        tags && Array.isArray(tags)
+          ? tags.find((tag) => tag === (children as string))
+          : tags === (children as string)
+      )
+        return
       router.push({
         pathname: '/search',
         query: {
