@@ -57,7 +57,11 @@ const PostCard: React.FC<PostCardProps> = ({
                 {title}
               </TextLink>
             </Title>
-            <Text className="px-2 mr-1">{description}</Text>
+            <Text className="px-2 mr-1 h-24">
+              {description.length >= 100
+                ? `${description.slice(0, 100)}...`
+                : description}
+            </Text>
           </div>
           <TagsList allTags={tags} />
         </div>

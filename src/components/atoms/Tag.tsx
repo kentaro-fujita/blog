@@ -35,7 +35,11 @@ const Tag: React.FC<TagProps> = ({
       router.push({
         pathname: '/search',
         query: {
-          tags: tags ? [children as string, ...tags] : (children as string),
+          tags: tags
+            ? Array.isArray(tags)
+              ? [...tags, children as string]
+              : [tags, children as string]
+            : (children as string),
           keyword: keyword,
         },
       })
