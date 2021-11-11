@@ -6,6 +6,7 @@ module.exports = {
     extend: {},
   },
   variants: {
+    tableLayout: ['responsive', 'hover', 'focus'],
     extend: {
       backgroundColor: ['dark'],
       textColor: ['dark'],
