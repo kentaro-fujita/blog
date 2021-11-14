@@ -33,6 +33,7 @@ const PostPage = ({ post }: PostPageProps): JSX.Element => {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const client = createApolloClient()
   const slug = Array.isArray(query.slug) ? query.slug[0] : query.slug
+
   const { data } = await client.query<PostPageQuery, PostPageQueryVariables>({
     query: GPostPage,
     variables: {

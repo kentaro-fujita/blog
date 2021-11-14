@@ -1,5 +1,5 @@
 import '../styles/global.css'
-import 'modern-css-reset/dist/reset.min.css'
+import 'katex/dist/katex.min.css'
 import React, { useEffect } from 'react'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'

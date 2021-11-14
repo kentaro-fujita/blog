@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
-import formatDate from '../../libs/date'
 import Title from '../atoms/Title'
 import Text from '../atoms/Text'
 import Icon from '../atoms/Icon'
+import formatDate from '../../libs/date'
 import TagsList, { TagsListProps } from './TagsList'
 
 export type PostViewTopProps = TagsListProps & {
