@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
+import PostViewTop, { PostViewTopProps } from '../molecules/PostViewTop'
 import PostViewContent, {
   PostViewContentProps,
 } from '../molecules/PostViewContent'
-import PostViewTop, { PostViewTopProps } from '../molecules/PostViewTop'
 
 export type PostViewProps = {
   post: PostViewTopProps & PostViewContentProps

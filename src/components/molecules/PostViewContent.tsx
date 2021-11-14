@@ -3,9 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
-import 'katex/dist/katex.min.css'
-// eslint-disable-next-line import/named
-import { CodeComponent } from 'react-markdown/lib/ast-to-react'
+// import { Components } from 'react-markdown/lib/ast-to-react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula'
 import Title from '../atoms/Title'
@@ -39,23 +37,23 @@ const PostViewContent: React.FC<PostViewContentProps> = ({ content }) => {
     )
   }
 
-  const CodeBlock: CodeComponent = ({
-    inline,
-    className,
-    children,
-    ...props
-  }) => {
-    const match = /language-(\w+)/.exec(className || '')
-    return !inline && match ? (
-      <SyntaxHighlighter style={dracula} language={match[1]} PreTag="div">
-        {String(children).replace(/\n$/, '')}
-      </SyntaxHighlighter>
-    ) : (
-      <code className={className} {...props}>
-        {children}
-      </code>
-    )
-  }
+  // const CodeBlock: Components<code> = ({
+  //   inline,
+  //   className,
+  //   children,
+  //   ...props
+  // }) => {
+  //   const match = /language-(\w+)/.exec(className || '')
+  //   return !inline && match ? (
+  //     <SyntaxHighlighter style={dracula} language={match[1]} PreTag="div">
+  //       {String(children).replace(/\n$/, '')}
+  //     </SyntaxHighlighter>
+  //   ) : (
+  //     <code className={className} {...props}>
+  //       {children}
+  //     </code>
+  //   )
+  // }
 
   const Table: React.FC = ({ children }) => {
     return (
@@ -69,7 +67,28 @@ const PostViewContent: React.FC<PostViewContentProps> = ({ content }) => {
     <Fragment>
       <div className="markdown text-gray-500 dark:text-gray-300 mb-10">
         <ReactMarkdown
-          components={{ code: CodeBlock, h1: H1, h2: H2, h3: H3, table: Table }}
+          components={{
+            code({ inline, className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || '')
+              return !inline && match ? (
+                <SyntaxHighlighter
+                  style={dracula}
+                  language={match[1]}
+                  PreTag="div"
+                >
+                  {String(children).replace(/\n$/, '')}
+                </SyntaxHighlighter>
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              )
+            },
+            h1: H1,
+            h2: H2,
+            h3: H3,
+            table: Table,
+          }}
           remarkPlugins={[remarkGfm, remarkMath]}
           rehypePlugins={[rehypeKatex]}
         >
