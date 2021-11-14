@@ -12,14 +12,5 @@ module.exports = {
       },
     },
   ],
-  // webpackFinal: (config) => {
-  //   return {
-  //     ...config,
-  //     node: {
-  //       ...config.node,
-  //       fs: 'empty',
-  //     },
-  //   }
-  // },
   typescript: { reactDocgen: 'react-docgen' },
 }

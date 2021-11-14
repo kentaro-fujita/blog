@@ -4,8 +4,11 @@ import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import 'katex/dist/katex.min.css'
+// eslint-disable-next-line import/named
+import { CodeComponent } from 'react-markdown/lib/ast-to-react'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula'
 import Title from '../atoms/Title'
-import CodeBlock from './CodeBlock'
 
 export type PostViewContentProps = {
   content: string
@@ -33,6 +36,24 @@ const PostViewContent: React.FC<PostViewContentProps> = ({ content }) => {
       <Title type="h3" className="mb-2 mt-4">
         {children}
       </Title>
+    )
+  }
+
+  const CodeBlock: CodeComponent = ({
+    inline,
+    className,
+    children,
+    ...props
+  }) => {
+    const match = /language-(\w+)/.exec(className || '')
+    return !inline && match ? (
+      <SyntaxHighlighter style={dracula} language={match[1]} PreTag="div">
+        {String(children).replace(/\n$/, '')}
+      </SyntaxHighlighter>
+    ) : (
+      <code className={className} {...props}>
+        {children}
+      </code>
     )
   }
 
