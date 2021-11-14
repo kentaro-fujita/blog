@@ -7,7 +7,6 @@ import PostViewContent, {
 export type PostViewProps = {
   post: PostViewTopProps & PostViewContentProps
 }
-// & SideBarProps
 
 const PostView: React.FC<PostViewProps> = ({ post }) => {
   return (

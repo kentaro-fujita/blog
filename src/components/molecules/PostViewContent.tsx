@@ -1,11 +1,10 @@
-import React, { Fragment } from 'react'
-import ReactMarkdown from 'react-markdown'
 import rehypeKatex from 'rehype-katex'
-import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
-// import { Components } from 'react-markdown/lib/ast-to-react'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import remarkGfm from 'remark-gfm'
+import ReactMarkdown from 'react-markdown'
 import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import React, { Fragment } from 'react'
 import Title from '../atoms/Title'
 
 export type PostViewContentProps = {
