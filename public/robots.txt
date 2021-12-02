@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://wisteken.com
+
+# Sitemaps
+Sitemap: https://wisteken.com/sitemap.xml
+Sitemap: https://wisteken.com/server-sitemap.xml

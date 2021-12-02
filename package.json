@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint --dir src",
     "apollo:download": "./src/scripts/download-schema.sh",
@@ -57,6 +58,7 @@
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.1.2",
     "eslint-config-prettier": "^8.3.0",
+    "next-sitemap": "^1.6.203",
     "postcss": "^8.3.11",
     "react-syntax-highlighter": "^15.4.4",
     "tailwindcss": "^2.2.17",
