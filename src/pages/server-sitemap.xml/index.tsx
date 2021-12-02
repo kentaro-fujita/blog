@@ -19,18 +19,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     },
   })
 
-  const fields = [
-    {
-      loc: 'https://wisteken.com',
-      lastmod: new Date().toISOString(),
-    },
-    ...((data.allSlugs.items ?? []).map((item) => {
+  const fields =
+    (data.allSlugs.items ?? []).map((item) => {
       return {
         loc: `https://wisteken.com/posts/${item.slug ?? ''}`,
         lastmod: new Date().toISOString(),
       }
-    }) ?? []),
-  ]
+    }) ?? []
 
   return getServerSideSitemap(ctx, fields)
 }
