@@ -56,7 +56,7 @@ const PostCard: React.FC<PostCardProps> = ({
                 className="text-gray-700 dark:text-gray-100 hover:underline"
                 href={`/posts/${slug}`}
               >
-                {title}
+                {title.length >= 70 ? `${title.slice(0, 70)}...` : title}
               </TextLink>
             </Title>
             <Text className="px-2 mr-1 md:h-24">
