@@ -12,7 +12,7 @@ const Template: Story<PostCardProps> = (args) => <PostCard {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  catchImageUrl: '/assets/digest_image.png',
+  catchImageUrl: '/assets/catch_image.png',
   title:
     'super interesting post title super interesting post title super interesting post title max 100 chars',
   description:

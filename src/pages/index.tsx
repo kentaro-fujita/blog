@@ -24,7 +24,7 @@ const IndexPage = ({ posts }: TopPageProps): JSX.Element => {
       createdAt: post.createdAt,
       catchImageUrl: post.catchImage
         ? post.catchImage.url
-        : '/assets/catch_image.png',
+        : config.default_catch_image_url,
     })),
   }
 

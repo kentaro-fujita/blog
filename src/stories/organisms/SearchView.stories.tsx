@@ -17,7 +17,7 @@ Default.args = {
   selectedTags: [...Array(5).keys()].map((n) => `tag${n + 1}`),
   posts: [
     {
-      catchImageUrl: '/assets/digest_image.png',
+      catchImageUrl: '/assets/catch_image.png',
       title: 'super interesting post title',
       description:
         'super interesting post description. super interesting post description',
@@ -25,7 +25,7 @@ Default.args = {
       tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
     },
     {
-      catchImageUrl: '/assets/digest_image.png',
+      catchImageUrl: '/assets/catch_image.png',
       title: 'super interesting post title',
       description:
         'super interesting post description. super interesting post description',
@@ -34,7 +34,7 @@ Default.args = {
       tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
     },
     {
-      catchImageUrl: '/assets/digest_image.png',
+      catchImageUrl: '/assets/catch_image.png',
       title: 'super interesting post title',
       description:
         'super interesting post description. super interesting post description',

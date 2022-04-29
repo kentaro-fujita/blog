@@ -7,6 +7,7 @@ import {
   SearchPageQuery,
   SearchPageQueryVariables,
 } from '../graphql/generated/graphql'
+import config from '../configs/config.json'
 import SearchTemplate, {
   SearchTemplateProps,
 } from '../components/templates/Search'
@@ -36,7 +37,7 @@ const SearchPage = ({
         createdAt: post.createdAt,
         catchImageUrl: post.catchImage
           ? post.catchImage.url
-          : '/assets/catch_image.png',
+          : config.default_catch_image_url,
       }
     }),
     allTags: [].concat(...allTags.map(({ tags }) => tags)),
