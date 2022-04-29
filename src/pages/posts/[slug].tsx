@@ -22,9 +22,11 @@ const PostPage = ({ post }: PostPageProps): JSX.Element => {
       description: post.description,
       content: post.content,
       allTags: post.tags,
-      createdAt: post.publishedAt,
+      createdAt: post.createdAt,
       updatedAt: post.updatedAt,
-      catchImageUrl: post.catchImage.url,
+      catchImageUrl: post.catchImage
+        ? post.catchImage.url
+        : '/assets/digest_image.png',
     },
   }
   return <PostTemplate {...props} />
@@ -36,16 +38,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   const { data } = await client.query<PostPageQuery, PostPageQueryVariables>({
     query: GPostPage,
-    variables: {
-      limit: 1,
-      skip: 0,
-      slug: slug,
-    },
+    variables: { slug: slug },
   })
 
   return {
     props: {
-      post: data.posts[0],
+      post: data.post,
     },
   }
 }

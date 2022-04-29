@@ -3535,16 +3535,14 @@ export type TopPageQueryVariables = Exact<{
 }>;
 
 
-export type TopPageQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', title: string, slug: string, description: string, tags: Array<string>, publishedAt?: any | null, catchImage?: { __typename?: 'Asset', url: string } | null }>, allSlugs: Array<{ __typename?: 'Post', slug: string }> };
+export type TopPageQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', title: string, slug: string, description: string, tags: Array<string>, createdAt: any, catchImage?: { __typename?: 'Asset', url: string } | null }> };
 
 export type PostPageQueryVariables = Exact<{
-  skip?: InputMaybe<Scalars['Int']>;
-  limit?: InputMaybe<Scalars['Int']>;
   slug: Scalars['String'];
 }>;
 
 
-export type PostPageQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', title: string, slug: string, description: string, content: string, tags: Array<string>, publishedAt?: any | null, updatedAt: any, catchImage?: { __typename?: 'Asset', url: string } | null }> };
+export type PostPageQuery = { __typename?: 'Query', post?: { __typename?: 'Post', title: string, slug: string, description: string, content: string, tags: Array<string>, createdAt: any, updatedAt: any, catchImage?: { __typename?: 'Asset', url: string } | null } | null };
 
 export type SearchPageQueryVariables = Exact<{
   skip?: InputMaybe<Scalars['Int']>;
@@ -3554,35 +3552,37 @@ export type SearchPageQueryVariables = Exact<{
 }>;
 
 
-export type SearchPageQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', title: string, slug: string, description: string, tags: Array<string>, publishedAt?: any | null, updatedAt: any, catchImage?: { __typename?: 'Asset', url: string } | null }>, allTags: Array<{ __typename?: 'Post', tags: Array<string> }> };
+export type SearchPageQuery = { __typename?: 'Query', posts: Array<{ __typename?: 'Post', title: string, slug: string, description: string, tags: Array<string>, createdAt: any, updatedAt: any, catchImage?: { __typename?: 'Asset', url: string } | null }>, allTags: Array<{ __typename?: 'Post', tags: Array<string> }> };
+
+export type AllSlugsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllSlugsQuery = { __typename?: 'Query', slugs: Array<{ __typename?: 'Post', slug: string }> };
 
 
 export const TopPage = gql`
     query TopPage($skip: Int, $limit: Int) {
-  posts(skip: $skip, first: $limit, orderBy: publishedAt_DESC) {
+  posts(skip: $skip, first: $limit, orderBy: createdAt_DESC) {
     title
     slug
     description
     tags
-    publishedAt
+    createdAt
     catchImage {
       url
     }
   }
-  allSlugs: posts {
-    slug
-  }
 }
     `;
 export const PostPage = gql`
-    query PostPage($skip: Int, $limit: Int, $slug: String!) {
-  posts(skip: $skip, first: $limit, where: {slug: $slug}) {
+    query PostPage($slug: String!) {
+  post(where: {slug: $slug}) {
     title
     slug
     description
     content
     tags
-    publishedAt
+    createdAt
     updatedAt
     catchImage {
       url
@@ -3601,7 +3601,7 @@ export const SearchPage = gql`
     slug
     description
     tags
-    publishedAt
+    createdAt
     updatedAt
     catchImage {
       url
@@ -3609,6 +3609,13 @@ export const SearchPage = gql`
   }
   allTags: posts {
     tags
+  }
+}
+    `;
+export const AllSlugs = gql`
+    query AllSlugs {
+  slugs: posts {
+    slug
   }
 }
     `;

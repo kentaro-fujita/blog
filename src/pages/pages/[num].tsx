@@ -3,6 +3,8 @@ import { GetServerSideProps } from 'next'
 import Index, { IndexProps } from '../../components/templates/Index'
 import config from '../../configs/config.json'
 import {
+  AllSlugs,
+  AllSlugsQuery,
   Post,
   TopPage,
   TopPageQuery,
@@ -12,8 +14,6 @@ import createApolloClient from '../../libs/apollo'
 
 export type PageProps = {
   posts: Post[]
-  currentPage: number
-  countPages: number
 }
 
 const Page = ({ posts }: PageProps): JSX.Element => {
@@ -24,8 +24,10 @@ const Page = ({ posts }: PageProps): JSX.Element => {
         slug: post.slug,
         description: post.description,
         tags: post.tags,
-        createdAt: post.publishedAt,
-        catchImageUrl: post.catchImage.url,
+        createdAt: post.createdAt,
+        catchImageUrl: post.catchImage
+          ? post.catchImage.url
+          : '/assets/digest_image.png',
       }
     }),
   }
@@ -43,7 +45,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       limit: config.postsPerPage,
     },
   })
-  const countPages = (data.allSlugs.length - 1) / config.postsPerPage + 1
+
+  const { data: slugsData } = await client.query<AllSlugsQuery>({
+    query: AllSlugs,
+  })
+
+  const countPages = (slugsData.slugs.length - 1) / config.postsPerPage + 1
 
   return {
     props: {
