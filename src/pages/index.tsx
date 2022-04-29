@@ -12,36 +12,20 @@ import createApolloClient from '../libs/apollo'
 
 export type TopPageProps = {
   posts: Post[]
-  // latestPosts: Post[]
-  // allTags: Post[]
 }
 
-const IndexPage = ({
-  posts,
-}: // latestPosts,
-// allTags,
-TopPageProps): JSX.Element => {
+const IndexPage = ({ posts }: TopPageProps): JSX.Element => {
   const props: IndexProps = {
     posts: posts.map((post) => ({
       title: post.title,
       slug: post.slug,
       description: post.description,
       tags: post.tags,
-      createdAt: post.publishedAt,
+      createdAt: post.createdAt,
       catchImageUrl: post.catchImage
         ? post.catchImage.url
-        : '/assets/digest_image.png',
+        : '/assets/catch_image.png',
     })),
-    // latestPosts: latestPosts.map((post) => {
-    //   return {
-    //     title: post.title,
-    //     slug: post.slug,
-    //     createdAt: post.sys.firstPublishedAt,
-    //   }
-    // }),
-    // tags: [].concat(...allTags.map(({ tags }) => tags)),
-    // countPages: 1,
-    // currentPage: 1,
   }
 
   return <Index {...props} />
@@ -67,8 +51,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       posts: data.posts,
-      // latestPosts: data.latestPosts.items,
-      // allTags: data.allTags.items,
     },
   }
 }

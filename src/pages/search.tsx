@@ -33,8 +33,10 @@ const SearchPage = ({
         slug: post.slug,
         description: post.description,
         tags: post.tags,
-        createdAt: post.publishedAt,
-        catchImageUrl: post.catchImage.url,
+        createdAt: post.createdAt,
+        catchImageUrl: post.catchImage
+          ? post.catchImage.url
+          : '/assets/catch_image.png',
       }
     }),
     allTags: [].concat(...allTags.map(({ tags }) => tags)),

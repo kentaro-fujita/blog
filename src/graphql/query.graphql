@@ -1,27 +1,24 @@
 query TopPage($skip: Int, $limit: Int) {
-  posts(skip: $skip, first: $limit, orderBy: publishedAt_DESC) {
+  posts(skip: $skip, first: $limit, orderBy: createdAt_DESC) {
     title
     slug
     description
     tags
-    publishedAt
+    createdAt
     catchImage {
       url
     }
   }
-  allSlugs: posts {
-    slug
-  }
 }
 
-query PostPage($skip: Int, $limit: Int, $slug: String!) {
-  posts(skip: $skip, first: $limit, where: { slug: $slug }) {
+query PostPage($slug: String!) {
+  post(where: { slug: $slug }) {
     title
     slug
     description
     content
     tags
-    publishedAt
+    createdAt
     updatedAt
     catchImage {
       url
@@ -45,7 +42,7 @@ query SearchPage($skip: Int, $limit: Int, $word: String, $tags: [String!]) {
     slug
     description
     tags
-    publishedAt
+    createdAt
     updatedAt
     catchImage {
       url
@@ -53,5 +50,11 @@ query SearchPage($skip: Int, $limit: Int, $word: String, $tags: [String!]) {
   }
   allTags: posts {
     tags
+  }
+}
+
+query AllSlugs {
+  slugs: posts {
+    slug
   }
 }
