@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   })
 
   const fields =
-    (data.allSlugs.items ?? []).map((item) => {
+    (data.allSlugs ?? []).map((item) => {
       return {
         loc: `https://wisteken.com/posts/${item.slug ?? ''}`,
         lastmod: new Date().toISOString(),

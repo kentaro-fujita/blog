@@ -15,6 +15,7 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:prettier/recommended',
     'prettier',
+    'plugin:storybook/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -55,7 +56,12 @@ module.exports = {
     ],
     'react/prop-types': ['off'],
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
+    'react/jsx-filename-extension': [
+      'error',
+      {
+        extensions: ['.jsx', '.tsx'],
+      },
+    ],
     'import/order': ['error'],
     'prettier/prettier': [
       'error',

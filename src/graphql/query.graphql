@@ -1,51 +1,38 @@
 query TopPage($skip: Int, $limit: Int) {
-  posts: postCollection(
-    skip: $skip
-    limit: $limit
-    order: [sys_firstPublishedAt_DESC]
-  ) {
-    items {
-      sys {
-        firstPublishedAt
-      }
-      title
-      slug
-      description
-      tags
-      catchImage {
-        url
-      }
+  posts(skip: $skip, first: $limit, orderBy: publishedAt_DESC) {
+    title
+    slug
+    description
+    tags
+    publishedAt
+    catchImage {
+      url
     }
   }
-  allSlugs: postCollection {
-    items {
-      slug
-    }
+  allSlugs: posts {
+    slug
   }
 }
 
 query PostPage($skip: Int, $limit: Int, $slug: String!) {
-  posts: postCollection(skip: $skip, limit: $limit, where: { slug: $slug }) {
-    items {
-      sys {
-        firstPublishedAt
-        publishedAt
-      }
-      title
-      content
-      description
-      tags
-      catchImage {
-        url
-      }
+  posts(skip: $skip, first: $limit, where: { slug: $slug }) {
+    title
+    slug
+    description
+    content
+    tags
+    publishedAt
+    updatedAt
+    catchImage {
+      url
     }
   }
 }
 
-query SearchPage($skip: Int, $limit: Int, $word: String, $tags: [String]) {
-  posts: postCollection(
+query SearchPage($skip: Int, $limit: Int, $word: String, $tags: [String!]) {
+  posts(
     skip: $skip
-    limit: $limit
+    first: $limit
     where: {
       OR: [
         { tags_contains_some: $tags }
@@ -54,24 +41,17 @@ query SearchPage($skip: Int, $limit: Int, $word: String, $tags: [String]) {
       ]
     }
   ) {
-    items {
-      sys {
-        firstPublishedAt
-        publishedAt
-      }
-      title
-      slug
-      description
-      content
-      tags
-      catchImage {
-        url
-      }
+    title
+    slug
+    description
+    tags
+    publishedAt
+    updatedAt
+    catchImage {
+      url
     }
   }
-  allTags: postCollection {
-    items {
-      tags
-    }
+  allTags: posts {
+    tags
   }
 }

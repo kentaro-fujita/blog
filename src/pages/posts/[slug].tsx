@@ -22,8 +22,8 @@ const PostPage = ({ post }: PostPageProps): JSX.Element => {
       description: post.description,
       content: post.content,
       allTags: post.tags,
-      createdAt: post.sys.firstPublishedAt,
-      updatedAt: post.sys.publishedAt,
+      createdAt: post.publishedAt,
+      updatedAt: post.updatedAt,
       catchImageUrl: post.catchImage.url,
     },
   }
@@ -45,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
-      post: data.posts.items[0],
+      post: data.posts[0],
     },
   }
 }

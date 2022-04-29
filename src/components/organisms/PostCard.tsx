@@ -31,13 +31,15 @@ const PostCard: React.FC<PostCardProps> = ({
         <div className="bg-gray-100 dark:bg-gray-700 shadow-2xl rounded-lg mb-6 tracking-wide">
           <div className="md:flex-shrink-0 cursor-pointer">
             <Link href={`/posts/${slug}`}>
-              <Image
-                className="transform hover:scale-125 duration-200 rounded-t-lg"
-                width={640}
-                height={360}
-                src={catchImageUrl}
-                alt="catch"
-              />
+              <div className="rounded-t-lg overflow-hidden">
+                <Image
+                  className="transform hover:scale-125 duration-200"
+                  width={640}
+                  height={360}
+                  src={catchImageUrl}
+                  alt="catch"
+                />
+              </div>
             </Link>
           </div>
           <div className="flex items-center justify-between mx-6">
@@ -49,15 +51,15 @@ const PostCard: React.FC<PostCardProps> = ({
             </div>
           </div>
           <div className="px-4 py-2">
-            <Title type="h2" className="tracking-normal">
+            <Title type="h2" className="tracking-normal md:h-16">
               <TextLink
                 className="text-gray-700 dark:text-gray-100 hover:underline"
                 href={`/posts/${slug}`}
               >
-                {title}
+                {title.length >= 70 ? `${title.slice(0, 70)}...` : title}
               </TextLink>
             </Title>
-            <Text className="px-2 mr-1 h-24">
+            <Text className="px-2 mr-1 md:h-24">
               {description.length >= 100
                 ? `${description.slice(0, 100)}...`
                 : description}
