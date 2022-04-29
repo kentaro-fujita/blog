@@ -22,16 +22,16 @@ const IndexPage = ({
 // allTags,
 TopPageProps): JSX.Element => {
   const props: IndexProps = {
-    posts: posts.map((post) => {
-      return {
-        title: post.title,
-        slug: post.slug,
-        description: post.description,
-        tags: post.tags,
-        createdAt: post.sys.firstPublishedAt,
-        catchImageUrl: post.catchImage.url,
-      }
-    }),
+    posts: posts.map((post) => ({
+      title: post.title,
+      slug: post.slug,
+      description: post.description,
+      tags: post.tags,
+      createdAt: post.publishedAt,
+      catchImageUrl: post.catchImage
+        ? post.catchImage.url
+        : '/assets/digest_image.png',
+    })),
     // latestPosts: latestPosts.map((post) => {
     //   return {
     //     title: post.title,
@@ -58,9 +58,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
     },
   })
 
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
   return {
     props: {
-      posts: data.posts.items,
+      posts: data.posts,
       // latestPosts: data.latestPosts.items,
       // allTags: data.allTags.items,
     },

@@ -17,7 +17,7 @@
     "@apollo/client": "^3.4.16",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "graphql": "^16.4.0",
+    "graphql": "15.8.0",
     "gray-matter": "^4.0.3",
     "markdown-toc": "^1.2.0",
     "modern-css-reset": "^1.4.0",

@@ -10,7 +10,6 @@ const DarkModeButton: React.FC = () => {
   useEffect(() => setMounted(true), [])
 
   const clickHandler = () => {
-    console.log(theme)
     setTheme(theme === 'light' ? 'dark' : 'light')
   }
 

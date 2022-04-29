@@ -24,7 +24,7 @@ const Page = ({ posts }: PageProps): JSX.Element => {
         slug: post.slug,
         description: post.description,
         tags: post.tags,
-        createdAt: post.sys.firstPublishedAt,
+        createdAt: post.publishedAt,
         catchImageUrl: post.catchImage.url,
       }
     }),
@@ -43,11 +43,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
       limit: config.postsPerPage,
     },
   })
-  const countPages = (data.allSlugs.items.length - 1) / config.postsPerPage + 1
+  const countPages = (data.allSlugs.length - 1) / config.postsPerPage + 1
 
   return {
     props: {
-      posts: data.posts.items,
+      posts: data.posts,
       countPages: countPages,
       currentPage: parseInt(num),
     },

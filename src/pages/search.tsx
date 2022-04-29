@@ -33,7 +33,7 @@ const SearchPage = ({
         slug: post.slug,
         description: post.description,
         tags: post.tags,
-        createdAt: post.sys.firstPublishedAt,
+        createdAt: post.publishedAt,
         catchImageUrl: post.catchImage.url,
       }
     }),
@@ -71,8 +71,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     props: {
       selectedTags: tags,
       keyword: keyword,
-      posts: data.posts.items,
-      allTags: data.allTags.items,
+      posts: data.posts,
+      allTags: data.allTags,
     },
   }
 }
