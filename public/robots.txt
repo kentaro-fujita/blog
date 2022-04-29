@@ -3,8 +3,8 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://wisteken.com
+Host: https://www.wisteken.com
 
 # Sitemaps
-Sitemap: https://wisteken.com/sitemap.xml
-Sitemap: https://wisteken.com/server-sitemap.xml
+Sitemap: https://www.wisteken.com/sitemap.xml
+Sitemap: https://www.wisteken.com/server-sitemap.xml

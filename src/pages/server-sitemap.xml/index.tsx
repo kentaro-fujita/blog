@@ -22,7 +22,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const fields =
     (data.allSlugs ?? []).map((item) => {
       return {
-        loc: `https://wisteken.com/posts/${item.slug ?? ''}`,
+        loc: `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${item.slug ?? ''}`,
         lastmod: new Date().toISOString(),
       }
     }) ?? []
