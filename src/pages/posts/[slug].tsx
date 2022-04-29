@@ -9,6 +9,7 @@ import {
   PostPageQuery,
   PostPageQueryVariables,
 } from '../../graphql/generated/graphql'
+import config from '../../configs/config.json'
 import createApolloClient from '../../libs/apollo'
 
 export type PostPageProps = {
@@ -26,7 +27,7 @@ const PostPage = ({ post }: PostPageProps): JSX.Element => {
       updatedAt: post.updatedAt,
       catchImageUrl: post.catchImage
         ? post.catchImage.url
-        : '/assets/digest_image.png',
+        : config.default_catch_image_url,
     },
   }
   return <PostTemplate {...props} />

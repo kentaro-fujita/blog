@@ -2,5 +2,6 @@
   "siteName": "wisteken.com",
   "copyRight": "©︎ wisteken.com All Right Reserved.",
   "postsPerPage": 8,
-  "latestPostPerPage": 5
+  "latestPostPerPage": 5,
+  "default_catch_image_url": "https://media.graphassets.com/cEBu7IQPWF994VLBoo2g"
 }

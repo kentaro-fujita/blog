@@ -28,10 +28,7 @@ const SearchTemplate: React.FC<SearchTemplateProps> = ({
           content={`Tags page of ${config.siteName}`}
         />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:image"
-          content={`${process.env.NEXT_PUBLIC_BASE_URL}/assets/digest_image.png`}
-        />
+        <meta property="og:image" content={config.default_catch_image_url} />
       </Head>
       <SearchView selectedTags={selectedTags} posts={posts} allTags={allTags} />
     </Fragment>

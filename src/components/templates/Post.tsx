@@ -22,13 +22,7 @@ const PostTemplate: React.FC<PostTemplateProps> = (props) => {
           content={`${props.post.description}  - ${config.siteName}`}
         />
         <meta property="og:type" content="website" />
-        <meta
-          property="og:image"
-          content={
-            props.post.catchImageUrl ??
-            `${process.env.NEXT_PUBLIC_BASE_URL}/assets/digest_image.png`
-          }
-        />
+        <meta property="og:image" content={props.post.catchImageUrl} />
       </Head>
       <PostView {...props} />
     </Fragment>
