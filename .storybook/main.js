@@ -3,14 +3,11 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    {
-      name: '@storybook/addon-postcss',
-      options: {
-        postcssLoaderOptions: {
-          implementation: require('postcss'),
-        },
-      },
-    },
+    '@storybook/addon-postcss',
+    'storybook-addon-next',
   ],
-  typescript: { reactDocgen: 'react-docgen' },
+  framework: '@storybook/react',
+  core: {
+    builder: 'webpack5',
+  },
 }

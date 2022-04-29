@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-undef
 module.exports = {
-  purge: ['./src/pages/**/*.{ts,tsx}', './src/components/**/*.{ts,tsx}'],
+  content: ['./src/pages/**/*.{ts,tsx}', './src/components/**/*.{ts,tsx}'],
   darkMode: 'class',
   theme: {
     extend: {},
