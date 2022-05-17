@@ -63,7 +63,7 @@ const AboutText: React.FC = () => {
           </TextLink>
         </li>
       </ol>
-      <Title type="h2" className="mb-2 mt-2">
+      <Title type="h3" className="mb-2 mt-2">
         Domestic Conference
       </Title>
       <ol className="text-gray-500 dark:text-gray-300 list-decimal ml-4">
@@ -85,7 +85,7 @@ const AboutText: React.FC = () => {
           <Text>
             &lsquo;&lsquo;Chained Box - A Smart IoT Box Using a
             Blockchain&rsquo;&rsquo;, JPHACKS 2020, ファイナリスト賞,
-            富士ゼロックス賞，2020.
+            富士ゼロックス賞. 2020.
           </Text>
         </li>
         <li>
