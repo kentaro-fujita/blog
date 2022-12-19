@@ -21,10 +21,12 @@ const NavItem: React.FC<NavItemProps> = ({ href, items, children }) => {
   return (
     <Fragment>
       {href && (
-        <Link href={href}>
-          <a className="text-gray-500 dark:text-gray-200 hover:text-gray-800">
-            {children}
-          </a>
+        <Link
+          href={href}
+          passHref
+          className="text-gray-500 dark:text-gray-200 hover:text-gray-800"
+        >
+          {children}
         </Link>
       )}
       {items && (
@@ -45,10 +47,13 @@ const NavItem: React.FC<NavItemProps> = ({ href, items, children }) => {
                 />
                 <div className="absolute left-0 z-20 w-40 py-1 mt-2 bg-white border border-gray-100 rounded-md shadow-xl dark:border-gray-700 lg:left-auto lg:right-0 dark:bg-gray-800">
                   {items.map(({ name, link }, idx) => (
-                    <Link key={idx} href={link}>
-                      <a className="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary">
-                        {name}
-                      </a>
+                    <Link
+                      key={idx}
+                      href={link}
+                      passHref
+                      className="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                    >
+                      {name}
                     </Link>
                   ))}
                 </div>
