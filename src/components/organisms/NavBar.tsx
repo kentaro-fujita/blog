@@ -44,7 +44,7 @@ const NavBar: React.FC = () => {
             <div className="flex items-center space-x-2 lg:hidden">
               <DarkModeButton />
               <Button
-                className="p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:bg-gray-100 dark:focus:bg-gray-800 focus:outline-none"
+                className="py-1 px-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 focus:bg-gray-100 dark:focus:bg-gray-800 focus:outline-none"
                 onClick={clickHandler}
               >
                 <Icon className="fas fa-bars" />
