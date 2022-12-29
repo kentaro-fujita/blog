@@ -3,53 +3,52 @@ import React, { Fragment } from 'react'
 
 const BUTTON_SIZE = 30
 
-// const styles = css`
-//   .btn {
-//     display: block;
-//     width: ${BUTTON_SIZE}px;
-//     height: ${BUTTON_SIZE}px;
-//     margin: 2rem 0.3rem;
-//     border-radius: 100%;
-//     text-decoration: none;
-//     text-align: center;
-//     justify-content: center;
-//   }
-//   .main {
-//     font-weight: bold;
-//     line-height: ${BUTTON_SIZE}px;
-//     background: ${colors.main};
-//     color: ${colors.white};
-//   }
-//   .sub {
-//     color: ${colors.main};
-//     border: 2px solid ${colors.main};
-//     background: ${colors.white};
-//   }
-//   .sub:hover {
-//     color: ${colors.main};
-//     background: ${colors.light_purple};
-//   }
-// `
-
 export type PaginationButtonProps = {
-  className: string
+  filled: boolean
   href?: string
-  num: number
+  children: React.ReactNode
 }
 
 const PaginationButton: React.FC<PaginationButtonProps> = ({
-  className,
+  filled,
   href,
-  num,
+  children,
 }) => {
+  const LinkContainer: React.FC<{
+    href?: string
+    children: React.ReactNode
+  }> = ({ href, children }) => {
+    return (
+      <Fragment>
+        {href ? (
+          <Link href={href} passHref>
+            {children}
+          </Link>
+        ) : (
+          children
+        )}
+      </Fragment>
+    )
+  }
+
   return (
     <Fragment>
-      {className.includes('main') && <span className="btn main">{num}</span>}
-      {className.includes('sub') && (
-        <Link className="btn sub" href={href ?? '/'} passHref>
-          {num}
-        </Link>
-      )}
+      <div className="inline-block w-8 h-8">
+        <LinkContainer href={href}>
+          <div
+            className={`rounded-full no-underline text-center border-2 border-solid border-purple-700 
+            ${filled && 'bg-purple-700'} ${href && 'hover:opacity-60'}`}
+          >
+            <span
+              className={`text-lg ${
+                filled ? 'font-bold text-white' : 'text-purple-700'
+              }`}
+            >
+              {children}
+            </span>
+          </div>
+        </LinkContainer>
+      </div>
     </Fragment>
   )
 }

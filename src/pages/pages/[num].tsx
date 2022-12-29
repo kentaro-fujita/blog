@@ -18,9 +18,10 @@ import { NextSeo } from 'next-seo'
 export type PageProps = {
   posts: Post[]
   currentPage: number
+  countPages: number
 }
 
-const Page = ({ posts, currentPage }: PageProps): JSX.Element => {
+const Page = ({ posts, currentPage, countPages }: PageProps): JSX.Element => {
   const props: IndexTemplateProps = {
     posts: posts.map((post) => {
       return {
@@ -34,7 +35,10 @@ const Page = ({ posts, currentPage }: PageProps): JSX.Element => {
           : siteConfig.defaultCatchImageUrl,
       }
     }),
+    currentPage: currentPage,
+    countPages: countPages,
   }
+
   return (
     <Fragment>
       <NextSeo title="Posts" />

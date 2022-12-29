@@ -16,13 +16,12 @@ const Template: Story<PaginationButtonProps> = (args) => (
 
 export const Main = Template.bind({})
 Main.args = {
-  className: 'main',
-  num: 1,
+  filled: true,
+  children: 1,
 }
 
 export const Sub = Template.bind({})
 Sub.args = {
-  className: 'sub',
   href: '#',
-  num: 1,
+  children: 1,
 }
