@@ -5,6 +5,8 @@ import IndexTemplate, {
 } from '../components/templates/Index'
 import { siteConfig } from '../configs/config'
 import {
+  AllSlugsDocument,
+  AllSlugsQuery,
   Post,
   TopPageDocument,
   TopPageQuery,
@@ -15,9 +17,10 @@ import { NextSeo } from 'next-seo'
 
 export type TopPageProps = {
   posts: Post[]
+  countPages: number
 }
 
-const IndexPage = ({ posts }: TopPageProps): JSX.Element => {
+const IndexPage = ({ posts, countPages }: TopPageProps): JSX.Element => {
   const props: IndexTemplateProps = {
     posts: posts.map((post) => ({
       title: post.title,
@@ -29,6 +32,8 @@ const IndexPage = ({ posts }: TopPageProps): JSX.Element => {
         ? post.catchImage.url
         : siteConfig.defaultCatchImageUrl,
     })),
+    currentPage: 1,
+    countPages: countPages,
   }
 
   return (
@@ -50,6 +55,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
     },
   })
 
+  const { data: slugsData } = await client.query<AllSlugsQuery>({
+    query: AllSlugsDocument,
+  })
+
+  const countPages = (slugsData.slugs.length - 1) / siteConfig.postsPerPage + 1
+
   if (!data) {
     return {
       notFound: true,
@@ -59,6 +70,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   return {
     props: {
       posts: data.posts,
+      countPages: countPages,
     },
   }
 }

@@ -9,7 +9,7 @@ const Button: React.FC<ButtonProps> = ({ children, className, ...props }) => {
         className={
           className
             ? className
-            : 'py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-purple-500 hover:bg-purple-700'
+            : 'py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-purple-700 hover:bg-purple-500'
         }
         {...props}
       >
