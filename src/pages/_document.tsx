@@ -5,7 +5,7 @@ import { GA_TRACKING_ID } from '../libs/gtag'
 class MyDocument extends Document {
   render(): JSX.Element {
     return (
-      <Html lang="en">
+      <Html lang="ja">
         <Head>
           {/* Google Analytics */}
           {GA_TRACKING_ID && (

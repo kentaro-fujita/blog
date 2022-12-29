@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { GetServerSideProps } from 'next'
-import Index, { IndexProps } from '../components/templates/Index'
-import config from '../configs/config.json'
+import IndexTemplate, {
+  IndexTemplateProps,
+} from '../components/templates/Index'
+import { siteConfig } from '../configs/config'
 import {
   Post,
   TopPageDocument,
@@ -9,13 +11,14 @@ import {
   TopPageQueryVariables,
 } from '../graphql/generated/graphql'
 import createApolloClient from '../libs/apollo'
+import { NextSeo } from 'next-seo'
 
 export type TopPageProps = {
   posts: Post[]
 }
 
 const IndexPage = ({ posts }: TopPageProps): JSX.Element => {
-  const props: IndexProps = {
+  const props: IndexTemplateProps = {
     posts: posts.map((post) => ({
       title: post.title,
       slug: post.slug,
@@ -24,11 +27,16 @@ const IndexPage = ({ posts }: TopPageProps): JSX.Element => {
       createdAt: post.createdAt,
       catchImageUrl: post.catchImage
         ? post.catchImage.url
-        : config.default_catch_image_url,
+        : siteConfig.defaultCatchImageUrl,
     })),
   }
 
-  return <Index {...props} />
+  return (
+    <Fragment>
+      <NextSeo />
+      <IndexTemplate {...props} />
+    </Fragment>
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -37,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const { data } = await client.query<TopPageQuery, TopPageQueryVariables>({
     query: TopPageDocument,
     variables: {
-      limit: config.postsPerPage,
+      limit: siteConfig.postsPerPage,
       skip: 0,
     },
   })

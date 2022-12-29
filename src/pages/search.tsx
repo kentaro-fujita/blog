@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { GetServerSideProps } from 'next'
 import createApolloClient from '../libs/apollo'
 import {
@@ -7,10 +7,11 @@ import {
   SearchPageQuery,
   SearchPageQueryVariables,
 } from '../graphql/generated/graphql'
-import config from '../configs/config.json'
+import { siteConfig } from '../configs/config'
 import SearchTemplate, {
   SearchTemplateProps,
 } from '../components/templates/Search'
+import { NextSeo } from 'next-seo'
 
 export type SearchPageProps = {
   selectedTags?: string[]
@@ -39,12 +40,17 @@ const SearchPage = ({
         createdAt: post.createdAt,
         catchImageUrl: post.catchImage
           ? post.catchImage.url
-          : config.default_catch_image_url,
+          : siteConfig.defaultCatchImageUrl,
       }
     }),
     allTags: allTags.map(({ tags }) => tags).flat(),
   }
-  return <SearchTemplate {...props} />
+  return (
+    <Fragment>
+      <NextSeo title={keyword} />
+      <SearchTemplate {...props} />
+    </Fragment>
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {

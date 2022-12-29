@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { GetServerSideProps } from 'next'
 import PostTemplate, {
   PostTemplateProps,
@@ -9,8 +9,9 @@ import {
   PostPageQuery,
   PostPageQueryVariables,
 } from '../../graphql/generated/graphql'
-import config from '../../configs/config.json'
+import { siteConfig } from '../../configs/config'
 import createApolloClient from '../../libs/apollo'
+import { NextSeo } from 'next-seo'
 
 export type PostPageProps = {
   post: Post
@@ -27,10 +28,15 @@ const PostPage = ({ post }: PostPageProps): JSX.Element => {
       updatedAt: post.updatedAt,
       catchImageUrl: post.catchImage
         ? post.catchImage.url
-        : config.default_catch_image_url,
+        : siteConfig.defaultCatchImageUrl,
     },
   }
-  return <PostTemplate {...props} />
+  return (
+    <Fragment>
+      <NextSeo title={post.title} />
+      <PostTemplate {...props} />
+    </Fragment>
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
