@@ -7,7 +7,7 @@ import TagsList, { TagsListProps } from './TagsList'
 
 export type PostViewTopProps = TagsListProps & {
   title: string
-  description: string
+  description?: string
   createdAt: string
   updatedAt?: string
   catchImageUrl?: string

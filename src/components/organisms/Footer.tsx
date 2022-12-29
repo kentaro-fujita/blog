@@ -11,15 +11,13 @@ const Foot: React.FC = () => {
         <div className="container flex flex-col items-center px-4 py-6 mx-auto space-y-6 lg:space-y-0 lg:flex-row lg:justify-between">
           <div className="w-48 text-gray-700 dark:text-gray-200">
             <div className="flex justify-between">
-              <Link href="/">
-                <a className="text-gray-800 dark:text-gray-200">
-                  <div className="flex items-center">
-                    <Logo className="h-7 w-7 flex-shrink-0" />
-                    <p className="text-xl ml-2">
-                      <strong>wisteken</strong>.com
-                    </p>
-                  </div>
-                </a>
+              <Link href="/" className="text-gray-800 dark:text-gray-200">
+                <div className="flex items-center">
+                  <Logo className="h-7 w-7 flex-shrink-0" />
+                  <p className="text-xl ml-2">
+                    <strong>wisteken</strong>.com
+                  </p>
+                </div>
               </Link>
             </div>
           </div>
@@ -27,25 +25,35 @@ const Foot: React.FC = () => {
             {config.copyRight}
           </p>
           <div className="flex items-center">
-            <Link href="https://policies.google.com/privacy">
-              <a className="text-gray-500 dark:text-gray-300">Privacy</a>
+            <Link
+              href="https://policies.google.com/privacy"
+              passHref
+              className="text-gray-500 dark:text-gray-300"
+            >
+              Privacy
             </Link>
           </div>
           <div className="flex items-center">
-            <Link href="/">
-              <a className="text-gray-500 dark:text-gray-300">
-                <Icon className="fas fa-home" />
-              </a>
+            <Link
+              href="/"
+              passHref
+              className="text-gray-500 dark:text-gray-300"
+            >
+              <Icon className="fas fa-home" />
             </Link>
-            <Link href="https://twitter.com/wisteken">
-              <a className="pl-6 text-gray-500 dark:text-gray-300">
-                <Icon className="fab fa-twitter fa-lg" />
-              </a>
+            <Link
+              href="https://twitter.com/wisteken"
+              passHref
+              className="pl-6 text-gray-500 dark:text-gray-300"
+            >
+              <Icon className="fab fa-twitter fa-lg" />
             </Link>
-            <Link href="https://github.com/wisteken">
-              <a className="pl-6 text-gray-500 dark:text-gray-300">
-                <Icon className="fab fa-github fa-lg" />
-              </a>
+            <Link
+              href="https://github.com/wisteken"
+              passHref
+              className="pl-6 text-gray-500 dark:text-gray-300"
+            >
+              <Icon className="fab fa-github fa-lg" />
             </Link>
           </div>
         </div>

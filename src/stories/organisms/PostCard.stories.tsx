@@ -18,5 +18,5 @@ Default.args = {
   description:
     'super interesting post description. super interesting post description',
   createdAt: '10/01/2021',
-  tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
+  tags: Array.from(Array(10).keys()).map((n) => `tag${n + 1}`),
 }

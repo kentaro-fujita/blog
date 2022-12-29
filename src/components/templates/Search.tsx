@@ -16,7 +16,7 @@ const SearchTemplate: React.FC<SearchTemplateProps> = ({
   return (
     <Fragment>
       <Head>
-        <title>{`${keyword} ${selectedTags.join(',')} - ${
+        <title>{`${keyword} ${selectedTags && selectedTags.join(',')} - ${
           config.siteName
         }`}</title>
         <meta name="viewpoint" content="initial-scale=1.0, with=device-width" />

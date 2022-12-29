@@ -1,26 +1,27 @@
 import { useRouter } from 'next/router'
 import React, { Fragment } from 'react'
-import css from 'styled-jsx/css'
+// import css from 'styled-jsx/css'
 import Button from '../atoms/Button'
 import PaginationButton from '../molecules/PaginationButton'
 
-const styles = css`
-  .pagination {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-    align-items: center;
-    text-align: center;
-  }
-  .pagination_btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
-  }
-`
+// const styles = css`
+//   .pagination {
+//     width: 50%;
+//     display: flex;
+//     justify-content: center;
+//     margin: 0 auto;
+//     align-items: center;
+//     text-align: center;
+//   }
+//   .pagination_btn {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     text-align: center;
+//     margin: 0 auto;
+//   }
+// `
+
 export type PaginationProps = {
   countPages: number
   currentPage: number
@@ -48,7 +49,7 @@ const Pagination: React.FC<PaginationProps> = ({ countPages, currentPage }) => {
               <span>...</span>
             </Fragment>
           )}
-          {[...Array(countPages).keys()].map((n, i) => {
+          {Array.from(Array(countPages).keys()).map((n, i) => {
             if (currentPage === n + 1) {
               return (
                 <div key={i}>

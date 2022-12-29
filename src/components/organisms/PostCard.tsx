@@ -14,6 +14,7 @@ export type PostCardProps = {
   slug: string
   catchImageUrl: string
   createdAt: string
+  updatedAt?: string
   tags: string[]
 }
 
@@ -30,7 +31,7 @@ const PostCard: React.FC<PostCardProps> = ({
       <div className="px-4 py-8 w-full md:max-w-md">
         <div className="bg-gray-100 dark:bg-gray-700 shadow-2xl rounded-lg mb-6 tracking-wide">
           <div className="md:flex-shrink-0 cursor-pointer">
-            <Link href={`/posts/${slug}`}>
+            <Link href={`/posts/${slug}`} passHref>
               <div className="rounded-t-lg overflow-hidden">
                 <Image
                   className="transform hover:scale-125 duration-200"

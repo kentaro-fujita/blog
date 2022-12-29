@@ -24,15 +24,17 @@ const NavBar: React.FC = () => {
       <header className="bg-white border-b dark:bg-gray-900 dark:border-gray-700 lg:fixed lg:w-full lg:top-0 lg:left-0 lg:z-40">
         <div className="container px-4 py-5 mx-auto space-y-4 lg:space-y-0 lg:flex lg:items-center lg:justify-between lg:space-x-10">
           <div className="flex justify-between">
-            <Link href="/">
-              <a className="text-gray-800 dark:text-gray-200">
-                <div className="flex items-center">
-                  <Logo className="h-7 w-7 flex-shrink-0" />
-                  <p className="text-xl ml-2">
-                    <strong>wisteken</strong>.com
-                  </p>
-                </div>
-              </a>
+            <Link
+              href="/"
+              passHref
+              className="text-gray-800 dark:text-gray-200"
+            >
+              <div className="flex items-center">
+                <Logo className="h-7 w-7 flex-shrink-0" />
+                <p className="text-xl ml-2">
+                  <strong>wisteken</strong>.com
+                </p>
+              </div>
             </Link>
             <div className="flex items-center space-x-2 lg:hidden">
               <DarkModeButton />
