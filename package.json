@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o build/storybook",
+    "build-storybook": "build-storybook",
     "apollo-download": "./src/scripts/download-schema.sh",
     "apollo-codegen": "graphql-code-generator --config codegen.ts"
   },
@@ -55,10 +55,12 @@
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-storybook": "^0.6.8",
     "postcss": "^8.4.20",
     "react-syntax-highlighter": "^15.5.0",
-    "storybook-addon-next": "^1.7.1",
+    "storybook-addon-next-router": "^4.0.2",
     "tailwindcss": "^3.2.4",
-    "typescript": "4.9.4"
+    "typescript": "4.9.4",
+    "webpack": "^5.75.0"
   }
 }

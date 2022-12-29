@@ -1,6 +1,5 @@
-FROM node:18.12-alpine AS base
-
-FROM base AS builder
+FROM node:18.12-alpine AS builder
+WORKDIR /app/src
 COPY package.json yarn.lock tsconfig.json ./
 RUN yarn install --frozen-lockfile --non-interactive
 COPY . ./
