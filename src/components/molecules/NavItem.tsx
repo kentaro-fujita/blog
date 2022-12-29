@@ -1,9 +1,9 @@
-import Link from 'next/link'
+import Link, { LinkProps } from 'next/link'
 import React, { Fragment, useState } from 'react'
 import Button from '../atoms/Button'
 import Icon from '../atoms/Icon'
 
-export type NavItemProps = {
+export type NavItemProps = Omit<LinkProps, 'href'> & {
   href?: string
   items?: {
     name: string
@@ -12,7 +12,12 @@ export type NavItemProps = {
   children?: React.ReactNode
 }
 
-const NavItem: React.FC<NavItemProps> = ({ href, items, children }) => {
+const NavItem: React.FC<NavItemProps> = ({
+  href,
+  items,
+  children,
+  ...args
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const clickHandler = () => {
     setIsOpen(!isOpen)
@@ -25,6 +30,7 @@ const NavItem: React.FC<NavItemProps> = ({ href, items, children }) => {
           href={href}
           passHref
           className="text-gray-500 dark:text-gray-200 hover:text-gray-800"
+          {...args}
         >
           {children}
         </Link>
@@ -52,6 +58,7 @@ const NavItem: React.FC<NavItemProps> = ({ href, items, children }) => {
                       href={link}
                       passHref
                       className="block px-4 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                      {...args}
                     >
                       {name}
                     </Link>
