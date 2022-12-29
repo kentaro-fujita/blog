@@ -14,6 +14,10 @@ const NavBar: React.FC = () => {
     setIsOpen(!isOpen)
   }
 
+  const closeHandler = () => {
+    setIsOpen(false)
+  }
+
   const linksItems = [
     { name: 'GitHub', link: 'https://github.com/wisteken' },
     { name: 'AtCoder', link: 'https://atcoder.jp/users/k_fujita' },
@@ -28,6 +32,7 @@ const NavBar: React.FC = () => {
               href="/"
               passHref
               className="text-gray-800 dark:text-gray-200"
+              onClick={() => closeHandler()}
             >
               <div className="flex items-center">
                 <Logo className="h-7 w-7 flex-shrink-0" />
@@ -49,12 +54,21 @@ const NavBar: React.FC = () => {
           {isOpen && (
             <Fragment>
               <div className="flex flex-col space-y-4 lg:hidden">
-                <NavItem href="/">Home</NavItem>
-                <NavItem href="/about">About</NavItem>
-                <NavItem href="/pages/1">Posts</NavItem>
+                <NavItem href="/" onClick={() => closeHandler()}>
+                  Home
+                </NavItem>
+                <NavItem href="/about" onClick={() => closeHandler()}>
+                  About
+                </NavItem>
+                <NavItem href="/pages/1" onClick={() => closeHandler()}>
+                  Posts
+                </NavItem>
               </div>
               <div className="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:items-center lg:space-x-4">
-                <SearchInput className="lg:w-96" />
+                <SearchInput
+                  className="lg:w-96"
+                  clickHandler={() => closeHandler()}
+                />
               </div>
             </Fragment>
           )}

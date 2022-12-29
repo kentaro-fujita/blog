@@ -1,15 +1,17 @@
 import { useRouter } from 'next/router'
 import React, { Fragment, useEffect, useState } from 'react'
-import Button from '../atoms/Button'
-// import { Button } from 'react-bootstrap'
+import Button, { ButtonProps } from '../atoms/Button'
 import Icon from '../atoms/Icon'
 import Input, { InputProps } from '../atoms/Input'
 
-export type SearchInputProps = InputProps
+export type SearchInputProps = InputProps & {
+  clickHandler?: () => void
+}
 
 const SearchInput: React.FC<SearchInputProps> = ({
-  className,
+  clickHandler,
   value,
+  className,
   ...props
 }) => {
   const router = useRouter()
@@ -32,6 +34,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
       pathname: '/search',
       query: { tags: tags, keyword: inputWord },
     })
+    clickHandler && clickHandler()
   }
 
   return (
