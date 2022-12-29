@@ -33,7 +33,7 @@ const PostPage = ({ post }: PostPageProps): JSX.Element => {
   }
   return (
     <Fragment>
-      <NextSeo title={post.title} />
+      <NextSeo title={post.title} description={post.description} />
       <PostTemplate {...props} />
     </Fragment>
   )
