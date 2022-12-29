@@ -41,7 +41,7 @@ const Page = ({ posts, currentPage, countPages }: PageProps): JSX.Element => {
 
   return (
     <Fragment>
-      <NextSeo title="Posts" />
+      <NextSeo title="Posts" description="posts page of wisteken's blog" />
       <IndexTemplate {...props} />
     </Fragment>
   )

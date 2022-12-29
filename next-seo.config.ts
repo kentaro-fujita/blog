@@ -19,6 +19,7 @@ const seoConfig: DefaultSeoProps = {
     type: 'website',
     locale: 'ja_JP',
     siteName: siteConfig.siteName,
+    description: "wisteken's blog",
     images: [
       {
         url: siteConfig.defaultCatchImageUrl,
