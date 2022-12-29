@@ -1,3 +1,6 @@
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ''
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
@@ -28,4 +31,22 @@ export const event = ({
     event_label: label,
     value: value,
   })
+}
+
+export const usePageView = () => {
+  const router = useRouter()
+  useEffect(() => {
+    if (!GA_TRACKING_ID) return
+
+    const handleRouteChange = (url: string, { shallow }: any) => {
+      if (!shallow) {
+        pageview(url)
+      }
+    }
+
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
 }

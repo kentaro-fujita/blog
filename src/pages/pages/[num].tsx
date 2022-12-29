@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { GetServerSideProps } from 'next'
-import Index, { IndexProps } from '../../components/templates/Index'
-import config from '../../configs/config.json'
+import IndexTemplate, {
+  IndexTemplateProps,
+} from '../../components/templates/Index'
+import { siteConfig } from '../../configs/config'
 import {
   AllSlugsDocument,
   AllSlugsQuery,
@@ -11,13 +13,15 @@ import {
   TopPageQueryVariables,
 } from '../../graphql/generated/graphql'
 import createApolloClient from '../../libs/apollo'
+import { NextSeo } from 'next-seo'
 
 export type PageProps = {
   posts: Post[]
+  currentPage: number
 }
 
-const Page = ({ posts }: PageProps): JSX.Element => {
-  const props: IndexProps = {
+const Page = ({ posts, currentPage }: PageProps): JSX.Element => {
+  const props: IndexTemplateProps = {
     posts: posts.map((post) => {
       return {
         title: post.title,
@@ -27,11 +31,16 @@ const Page = ({ posts }: PageProps): JSX.Element => {
         createdAt: post.createdAt,
         catchImageUrl: post.catchImage
           ? post.catchImage.url
-          : config.default_catch_image_url,
+          : siteConfig.defaultCatchImageUrl,
       }
     }),
   }
-  return <Index {...props} />
+  return (
+    <Fragment>
+      <NextSeo title="Posts" />
+      <IndexTemplate {...props} />
+    </Fragment>
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
@@ -45,8 +54,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const { data } = await client.query<TopPageQuery, TopPageQueryVariables>({
     query: TopPageDocument,
     variables: {
-      skip: (parseInt(num) - 1) * config.postsPerPage,
-      limit: config.postsPerPage,
+      skip: (parseInt(num) - 1) * siteConfig.postsPerPage,
+      limit: siteConfig.postsPerPage,
     },
   })
 
@@ -54,7 +63,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     query: AllSlugsDocument,
   })
 
-  const countPages = (slugsData.slugs.length - 1) / config.postsPerPage + 1
+  const countPages = (slugsData.slugs.length - 1) / siteConfig.postsPerPage + 1
 
   return {
     props: {

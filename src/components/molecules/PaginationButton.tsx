@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React, { Fragment } from 'react'
-import colors from '../../configs/colors.json'
 
 const BUTTON_SIZE = 30
 

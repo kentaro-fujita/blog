@@ -1,14 +1,18 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import Index, { IndexProps } from '../../components/templates/Index'
+import IndexTemplate, {
+  IndexTemplateProps,
+} from '../../components/templates/Index'
 
 export default {
   title: 'Templates/Index',
-  components: Index,
+  components: IndexTemplate,
 } as Meta
 
-const Template: Story<IndexProps> = (args) => <Index {...args} />
+const Template: Story<IndexTemplateProps> = (args) => (
+  <IndexTemplate {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {

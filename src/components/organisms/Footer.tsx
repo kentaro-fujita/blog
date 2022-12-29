@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { Fragment } from 'react'
 import Logo from '../atoms/Logo'
-import config from '../../configs/config.json'
+import { siteConfig } from '../../configs/config'
 import Icon from '../atoms/Icon'
 
 const Foot: React.FC = () => {
@@ -22,7 +22,7 @@ const Foot: React.FC = () => {
             </div>
           </div>
           <p className="text-sm text-center text-gray-500 dark:text-gray-300">
-            {config.copyRight}
+            {siteConfig.copyRight}
           </p>
           <div className="flex items-center">
             <Link
