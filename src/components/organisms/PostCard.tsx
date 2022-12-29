@@ -14,6 +14,7 @@ export type PostCardProps = {
   slug: string
   catchImageUrl: string
   createdAt: string
+  updatedAt?: string
   tags: string[]
 }
 

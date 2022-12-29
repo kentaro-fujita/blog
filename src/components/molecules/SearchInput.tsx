@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import React, { Fragment, useEffect, useState } from 'react'
-import { Button } from 'react-bootstrap'
+import Button from '../atoms/Button'
+// import { Button } from 'react-bootstrap'
 import Icon from '../atoms/Icon'
 import Input, { InputProps } from '../atoms/Input'
 

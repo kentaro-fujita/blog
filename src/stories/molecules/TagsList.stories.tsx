@@ -12,5 +12,5 @@ const Template: Story<TagsListProps> = (args) => <TagsList {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
+  allTags: Array.from(Array(10).keys()).map((n) => `tag${n + 1}`),
 }

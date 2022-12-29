@@ -10,11 +10,4 @@ export default {
 const Template: Story<ButtonProps> = (args) => <Button {...args}>Button</Button>
 
 export const Filled = Template.bind({})
-Filled.args = {
-  filled: true,
-}
-
-export const Outline = Template.bind({})
-Outline.args = {
-  filled: false,
-}
+Filled.args = {}

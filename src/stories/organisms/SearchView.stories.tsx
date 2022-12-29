@@ -14,55 +14,58 @@ const Template: Story<SearchViewProps> = (args) => <SearchView {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  selectedTags: [...Array(5).keys()].map((n) => `tag${n + 1}`),
+  selectedTags: Array.from(Array(5).keys()).map((n) => `tag${n + 1}`),
   posts: [
     {
+      slug: '',
       catchImageUrl: '/assets/catch_image.png',
       title: 'super interesting post title',
       description:
         'super interesting post description. super interesting post description',
       createdAt: '2021/10/01',
-      tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
+      tags: Array.from(Array(10).keys()).map((n) => `tag${n + 1}`),
     },
     {
+      slug: '',
       catchImageUrl: '/assets/catch_image.png',
       title: 'super interesting post title',
       description:
         'super interesting post description. super interesting post description',
       createdAt: '2021/10/01',
       updatedAt: '2021/10/30',
-      tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
+      tags: Array.from(Array(10).keys()).map((n) => `tag${n + 1}`),
     },
     {
+      slug: '',
       catchImageUrl: '/assets/catch_image.png',
       title: 'super interesting post title',
       description:
         'super interesting post description. super interesting post description',
       createdAt: '2021/10/01',
-      tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
+      tags: Array.from(Array(10).keys()).map((n) => `tag${n + 1}`),
     },
   ],
-  latestPosts: [
-    {
-      title: 'super interesting post',
-      createdAt: '2021/10/01',
-    },
-    {
-      title: 'super interesting post',
-      createdAt: '2021/10/01',
-    },
-    {
-      title: 'super interesting post',
-      createdAt: '2021/10/01',
-    },
-    {
-      title: 'super interesting post',
-      createdAt: '2021/10/01',
-    },
-    {
-      title: 'super interesting post',
-      createdAt: '2021/10/01',
-    },
-  ],
-  allTags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
+  // latestPosts: [
+  //   {
+  //     title: 'super interesting post',
+  //     createdAt: '2021/10/01',
+  //   },
+  //   {
+  //     title: 'super interesting post',
+  //     createdAt: '2021/10/01',
+  //   },
+  //   {
+  //     title: 'super interesting post',
+  //     createdAt: '2021/10/01',
+  //   },
+  //   {
+  //     title: 'super interesting post',
+  //     createdAt: '2021/10/01',
+  //   },
+  //   {
+  //     title: 'super interesting post',
+  //     createdAt: '2021/10/01',
+  //   },
+  // ],
+  allTags: Array.from(Array(10).keys()).map((n) => `tag${n + 1}`),
 }

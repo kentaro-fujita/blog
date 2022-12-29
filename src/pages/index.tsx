@@ -4,7 +4,7 @@ import Index, { IndexProps } from '../components/templates/Index'
 import config from '../configs/config.json'
 import {
   Post,
-  TopPage,
+  TopPageDocument,
   TopPageQuery,
   TopPageQueryVariables,
 } from '../graphql/generated/graphql'
@@ -35,7 +35,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const client = createApolloClient()
 
   const { data } = await client.query<TopPageQuery, TopPageQueryVariables>({
-    query: TopPage,
+    query: TopPageDocument,
     variables: {
       limit: config.postsPerPage,
       skip: 0,

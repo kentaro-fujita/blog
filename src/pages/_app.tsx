@@ -1,4 +1,4 @@
-import '../styles/global.css'
+import '../styles/globals.css'
 import 'katex/dist/katex.min.css'
 import React, { useEffect } from 'react'
 import type { AppProps } from 'next/app'

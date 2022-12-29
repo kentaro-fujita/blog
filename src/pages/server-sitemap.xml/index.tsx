@@ -1,13 +1,17 @@
 import { getServerSideSitemap } from 'next-sitemap'
-import { GetServerSideProps } from 'next'
-import { AllSlugs, AllSlugsQuery } from '../../graphql/generated/graphql'
+import { GetServerSideProps, NextPage } from 'next'
+import {
+  AllSlugsDocument,
+  AllSlugsQuery,
+} from '../../graphql/generated/graphql'
 import createApolloClient from '../../libs/apollo'
+import { Fragment } from 'react'
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const client = createApolloClient()
 
   const { data } = await client.query<AllSlugsQuery>({
-    query: AllSlugs,
+    query: AllSlugsDocument,
   })
 
   const fields =
@@ -21,5 +25,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return getServerSideSitemap(ctx, fields)
 }
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-export default () => {}
+const SiteMapPage: NextPage = () => {
+  return <Fragment></Fragment>
+}
+export default SiteMapPage
