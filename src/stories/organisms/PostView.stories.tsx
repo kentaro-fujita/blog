@@ -16,34 +16,34 @@ Default.args = {
     title: 'super interesting post title',
     createdAt: '2021/10/01',
     updatedAt: '2021/10/02',
-    tags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
+    // tags: Array.from(Array(10).keys()).map((n) => `tag${n + 1}`),
     content: `# head
 body
 - item1
 - item2
 `,
   },
-  latestPosts: [
-    {
-      title: 'super interesting post',
-      createdAt: '2021/10/01',
-    },
-    {
-      title: 'super interesting post',
-      createdAt: '2021/10/01',
-    },
-    {
-      title: 'super interesting post',
-      createdAt: '2021/10/01',
-    },
-    {
-      title: 'super interesting post',
-      createdAt: '2021/10/01',
-    },
-    {
-      title: 'super interesting post',
-      createdAt: '2021/10/01',
-    },
-  ],
-  allTags: [...Array(10).keys()].map((n) => `tag${n + 1}`),
+  // latestPosts: [
+  //   {
+  //     title: 'super interesting post',
+  //     createdAt: '2021/10/01',
+  //   },
+  //   {
+  //     title: 'super interesting post',
+  //     createdAt: '2021/10/01',
+  //   },
+  //   {
+  //     title: 'super interesting post',
+  //     createdAt: '2021/10/01',
+  //   },
+  //   {
+  //     title: 'super interesting post',
+  //     createdAt: '2021/10/01',
+  //   },
+  //   {
+  //     title: 'super interesting post',
+  //     createdAt: '2021/10/01',
+  //   },
+  // ],
+  // allTags: Array.from(Array(10).keys()).map((n) => `tag${n + 1}`),
 }

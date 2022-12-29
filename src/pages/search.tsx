@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next'
 import createApolloClient from '../libs/apollo'
 import {
   Post,
-  SearchPage as GSearchPage,
+  SearchPageDocument,
   SearchPageQuery,
   SearchPageQueryVariables,
 } from '../graphql/generated/graphql'
@@ -16,7 +16,9 @@ export type SearchPageProps = {
   selectedTags?: string[]
   keyword?: string
   posts: Post[]
-  allTags: Post[]
+  allTags: {
+    tags: string[]
+  }[]
 }
 
 const SearchPage = ({
@@ -40,7 +42,7 @@ const SearchPage = ({
           : config.default_catch_image_url,
       }
     }),
-    allTags: [].concat(...allTags.map(({ tags }) => tags)),
+    allTags: allTags.map(({ tags }) => tags).flat(),
   }
   return <SearchTemplate {...props} />
 }
@@ -63,7 +65,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     SearchPageQuery,
     SearchPageQueryVariables
   >({
-    query: GSearchPage,
+    query: SearchPageDocument,
     variables: {
       tags: tags,
       word: keyword,

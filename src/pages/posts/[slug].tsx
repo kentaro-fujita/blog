@@ -5,7 +5,7 @@ import PostTemplate, {
 } from '../../components/templates/Post'
 import {
   Post,
-  PostPage as GPostPage,
+  PostPageDocument,
   PostPageQuery,
   PostPageQueryVariables,
 } from '../../graphql/generated/graphql'
@@ -35,10 +35,14 @@ const PostPage = ({ post }: PostPageProps): JSX.Element => {
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const client = createApolloClient()
-  const slug = Array.isArray(query.slug) ? query.slug[0] : query.slug
+  const slug = query.slug
+    ? Array.isArray(query.slug)
+      ? query.slug[0]
+      : query.slug
+    : ''
 
   const { data } = await client.query<PostPageQuery, PostPageQueryVariables>({
-    query: GPostPage,
+    query: PostPageDocument,
     variables: { slug: slug },
   })
 

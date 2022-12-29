@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import React, { AnchorHTMLAttributes, Fragment } from 'react'
+import Link, { LinkProps } from 'next/link'
+import React, { HTMLAttributes, Fragment } from 'react'
 
-export type TextLinkProps = AnchorHTMLAttributes<HTMLAnchorElement>
+export type TextLinkProps = HTMLAttributes<HTMLAnchorElement> & LinkProps
 
 const TextLink: React.FC<TextLinkProps> = ({ className, href, children }) => {
   return (

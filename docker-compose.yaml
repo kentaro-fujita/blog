@@ -10,6 +10,7 @@ services:
     volumes:
       - ./:/app/src
       - /app/src/node_modules
+    command: yarn dev
     ports:
       - 3000:3000
     restart: always

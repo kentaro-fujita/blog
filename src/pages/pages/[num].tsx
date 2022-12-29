@@ -3,10 +3,10 @@ import { GetServerSideProps } from 'next'
 import Index, { IndexProps } from '../../components/templates/Index'
 import config from '../../configs/config.json'
 import {
-  AllSlugs,
+  AllSlugsDocument,
   AllSlugsQuery,
   Post,
-  TopPage,
+  TopPageDocument,
   TopPageQuery,
   TopPageQueryVariables,
 } from '../../graphql/generated/graphql'
@@ -36,10 +36,14 @@ const Page = ({ posts }: PageProps): JSX.Element => {
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const client = createApolloClient()
-  const num = Array.isArray(query.num) ? query.num[0] : query.num
+  const num = query.num
+    ? Array.isArray(query.num)
+      ? query.num[0]
+      : query.num
+    : '1'
 
   const { data } = await client.query<TopPageQuery, TopPageQueryVariables>({
-    query: TopPage,
+    query: TopPageDocument,
     variables: {
       skip: (parseInt(num) - 1) * config.postsPerPage,
       limit: config.postsPerPage,
@@ -47,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   })
 
   const { data: slugsData } = await client.query<AllSlugsQuery>({
-    query: AllSlugs,
+    query: AllSlugsDocument,
   })
 
   const countPages = (slugsData.slugs.length - 1) / config.postsPerPage + 1
