@@ -33,7 +33,15 @@ const PostPage = ({ post }: PostPageProps): JSX.Element => {
   }
   return (
     <Fragment>
-      <NextSeo title={post.title} description={post.description} />
+      <NextSeo
+        title={post.title}
+        description={post.description}
+        openGraph={{
+          title: post.title,
+          description: post.description,
+          url: `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${post.slug}`,
+        }}
+      />
       <PostTemplate {...props} />
     </Fragment>
   )
