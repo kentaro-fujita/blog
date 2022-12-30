@@ -1,11 +1,11 @@
-import { getServerSideSitemap } from 'next-sitemap'
+import { getServerSideSitemap, ISitemapField } from 'next-sitemap'
 import { GetServerSideProps, NextPage } from 'next'
+import React, { Fragment } from 'react'
 import {
   AllSlugsDocument,
   AllSlugsQuery,
 } from '../../graphql/generated/graphql'
 import createApolloClient from '../../libs/apollo'
-import { Fragment } from 'react'
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const client = createApolloClient()
@@ -14,11 +14,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     query: AllSlugsDocument,
   })
 
-  const fields =
+  const fields: ISitemapField[] =
     (data.slugs ?? []).map((item) => {
       return {
         loc: `${process.env.NEXT_PUBLIC_BASE_URL}/posts/${item.slug ?? ''}`,
         lastmod: new Date().toISOString(),
+        changefreq: 'daily',
+        priority: 0.7,
       }
     }) ?? []
 
@@ -28,4 +30,5 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 const SiteMapPage: NextPage = () => {
   return <Fragment></Fragment>
 }
+
 export default SiteMapPage
