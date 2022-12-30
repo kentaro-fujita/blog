@@ -1,9 +1,9 @@
-// eslint-disable-next-line no-undef
+/** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://www.wisteken.com',
   generateRobotsTxt: true,
   sitemapSize: 7000,
-  exclude: ['/search', '/server-sitemap.xml'],
+  exclude: ['/server-sitemap.xml'],
   robotsTxtOptions: {
     additionalSitemaps: ['https://www.wisteken.com/server-sitemap.xml'],
   },
