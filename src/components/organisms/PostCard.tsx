@@ -39,16 +39,15 @@ const PostCard: React.FC<PostCardProps> = ({
                   height={360}
                   src={catchImageUrl}
                   alt="catch"
+                  priority={true}
                 />
               </div>
             </Link>
           </div>
-          <div className="flex items-center justify-between mx-6">
+          <div className="flex items-center justify-between mx-6 mt-2">
             <div className="flex items-center text-gray-500 dark:text-gray-300">
               <Icon className="fas fa-clock" />
-              <Text className="ml-2">
-                {`${formatDate(new Date(createdAt))}`}
-              </Text>
+              <Text className="ml-2">{formatDate(createdAt)}</Text>
             </div>
           </div>
           <div className="px-4 py-2">

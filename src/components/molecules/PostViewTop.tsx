@@ -8,7 +8,7 @@ import TagsList, { TagsListProps } from './TagsList'
 export type PostViewTopProps = TagsListProps & {
   title: string
   description?: string
-  createdAt: string
+  createdAt?: string
   updatedAt?: string
   catchImageUrl?: string
 }
@@ -25,18 +25,10 @@ const PostViewTop: React.FC<PostViewTopProps> = ({
         {title}
       </Title>
       <div className="flex items-end flex-col text-gray-500 dark:text-gray-300">
-        <div className="flex items-center mx-6">
-          <Icon className="fas fa-clock" />
-          <Text className="ml-2">
-            {`Published: ${formatDate(new Date(createdAt))}`}
-          </Text>
-        </div>
         {updatedAt && (
           <div className="flex items-center mx-6">
             <Icon className="fas fa-clock" />
-            <Text className="ml-2">
-              {`Last modified: ${formatDate(new Date(updatedAt))}`}
-            </Text>
+            <Text className="ml-2">{`Modified: ${formatDate(updatedAt)}`}</Text>
           </div>
         )}
       </div>
