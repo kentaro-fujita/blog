@@ -2,10 +2,9 @@ import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
 import remarkGfm from 'remark-gfm'
 import ReactMarkdown from 'react-markdown'
-import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import React, { Fragment } from 'react'
 import Title from '../atoms/Title'
+import CodeBlock from './CodeBlock'
 
 export type PostViewContentProps = {
   content: string
@@ -17,20 +16,11 @@ const PostViewContent: React.FC<PostViewContentProps> = ({ content }) => {
       <div className="markdown text-gray-500 dark:text-gray-300 mt-10 mb-10 ml-5 mr-5">
         <ReactMarkdown
           components={{
-            code({ inline, className, children, ...props }) {
-              const match = /language-(\w+)/.exec(className || '')
-              return !inline && match ? (
-                <SyntaxHighlighter
-                  style={dracula}
-                  language={match[1]}
-                  PreTag="div"
-                >
-                  {String(children).replace(/\n$/, '')}
-                </SyntaxHighlighter>
-              ) : (
-                <code className={className} {...props}>
+            code({ className, children, ...props }) {
+              return (
+                <CodeBlock className={className} {...props}>
                   {children}
-                </code>
+                </CodeBlock>
               )
             },
             h1({ children }) {

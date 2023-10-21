@@ -20,7 +20,8 @@
     "type.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next-seo.config.ts"
-, "next-sitemap.config.js"  ],
+    "next-seo.config.ts",
+    "next-sitemap.config.js"
+  ],
   "exclude": ["node_modules"]
 }

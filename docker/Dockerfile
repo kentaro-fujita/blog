@@ -5,7 +5,7 @@ RUN yarn install --frozen-lockfile --non-interactive
 COPY . ./
 RUN yarn build
 
-FROM node:18.12-alipine
+FROM node:18.12-alpine
 WORKDIR /app/src
 COPY --from=builder /app/src/.next ./.next
 COPY --from=builder /app/src/public ./public
