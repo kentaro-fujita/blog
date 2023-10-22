@@ -11,6 +11,7 @@ import { siteConfig } from '../configs/config'
 import SearchTemplate, {
   SearchTemplateProps,
 } from '../components/templates/Search'
+import { NextSeo } from 'next-seo'
 
 export type SearchPageProps = {
   selectedTags?: string[]
@@ -46,6 +47,7 @@ const SearchPage = ({
   }
   return (
     <Fragment>
+      <NextSeo title="search" description="search page for wisteken's blog" />
       <SearchTemplate {...props} />
     </Fragment>
   )
