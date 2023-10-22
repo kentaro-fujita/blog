@@ -1,4 +1,4 @@
-import React, { Fragment, HTMLAttributes, useState } from 'react'
+import React, { HTMLAttributes, useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula'
 import CopyToClipboard from 'react-copy-to-clipboard'
