@@ -1,5 +1,5 @@
 export const siteConfig = {
-  siteUrl: 'https://www.wistken.com',
+  siteUrl: 'https://wistken.com',
   siteName: 'wisteken.com',
   siteAuthor: 'Kentaro Fujita',
   copyRight: '©︎ wisteken.com All Right Reserved.',

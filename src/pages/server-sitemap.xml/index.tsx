@@ -1,4 +1,4 @@
-import { getServerSideSitemap, ISitemapField } from 'next-sitemap'
+import { getServerSideSitemapLegacy, ISitemapField } from 'next-sitemap'
 import { GetServerSideProps, NextPage } from 'next'
 import React, { Fragment } from 'react'
 import {
@@ -24,7 +24,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       }
     }) ?? []
 
-  return getServerSideSitemap(ctx, fields)
+  return getServerSideSitemapLegacy(ctx, fields)
 }
 
 const SiteMapPage: NextPage = () => {
