@@ -38,7 +38,15 @@ const IndexPage = ({ posts, countPages }: TopPageProps): JSX.Element => {
 
   return (
     <Fragment>
-      <NextSeo />
+      <NextSeo
+        title="Home"
+        description="wisteken's blog"
+        openGraph={{
+          title: 'Home',
+          description: "wisteken's blog",
+          url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+        }}
+      />
       <IndexTemplate {...props} />
     </Fragment>
   )

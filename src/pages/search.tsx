@@ -11,7 +11,6 @@ import { siteConfig } from '../configs/config'
 import SearchTemplate, {
   SearchTemplateProps,
 } from '../components/templates/Search'
-import { NextSeo } from 'next-seo'
 
 export type SearchPageProps = {
   selectedTags?: string[]
@@ -47,15 +46,6 @@ const SearchPage = ({
   }
   return (
     <Fragment>
-      <NextSeo
-        title={keyword}
-        description="search page for wisteken's blog"
-        openGraph={{
-          title: keyword,
-          description: "search page for wisteken's blog",
-          url: `${process.env.NEXT_PUBLIC_BASE_URL}/search`,
-        }}
-      />
       <SearchTemplate {...props} />
     </Fragment>
   )
