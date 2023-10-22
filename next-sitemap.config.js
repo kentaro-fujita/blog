@@ -2,8 +2,7 @@
 module.exports = {
   siteUrl: 'https://wisteken.com',
   generateRobotsTxt: true,
-  sitemapSize: 7000,
-  exclude: ['/server-sitemap.xml'],
+  exclude: ['/server-sitemap.xml', '/search/*', '/pages/*'],
   robotsTxtOptions: {
     additionalSitemaps: ['https://wisteken.com/server-sitemap.xml'],
   },
