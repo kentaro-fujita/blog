@@ -47,7 +47,7 @@ const SearchPage = ({
   }
   return (
     <Fragment>
-      <NextSeo title="search" description="search page for wisteken's blog" />
+      <NextSeo title="Search" description="search page for wisteken's blog" />
       <SearchTemplate {...props} />
     </Fragment>
   )
