@@ -21,7 +21,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
   }
 
   return !className ? (
-    <span className="text-dracula-light bg-dracula-dark p-1">
+    <span className="text-dracula-light bg-dracula-dark p-1 rounded">
       <code {...props}>{children}</code>
     </span>
   ) : (
