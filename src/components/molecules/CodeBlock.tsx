@@ -43,7 +43,7 @@ const CodeBlock: React.FC<CodeBlockProps> = ({
         {String(children).replace(/\n$/, '')}
       </SyntaxHighlighter>
       {isShown && (
-        <CopyToClipboard text={children} onCopy={copyHandler}>
+        <CopyToClipboard text={children?.toString() ?? ''} onCopy={copyHandler}>
           <div className="absolute right-2 top-2 z-10 hover:cursor-pointer">
             {isCopied && <span className="text-white">Copied!</span>}
             <Icon className="far fa-copy" />
