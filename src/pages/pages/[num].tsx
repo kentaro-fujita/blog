@@ -41,15 +41,6 @@ const Page = ({ posts, currentPage, countPages }: PageProps): JSX.Element => {
 
   return (
     <Fragment>
-      <NextSeo
-        title="Posts"
-        description="posts page of wisteken's blog"
-        openGraph={{
-          title: 'Posts',
-          description: "posts page of wisteken's blog",
-          url: `${process.env.NEXT_PUBLIC_BASE_URL}/pages/${currentPage}`,
-        }}
-      />
       <IndexTemplate {...props} />
     </Fragment>
   )
