@@ -13,7 +13,7 @@ export type PostViewContentProps = {
 const PostViewContent: React.FC<PostViewContentProps> = ({ content }) => {
   return (
     <Fragment>
-      <div className="markdown text-gray-500 dark:text-gray-300 mt-10 mb-10 ml-5 mr-5">
+      <div className="markdown text-gray-500 dark:text-gray-300 my-5 mx-2 lg:mx-5 lg:my-10">
         <ReactMarkdown
           components={{
             code({ className, children, ...props }) {
